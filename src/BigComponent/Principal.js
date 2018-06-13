@@ -1,10 +1,14 @@
 import React, {Component} from 'react'
+import AboutUs from '../components/AboutUS/AboutUs'
+import Blog from '../components/Blog/Blog'
 
 export default class Principal extends Component {
 
-    render(){
+    render(){   
         return (
-            <h1>Hola soy el componente principal!</h1>
+            <div>
+                <Blog/>
+            </div>
         )
     }
 

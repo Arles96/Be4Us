@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
+import './AboutUs.css';
 
 const styles = theme => ({
   root: {
@@ -19,7 +20,7 @@ function AboutUs(props) {
   const { classes } = props;
 
   return (
-    <div className={classes.root}>
+    <div id="aboutusContainer" className={classes.root}>
         <h1>Acerca de nosostros</h1>
         <Grid container spacing={24}>
             <Grid item xs={6} sm={4}>
