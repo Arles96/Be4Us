@@ -1,10 +1,19 @@
 import React, {Component} from 'react'
+import Navbar from '../components/Navbar/Navbar'
+import GetStarted from '../components/GetStarted/GetStarted'
 
 export default class Principal extends Component {
 
+    constructor(){
+        super()
+    }
+
     render(){
         return (
-            <h1>Hola soy el componente principal!</h1>
+            <div>
+                <Navbar />
+                <GetStarted />
+            </div>
         )
     }
 

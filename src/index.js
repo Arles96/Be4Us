@@ -2,7 +2,8 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import App from './App'
 import registerServiceWorker from './registerServiceWorker'
-import firebase from 'firebase'
+import './index.css'
+import firebase from 'firebase/app'
 
 // Initialize Firebase
 var config = {
