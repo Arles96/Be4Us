@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
+import Grid from '@material-ui/core/Grid';
 import { withStyles } from '@material-ui/core/styles';
 
 import PropTypes from 'prop-types';
@@ -55,66 +54,84 @@ class Navbar extends Component {
                 <AppBar position="static">
                     <Toolbar className="toolbar">
 
-                        {auth && (
-                            <div>
-                                <IconButton
-                                    aria-owns={open ? 'menu-appbar' : null}
-                                    aria-haspopup="true"
-                                    onClick={this.handleMenu}
-                                    color="inherit"
-                                >
-                                    <AccountCircle />
-                                </IconButton>
-                                <Menu
-                                    id="menu-appbar"
-                                    anchorEl={anchorEl}
-                                    anchorOrigin={{
-                                        vertical: 'top',
-                                        horizontal: 'left',
-                                    }}
-                                    transformOrigin={{
-                                        vertical: 'top',
-                                        horizontal: 'left',
-                                    }}
-                                    open={open}
-                                    onClose={this.handleClose}
-                                >
-                                    <MenuItem onClick={this.handleClose}>Profile</MenuItem>
-                                    <MenuItem onClick={this.handleClose}>My account</MenuItem>
-                                </Menu>
-                            </div>
-                        )}
+                        <Grid container spacing={24}>
+                            <Grid item xs>
+                            
+                                {auth && (
+                                    <div>
+                                        <IconButton
+                                            aria-owns={open ? 'menu-appbar' : null}
+                                            aria-haspopup="true"
+                                            onClick={this.handleMenu}
+                                            color="inherit"
+                                        >
+                                            <AccountCircle />
+                                        </IconButton>
+                                        <Menu
+                                            id="menu-appbar"
+                                            anchorEl={anchorEl}
+                                            anchorOrigin={{
+                                                vertical: 'top',
+                                                horizontal: 'left',
+                                            }}
+                                            transformOrigin={{
+                                                vertical: 'top',
+                                                horizontal: 'left',
+                                            }}
+                                            open={open}
+                                            onClose={this.handleClose}
+                                        >
+                                            <MenuItem onClick={this.handleClose}>Profile</MenuItem>
+                                            <MenuItem onClick={this.handleClose}>My account</MenuItem>
+                                        </Menu>
+                                    </div>
+                                )}
+                            </Grid>
+                            <Grid item xs>
 
-                        <IconButton className={classes.flex} color="inherit">
-                            <Typography variant="headline" color="inherit">
-                                Inicio
-                        </Typography>
-                        </IconButton>
-                        <IconButton className={classes.flex} color="inherit">
-                            <Typography variant="headline" color="inherit">
-                                Comenzar
-                        </Typography>
-                        </IconButton>
-                        <IconButton className={classes.flex} color="inherit">
-                            <Typography variant="headline" color="inherit">
-                                Acerca
-                        </Typography>
-                        </IconButton>
-                        <IconButton className={classes.flex} color="inherit">
-                            <Typography variant="headline" color="inherit">
-                                Blog
-                        </Typography>
-                        </IconButton>
-                        <IconButton className={classes.flex} color="inherit">
-                            <Typography variant="headline" color="inherit">
-                                Desarrollo
-                        </Typography>
-                        </IconButton>
-                        <IconButton className={classes.flex} color="inherit">
-                            <Typography variant="headline" color="inherit">
-                                Precios
-                        </Typography>
-                        </IconButton>
+                                <IconButton className={classes.flex} color="inherit">
+                                    <p className="btn_text" color="inherit">
+                                        Inicio
+                        </p>
+                                </IconButton>
+                            </Grid>
+                            <Grid item xs>
+                                <IconButton className={classes.flex} color="inherit">
+                                    <p className="btn_text" color="inherit">
+                                        Comenzar
+                        </p>
+                                </IconButton>
+                            </Grid>
+                            <Grid item xs>
+                                <IconButton className={classes.flex} color="inherit">
+                                    <p className="btn_text" color="inherit">
+                                        Acerca
+                        </p>
+                                </IconButton>
+                            </Grid>
+                            <Grid item xs>
+                                <IconButton className={classes.flex} color="inherit">
+                                    <p className="btn_text" color="inherit">
+                                        Blog
+                        </p>
+                                </IconButton>
+                            </Grid>
+                            <Grid item xs>
+                                <IconButton className={classes.flex} color="inherit">
+                                    <p className="btn_text" color="inherit">
+                                        Desarrollo
+                        </p>
+                                </IconButton>
+                            </Grid>
+                            <Grid item xs>
+                                <IconButton className={classes.flex} color="inherit">
+                                    <p className="btn_text" color="inherit">
+                                        Precios
+                        </p>
+                                </IconButton>
+                            </Grid>
+
+                        </Grid>
                     </Toolbar>
                 </AppBar>
             </div>
