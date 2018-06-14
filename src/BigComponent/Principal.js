@@ -13,8 +13,8 @@ export default class Principal extends Component {
     render(){
         return (
             <div>
-                <Navbar />
-                <GetStarted />
+                {/*<Navbar />
+                <GetStarted />*/}
                 <Blog/>
             </div>
         )
