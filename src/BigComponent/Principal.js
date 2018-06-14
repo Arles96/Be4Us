@@ -28,6 +28,7 @@ export default class Principal extends Component {
         return (
             <div>
                 <Navbar />
+                <Greeting />
                 <GetStarted />
                 <Blog/>
                 <AboutUs />
