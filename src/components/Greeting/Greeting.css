@@ -15,25 +15,22 @@
 }
 
 .Logo_Be {
-    position: absolute;
-    text-align: center;
-    margin-top: 0;
-    margin-bottom: 0;
-    padding: 0;
+    font-size: 20vh !important;
+    text-align: right !important;
+    margin: 0 !important;
+    padding: 0 !important;
 }
 
 .Logo_Us {
-    position: absolute;
-    text-align: center;
-    margin-top: 0;
-    margin-bottom: 0;
-    padding: 0;
+    font-size: 20vh!important;
+    text-align: right !important;
+    margin: 0 !important;
+    padding: 0 !important;
 }
 
-.Logo_4 {
-    position: absolute;
-    text-align: center;
-    margin-top: 0;
-    margin-bottom: 0;
-    padding: 0;
+.Logo_4 {   
+    text-align: left !important;
+    font-size: 55vh!important;
+    margin: 0 !important;
+    padding: 0 !important;
 }

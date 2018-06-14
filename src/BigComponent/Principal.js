@@ -5,6 +5,7 @@ import Navbar from '../components/Navbar/Navbar'
 import GetStarted from '../components/GetStarted/GetStarted'
 import Greeting from '../components/Greeting/Greeting'
 import Pricing from '../components/Pricing/Pricing'
+import Developers from '../components/Developers/Developers'
 
 export default class Principal extends Component {
 
@@ -30,6 +31,7 @@ export default class Principal extends Component {
                 <Navbar />
                 <Greeting />
                 <GetStarted />
+                <Developers/>
                 <Blog/>
                 <AboutUs />
                 <Pricing />
