@@ -1,0 +1,36 @@
+.greeting {
+    margin: 0;
+    height: 90vh;
+    background: url(../../img/img8.jpg) no-repeat top center;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+}
+
+.contain-greet {
+    color: white;
+    width: 80%;
+    margin: auto;
+    padding: 10px;
+}
+
+.Logo_Be {
+    font-size: 20vh !important;
+    text-align: right !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.Logo_Us {
+    font-size: 20vh!important;
+    text-align: right !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.Logo_4 {   
+    text-align: left !important;
+    font-size: 55vh!important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
