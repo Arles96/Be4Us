@@ -6,15 +6,15 @@ import Button from '@material-ui/core/Button'
 export default () => (
     <div className="greeting" >
         <div className="contain-greet" >
-            <Typography className="Logo_4" variant="display4">
-                4
-            </Typography>
-            <Typography className="Logo_Be" variant="display4">
+            <p className="Logo_Be" >
                 Be
-            </Typography>
-            <Typography className="Logo_Us" variant="display4">
+            </p>
+            <p className="Logo_4" >
+                4
+            </p>
+            <p className="Logo_Us" >
                 Us
-            </Typography>
+            </p>
         </div>
     </div>
 )

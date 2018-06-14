@@ -4,6 +4,7 @@ import Blog from '../components/Blog/Blog'
 import Navbar from '../components/Navbar/Navbar'
 import GetStarted from '../components/GetStarted/GetStarted'
 import Greeting from '../components/Greeting/Greeting';
+import Developers from '../components/Developers/Developers';
 
 export default class Principal extends Component {
 
@@ -17,6 +18,7 @@ export default class Principal extends Component {
                 <Navbar />
                 <Greeting />
                 <GetStarted />
+                <Developers/>
                 <Blog/>
             </div>
         )
