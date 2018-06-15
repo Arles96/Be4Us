@@ -84,7 +84,6 @@ class Greeting extends Component {
                         <p className="Logo_ Us_">Us</p>
                     </div>
                     <h1 className="text-greet" >Descubre una manera más fácil para organizar y planificar tus eventos, colectivamente y en tiempo real.</h1>
-                    <h1>Debo hacer que la descripcion este sobre el logo (Ask Arles)</h1>
                 </div>
                 <ResizeDetector handleWidth handleHeight onResize={this.onResize} />
                 <ResizeDetector handleWidth handleHeight onResize={this.sizeChange} />

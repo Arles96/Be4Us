@@ -14,9 +14,25 @@
 .btn_text {
     opacity: 1 !important;
     color: white;
-    font-size: 2.5vw;
+    font-size: 2vw;
     text-align: center !important;
     margin: 0 !important;
     border: 0 !important;
     padding: 0 !important;
+}
+.btn_text_small {
+    opacity: 1 !important;
+    color: white;
+    font-size: 3vh;
+    text-align: center !important;
+    margin: 0 !important;
+    border: 0 !important;
+    padding: 0 !important;
+}
+
+.focus_:hover {
+    opacity: 1 !important;
+    color: white;
+    font-size: font-size + 2px;
+    background-color: rgb(37, 55, 56);
 }

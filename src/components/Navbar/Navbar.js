@@ -60,12 +60,10 @@ class Navbar extends Component {
         const { classes } = this.props;
         const { auth, anchorEl } = this.state;
         const open = Boolean(anchorEl);
-        console.log(window.innerWidth + " <= " + (window.innerHeight * 0.5625) + " ### " + window.innerWidth * 100 / window.innerHeight);
-        if (window.innerWidth <= 540) {
+        if (window.innerWidth <= 650) {
 
             return (
                 <div className="navbar" >
-                {/*alert("Small")*/}
                     <AppBar position="static">
                         <Toolbar className="toolbar">
                             <IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
@@ -73,7 +71,7 @@ class Navbar extends Component {
                             </IconButton>
 
                             <IconButton className={classes.flex} color="inherit">
-                                <p className="btn_text" color="inherit">Be4Us</p>
+                                <p className="btn_text_small" color="inherit">Be4Us</p>
                             </IconButton>
                             {auth && (
                                 <div>
@@ -114,7 +112,6 @@ class Navbar extends Component {
 
             return (
                 <div className="navbar" >
-                {/*alert("Big")*/}
                     <AppBar position="static">
                         <Toolbar className="toolbar">
 
@@ -131,7 +128,7 @@ class Navbar extends Component {
                                             >
                                                 <AccountCircle />
                                             </IconButton>
-                                            <Menu 
+                                            <Menu
                                                 id="menu-appbar"
                                                 anchorEl={anchorEl}
                                                 anchorOrigin={{
@@ -151,32 +148,32 @@ class Navbar extends Component {
                                         </div>
                                     )}
                                 </Grid>
-                                <Grid item xs className="btn_text">
+                                <Grid item xs className="btn_text focus_">
                                     <IconButton className={classes.flex} color="inherit">
                                         <p className="btn_text" color="inherit">Inicio</p>
                                     </IconButton>
                                 </Grid>
-                                <Grid item xs className="btn_text">
-                                    <IconButton className={classes.flex} color="inherit">
-                                        <p className="btn_text" color="inherit">Comenzar</p>
-                                    </IconButton>
-                                </Grid>
-                                <Grid item xs className="btn_text">
+                                <Grid item xs className="btn_text focus_">
                                     <IconButton className={classes.flex} color="inherit">
                                         <p className="btn_text" color="inherit">Acerca</p>
                                     </IconButton>
                                 </Grid>
-                                <Grid item xs className="btn_text">
+                                <Grid item xs className="btn_text focus_">
+                                    <IconButton className={classes.flex} color="inherit">
+                                        <p className="btn_text" color="inherit">Comenzar</p>
+                                    </IconButton>
+                                </Grid>
+                                <Grid item xs className="btn_text focus_">
                                     <IconButton className={classes.flex} color="inherit">
                                         <p className="btn_text" color="inherit">Blog</p>
                                     </IconButton>
                                 </Grid>
-                                <Grid item xs className="btn_text">
+                                <Grid item xs className="btn_text focus_">
                                     <IconButton className={classes.flex} color="inherit">
                                         <p className="btn_text" color="inherit">Desarrollo</p>
                                     </IconButton>
                                 </Grid>
-                                <Grid item xs className="btn_text">
+                                <Grid item xs className="btn_text focus_">
                                     <IconButton className={classes.flex} color="inherit">
                                         <p className="btn_text" color="inherit">Precios</p>
                                     </IconButton>
