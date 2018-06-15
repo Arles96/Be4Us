@@ -1,7 +1,27 @@
-#aboutusContainer {
-    background-image: url("../../img/img1.jpg");
+.AboutUs {
+    margin: 0;
     height: 90vh;
-    padding-left: 10px;
-    padding-right: 10px;
-    padding-top: 20px;
+    background: url(../../img/img2.jpg) no-repeat top center;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+}
+
+.contain-about {
+    background: rgba(0, 0, 0, 1);
+    opacity: 0.6;
+    width: 80%;
+    margin: auto;
+    padding: 10px;
+}
+
+.title-about {
+    color: rgb(223, 134, 45);
+    font-size: 64px;
+}
+
+.text-about {
+    color: whitesmoke;
+    font-size: 32px;
+    text-align: center;
 }

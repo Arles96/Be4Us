@@ -30,11 +30,11 @@ export default class Principal extends Component {
             <div>
                 <Navbar />
                 <Greeting />
-                <GetStarted />
-                <Developers/>
-                <Blog/>
                 <AboutUs />
+                <GetStarted />
+                <Blog/>
                 <Pricing />
+                <Developers/>
             </div>
         )
     }

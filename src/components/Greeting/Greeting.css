@@ -1,7 +1,7 @@
 .greeting {
     margin: 0;
     height: 90vh;
-    background: url(../../img/img8.jpg) no-repeat top center;
+    background: url(../../img/img8.jpg) no-repeat bottom center;
     background-size: cover;
     display: flex;
     align-items: center;
@@ -12,25 +12,59 @@
     width: 80%;
     margin: auto;
     padding: 10px;
+    margin-top: 10vh;
 }
 
-.Logo_Be {
-    font-size: 20vh !important;
-    text-align: right !important;
+.grid-container {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-gap: 0px;
+    padding: 0px;
+}
+
+.grid-container > div {
+    text-align: center;
+    padding: 0px;
+}
+.Logo_ {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    margin-right: 0px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    padding-right: 0px;
+    border-top: 0px;
+    border-bottom: 0px;
+    border-right: 0px;
+
+    height: 18vh;
+    position: relative;
     margin: 0 !important;
     padding: 0 !important;
+    
+    color: red;
 }
 
-.Logo_Us {
-    font-size: 20vh!important;
-    text-align: right !important;
-    margin: 0 !important;
-    padding: 0 !important;
+.Be_ {
+    text-align: right;
+    font-size: 25vh !important;
 }
 
-.Logo_4 {   
+.Us_ {
+    text-align: right;
+    font-size: 25vh !important;
+}
+
+.For_ {
+    position: relative;
+    line-height : 45vh !important;
     text-align: left !important;
-    font-size: 55vh!important;
-    margin: 0 !important;
-    padding: 0 !important;
+    font-size: 60vh !important;
+}
+
+/*45 vw + 60vh*/
+.text-greet {
+    text-align: center;
+    font-size: 4vh !important;
+    margin: 10vh;
 }
