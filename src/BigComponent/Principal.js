@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 // import AboutUs from '../components/AboutUS/AboutUs'
 // import Blog from '../components/Blog/Blog'
-//import Navbar from '../components/Navbar/Navbar'
+import Navbar from '../components/Navbar/Navbar'
 // import GetStarted from '../components/GetStarted/GetStarted'
 import Greeting from '../components/Greeting/Greeting'
 // import Pricing from '../components/Pricing/Pricing'
@@ -28,6 +28,7 @@ export default class Principal extends Component {
     render(){
         return (
             <div>
+                <Navbar />
                 <Greeting />
             </div>
         )

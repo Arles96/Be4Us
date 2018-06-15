@@ -54,7 +54,7 @@ class Greeting extends Component {
     }
 
     changeSizeFormat(k) {
-        console.log(this.state.width + ", " + this.state.height);
+        //console.log(this.state.width + ", " + this.state.height);
         if (k === true) {
             document.getElementsByClassName("Be_")[0].setAttribute("style", "margin-top: 20vw;")
             document.getElementsByClassName("Be_")[0].setAttribute("style", "font-size: 25vw !important; height: 18vw;")
@@ -83,7 +83,8 @@ class Greeting extends Component {
                         <p className="Logo_ For_">4</p>
                         <p className="Logo_ Us_">Us</p>
                     </div>
-                    <p className="text-greet" >Descubre una manera más fácil para organizar y planificar tus eventos, colectivamente y en tiempo real.</p>
+                    <h1 className="text-greet" >Descubre una manera más fácil para organizar y planificar tus eventos, colectivamente y en tiempo real.</h1>
+                    <h1>Debo hacer que la descripcion este sobre el logo (Ask Arles)</h1>
                 </div>
                 <ResizeDetector handleWidth handleHeight onResize={this.onResize} />
                 <ResizeDetector handleWidth handleHeight onResize={this.sizeChange} />
