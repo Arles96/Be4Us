@@ -1,6 +1,6 @@
 .greeting {
     margin: 0;
-    height: 90vh;
+    height: 100vh;
     background: url(../../img/img8.jpg) no-repeat bottom center;
     background-size: cover;
     display: flex;
@@ -12,7 +12,7 @@
     width: 80%;
     margin: auto;
     padding: 10px;
-    margin-top: 10vh;
+    margin-top: 20vh;
 }
 
 .grid-container {
@@ -41,30 +41,56 @@
     position: relative;
     margin: 0 !important;
     padding: 0 !important;
-    
-    color: red;
+
 }
 
 .Be_ {
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+    color: #F5F5F5 !important;
     text-align: right;
     font-size: 25vh !important;
 }
 
 .Us_ {
-    text-align: right;
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+    color: #F5F5F5 !important;
+    text-align: left;
     font-size: 25vh !important;
 }
 
 .For_ {
+    grid-column: 1 / 3;
+    grid-row: 1 / 3;
+    color: #FFD185 !important;
     position: relative;
     line-height : 45vh !important;
-    text-align: left !important;
+    text-align: center !important;
     font-size: 60vh !important;
 }
 
 /*45 vw + 60vh*/
 .text-greet {
     text-align: center;
+    color: #F5F5F5 !important;
     font-size: 4vh !important;
     margin: 10vh;
+}
+
+canvas {
+    align-self:  center !important;
+    justify-self:  center !important;    
+    grid-column: 1 / 3;
+    grid-row: 1 / 3;
+}
+.Canvas_Dark {
+    background-color: #0D2941;
+    opacity: 0.63;
+    transform: rotate(45deg);
+}
+.Canvas_Soft {
+    opacity: 0.29;
+    transform: rotate(55deg);
+    background-color: #FFD185 !important;
 }
