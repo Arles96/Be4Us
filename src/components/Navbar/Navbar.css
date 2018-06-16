@@ -5,6 +5,7 @@
     height: 10vh !important;
     align-self: top;
     opacity: 0.7;
+    z-index:100;
 }
 
 .toolbar {
@@ -19,6 +20,7 @@
     margin: 0 !important;
     border: 0 !important;
     padding: 0 !important;
+    z-index:20;
 }
 .btn_text_small {
     opacity: 1 !important;
@@ -28,11 +30,18 @@
     margin: 0 !important;
     border: 0 !important;
     padding: 0 !important;
+    z-index:20;
 }
 
 .focus_:hover {
     opacity: 1 !important;
     color: white;
-    font-size: font-size + 2px;
     background-color: rgb(37, 55, 56);
+    z-index:201;
+}
+
+
+/* Standard syntax */
+@keyframes mymove {
+100% {background-color: rgb(37, 55, 56)}
 }

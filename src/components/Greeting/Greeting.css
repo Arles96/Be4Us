@@ -50,6 +50,7 @@
     color: #F5F5F5 !important;
     text-align: right;
     font-size: 25vh !important;
+    
 }
 
 .Us_ {
@@ -75,7 +76,9 @@
     text-align: center;
     color: #F5F5F5 !important;
     font-size: 4vh !important;
-    margin: 10vh;
+    margin-top: 10vh; 
+    margin: 10px;
+    z-index:10;
 }
 
 canvas {
@@ -93,4 +96,13 @@ canvas {
     opacity: 0.29;
     transform: rotate(55deg);
     background-color: #FFD185 !important;
+}
+
+#Dark {
+    --animation: mymove 5s infinite linear;
+}
+
+/* Standard syntax */
+@keyframes mymove {
+    50% {z-index: 2;}
 }
