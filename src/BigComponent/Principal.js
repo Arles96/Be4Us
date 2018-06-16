@@ -14,27 +14,53 @@ export default class Principal extends Component {
         this.state = {
             counter : 0
         }
+        this.handleScroll = this.handleScroll.bind(this)
     }
 
     handleContent(){
         if (this.state.counter===0){
-            return (
-                <Greeting />
-            )
+            return <div className="animated fadeInUp" ><Greeting /></div>
         }
+        else if (this.state.counter===1){
+            return <div className="animated fadeInUp" ><GetStarted /></div>
+        }
+        else if (this.state.counter===2){
+            return <div className="animated fadeInUp" ><Developers /></div>
+        }
+        else if (this.state.counter===3){
+            return <div className="animated fadeInUp" ><Blog /></div>
+        }
+        else if (this.state.counter===4){
+            return <div className="animated fadeInUp" ><AboutUs /></div>
+        }
+        else {
+            return <div className="animated fadeInUp" ><Pricing /></div>
+        }
+    }
+
+    handleScroll(e){
+        if (Math.sign(e.deltaY)===-1){
+            if (this.state.counter>0){
+                this.setState({
+                    counter : this.state.counter - 1
+                })
+            }
+        }else {
+            if (this.state.counter<5){
+                this.setState({
+                    counter : this.state.counter + 1
+                })
+            }
+        }
+        console.log(this.state.counter)
     }
 
 
     render(){
         return (
-            <div>
+            <div onWheel={this.handleScroll} >
                 <Navbar />
-                <Greeting />
-                <GetStarted />
-                <Developers/>
-                <Blog/>
-                <AboutUs />
-                <Pricing />
+                {this.handleContent()}
             </div>
         )
     }
