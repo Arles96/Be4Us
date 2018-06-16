@@ -19,22 +19,22 @@ export default class Principal extends Component {
 
     handleContent(){
         if (this.state.counter===0){
-            return <div className="animated fadeInUp" ><Greeting /></div>
+            return <div className="animated fadeInUp star" ><Greeting /></div>
         }
         else if (this.state.counter===1){
-            return <div className="animated fadeInUp" ><GetStarted /></div>
+            return <div className="animated fadeInUp star" ><GetStarted /></div>
         }
         else if (this.state.counter===2){
-            return <div className="animated fadeInUp" ><Developers /></div>
+            return <div className="animated fadeInUp star" ><Developers /></div>
         }
         else if (this.state.counter===3){
-            return <div className="animated fadeInUp" ><Blog /></div>
+            return <div className="animated fadeInUp star" ><Blog /></div>
         }
         else if (this.state.counter===4){
-            return <div className="animated fadeInUp" ><AboutUs /></div>
+            return <div className="animated fadeInUp star" ><AboutUs /></div>
         }
         else {
-            return <div className="animated fadeInUp" ><Pricing /></div>
+            return <div className="animated fadeInUp star" ><Pricing /></div>
         }
     }
 
