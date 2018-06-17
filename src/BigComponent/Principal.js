@@ -52,7 +52,6 @@ export default class Principal extends Component {
                 })
             }
         }
-        console.log(this.state.counter)
     }
 
 
