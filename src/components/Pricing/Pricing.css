@@ -1,0 +1,11 @@
+.pricing-container {
+    height: 90vh;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+}
+
+.card-pricing {
+    height: 60vh;
+    margin: 5rem;
+}
