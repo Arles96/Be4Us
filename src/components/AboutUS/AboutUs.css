@@ -35,3 +35,7 @@
     color: rgb(194, 194, 194);
     letter-spacing: 0;
 }
+
+#color-soft {
+    color: #FFD185 !important;
+}

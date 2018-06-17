@@ -35,7 +35,7 @@ class AboutUs extends Component {
         }
     }
     changeSizeFormat(k) {
-        console.log(this.state.width + ", " + this.state.height);
+        //console.log(this.state.width + ", " + this.state.height);
         if (k === 0) {
             // document.getElementsByClassName("contain-about")[0].setAttribute("style", "margin-top: 7.5vh !important;")
             // document.getElementsByClassName("title-about")[0].setAttribute("style", "margin-top: 5vw !important; font-size: 10vw !important;")
@@ -58,7 +58,7 @@ class AboutUs extends Component {
             <div className="AboutUs" >
                 <div className="contain-about" >
 
-                    <h2 className="title-about" >¿Qué es Be4Us?</h2>
+                    <h2 className="title-about" >¿Qué es <i id="color-soft">Be4Us</i>?</h2>
                     <p className="text-about" >"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
                 </div>
 

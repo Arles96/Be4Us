@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 import AboutUs from '../components/AboutUS/AboutUs'
 import Blog from '../components/Blog/Blog'
 import Navbar from '../components/Navbar/Navbar'
@@ -9,10 +9,10 @@ import Developers from '../components/Developers/Developers'
 
 export default class Principal extends Component {
 
-    constructor(){
+    constructor() {
         super()
         this.state = {
-            counter : 0
+            counter: 0
         }
         this.handleScroll = this.handleScroll.bind(this)
     }
@@ -56,7 +56,7 @@ export default class Principal extends Component {
     }
 
 
-    render(){
+    render() {
         return (
             <div onWheel={this.handleScroll} >
                 <Navbar />
