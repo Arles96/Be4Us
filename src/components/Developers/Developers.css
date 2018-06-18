@@ -1,5 +1,12 @@
+<<<<<<< HEAD
 #developersContainer {
     background: url(../../img/img7.jpg) no-repeat top center;
+=======
+.developers {
+    margin: 0;
+    height: 100vh;
+    background: url(../../img/img6.jpg) no-repeat top center;
+>>>>>>> 07da50103123c60af126e270066668237f9ea9ea
     background-size: cover;
     height: 90vh;
     padding-left: 10px;

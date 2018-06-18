@@ -54,19 +54,19 @@ class Greeting extends Component {
     }
 
     changeSizeFormat(k) {
-        console.log(this.state.width + ", " + this.state.height);
+        //console.log(this.state.width + ", " + this.state.height);
         if (k === true) {
             document.getElementsByClassName("Be_")[0].setAttribute("style", "margin-top: 20vw;")
             document.getElementsByClassName("Be_")[0].setAttribute("style", "font-size: 25vw !important; height: 18vw;")
             document.getElementsByClassName("Us_")[0].setAttribute("style", "font-size: 25vw !important; height: 18vw;")
             document.getElementsByClassName("For_")[0].setAttribute("style", "font-size: 70vw !important; height: 18vw; line-height : 50vw !important;")
-            document.getElementsByClassName("text-greet")[0].setAttribute("style", "font-size: 7vw !important; margin: 10px;")
+            document.getElementsByClassName("text-greet")[0].setAttribute("style", "font-size: 7vw !important; margin: 10px; margin-top: 10vw;")
         } else {
             document.getElementsByClassName("Be_")[0].setAttribute("style", "margin-top: 10vh;")
             document.getElementsByClassName("Be_")[0].setAttribute("style", "font-size: 25vh !important; height: 18vh;")
             document.getElementsByClassName("Us_")[0].setAttribute("style", "font-size: 25vh !important; height: 18vh;")
             document.getElementsByClassName("For_")[0].setAttribute("style", "font-size: 60vh !important; height: 18vh; line-height : 45vh !important;")
-            document.getElementsByClassName("text-greet")[0].setAttribute("style", "font-size: 4vh !important; margin: 10px;")
+            document.getElementsByClassName("text-greet")[0].setAttribute("style", "font-size: 4vh !important; margin: 10px; margin-top: 10vh;")
         }
     }
 
@@ -77,13 +77,13 @@ class Greeting extends Component {
                 <div className="contain-greet" >
                     {/* Contenedor del Logo General*/}
                     <div className="grid-container">
-                        <canvas className="Canvas_Soft"></canvas>
-                        <canvas className="Canvas_Dark"></canvas>
+                        <canvas id="Soft" className="Canvas_Soft"></canvas>
+                        <canvas id="Dark" className="Canvas_Dark"></canvas>
                         <p className="Logo_ Be_">Be</p>
                         <p className="Logo_ For_">4</p>
                         <p className="Logo_ Us_">Us</p>
                     </div>
-                    <p className="text-greet" >Descubre una manera más fácil para organizar y planificar tus eventos, colectivamente y en tiempo real.</p>
+                    <h1 className="text-greet" >Descubre una manera más fácil para organizar y planificar tus eventos, colectivamente y en tiempo real.</h1>
                 </div>
                 <ResizeDetector handleWidth handleHeight onResize={this.onResize} />
                 <ResizeDetector handleWidth handleHeight onResize={this.sizeChange} />

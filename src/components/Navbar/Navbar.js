@@ -4,16 +4,18 @@ import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
 import Grid from '@material-ui/core/Grid';
 import { withStyles } from '@material-ui/core/styles';
+//import { slide as Menu } from 'react-burger-menu'
 
 import MenuIcon from '@material-ui/icons/Menu';
-import Typography from '@material-ui/core/Typography';
 import PropTypes from 'prop-types';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 //import Switch from '@material-ui/core/Switch';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
+import ResizeDetector from 'react-resize-detector';
 
 import './Navbar.css';
+
 
 const styles = {
     root: {
@@ -29,10 +31,19 @@ const styles = {
 };
 
 class Navbar extends Component {
-    state = {
-        auth: true,
-        anchorEl: null,
-    };
+    constructor() {
+        super();
+        this.state = {
+            auth: true,
+            anchorEl: null,
+        };
+        this.render = this.render.bind(this);
+        this.exp = this.exp.bind(this);
+    }
+
+    exp() {
+        this.forceUpdate();
+    }
 
     handleChange = (event, checked) => {
         this.setState({ auth: checked });
@@ -50,20 +61,19 @@ class Navbar extends Component {
         const { classes } = this.props;
         const { auth, anchorEl } = this.state;
         const open = Boolean(anchorEl);
-
-        if (true) {
+        if (window.innerWidth <= 650) {
 
             return (
-                <div className={classes.root}>
-                    
+                <div className="navbar" >
                     <AppBar position="static">
-                        <Toolbar>
+                        <Toolbar className="toolbar">
                             <IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
                                 <MenuIcon />
                             </IconButton>
-                            <Typography variant="title" color="inherit" className={classes.flex}>
-                                Title
-                      </Typography>
+
+                            <IconButton className={classes.flex} color="inherit">
+                                <p className="btn_text_small" color="inherit">Be4Us</p>
+                            </IconButton>
                             {auth && (
                                 <div>
                                     <IconButton
@@ -95,6 +105,8 @@ class Navbar extends Component {
                             )}
                         </Toolbar>
                     </AppBar>
+                    <ResizeDetector handleWidth handleHeight onResize={this.render} />
+                    <ResizeDetector handleWidth handleHeight onResize={this.exp} />
                 </div>
             );
         } else {
@@ -105,11 +117,11 @@ class Navbar extends Component {
                         <Toolbar className="toolbar">
 
                             <Grid container spacing={24}>
-                                <Grid item xs>
+                                <Grid item xs className="btn_text">
 
                                     {auth && (
-                                        <div>
-                                            <IconButton
+                                        <div className="btn_text">
+                                            <IconButton className="btn_text"
                                                 aria-owns={open ? 'menu-appbar' : null}
                                                 aria-haspopup="true"
                                                 onClick={this.handleMenu}
@@ -137,53 +149,42 @@ class Navbar extends Component {
                                         </div>
                                     )}
                                 </Grid>
-                                <Grid item xs>
-
+                                <Grid item xs className="btn_text focus_">
                                     <IconButton className={classes.flex} color="inherit">
-                                        <p className="btn_text" color="inherit">
-                                            Inicio
-                        </p>
+                                        <p className="btn_text" color="inherit">Inicio</p>
                                     </IconButton>
                                 </Grid>
-                                <Grid item xs>
+                                <Grid item xs className="btn_text focus_">
                                     <IconButton className={classes.flex} color="inherit">
-                                        <p className="btn_text" color="inherit">
-                                            Comenzar
-                        </p>
+                                        <p className="btn_text" color="inherit">Acerca</p>
                                     </IconButton>
                                 </Grid>
-                                <Grid item xs>
+                                <Grid item xs className="btn_text focus_">
                                     <IconButton className={classes.flex} color="inherit">
-                                        <p className="btn_text" color="inherit">
-                                            Acerca
-                        </p>
+                                        <p className="btn_text" color="inherit">Comenzar</p>
                                     </IconButton>
                                 </Grid>
-                                <Grid item xs>
+                                <Grid item xs className="btn_text focus_">
                                     <IconButton className={classes.flex} color="inherit">
-                                        <p className="btn_text" color="inherit">
-                                            Blog
-                        </p>
+                                        <p className="btn_text" color="inherit">Blog</p>
                                     </IconButton>
                                 </Grid>
-                                <Grid item xs>
+                                <Grid item xs className="btn_text focus_">
                                     <IconButton className={classes.flex} color="inherit">
-                                        <p className="btn_text" color="inherit">
-                                            Desarrollo
-                        </p>
+                                        <p className="btn_text" color="inherit">Desarrollo</p>
                                     </IconButton>
                                 </Grid>
-                                <Grid item xs>
+                                <Grid item xs className="btn_text focus_">
                                     <IconButton className={classes.flex} color="inherit">
-                                        <p className="btn_text" color="inherit">
-                                            Precios
-                        </p>
+                                        <p className="btn_text" color="inherit">Precios</p>
                                     </IconButton>
                                 </Grid>
 
                             </Grid>
                         </Toolbar>
                     </AppBar>
+                    <ResizeDetector handleWidth handleHeight onResize={this.render} />
+                    <ResizeDetector handleWidth handleHeight onResize={this.exp} />
                 </div>
             );
         }
