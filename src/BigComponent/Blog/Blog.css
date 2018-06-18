@@ -1,0 +1,48 @@
+/*h1 {
+    text-shadow: 5px 5px blue, 15px 15px red, 25px 25px green, 35px 35px yellow,
+     -5px -5px blue, -15px -15px red, -25px -25px green, -35px -35px yellow,
+     -5px 5px blue, -15px 15px red, -25px 25px green, -35px 35px yellow,
+     5px -5px blue, 15px -15px red, 25px -25px green, 35px -35px yellow;
+}*/
+.post-button {
+    margin-left: 92%;
+    border: double 5px;
+    background-color: #999;
+}
+
+.post-button:hover {
+    background-color: #DDD;
+}
+
+.post-blog-title {
+    margin-left: 50%;
+    font-size: 9vh;
+    color: white;
+}
+
+.post-container {
+    background-image: url("../../img/img1.jpg");
+    padding-top: 1px;
+    padding-bottom: 1px;
+    height: 90vh;
+}
+
+.post {
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 7px;
+    margin: 10px;
+    margin-top: 13px;  
+    border-top: double 5px;
+    border-bottom: double 5px;
+    border-right: ridge 10px #00000077;
+    border-left: solid 7px #b66700; 
+    box-shadow: 5px 5px #00000080;
+    background-color: #e4e4e499;
+}
+
+.post-footer{
+    color: #333;
+    padding-top: 15px;
+    
+}

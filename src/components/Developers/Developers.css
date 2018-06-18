@@ -1,15 +1,15 @@
+<<<<<<< HEAD
+#developersContainer {
+    background: url(../../img/img7.jpg) no-repeat top center;
+=======
 .developers {
     margin: 0;
-    height: 90vh;
+    height: 100vh;
     background: url(../../img/img6.jpg) no-repeat top center;
+>>>>>>> 07da50103123c60af126e270066668237f9ea9ea
     background-size: cover;
-    display: flex;
-    align-items: center;
-}
-
-.contain-dev {
-    color: white;
-    width: 80%;
-    margin: auto;
-    padding: 10px;
+    height: 90vh;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 20px;
 }

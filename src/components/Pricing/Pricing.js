@@ -8,7 +8,7 @@ import './Pricing.css'
 export default ()=> (
     <div className="pricing-container" >
         <Grid container spacing={24} >
-            <Grid item sm={4} >
+            <Grid item sm={6}>
                 <Card className="card-pricing" >
                     <CardContent>
                         <h2>Free</h2>
@@ -17,7 +17,7 @@ export default ()=> (
                     </CardContent>
                 </Card>
             </Grid>
-            <Grid item sm={4} >
+            <Grid item sm={6}>
                 <Card className="card-pricing" >
                     <CardContent>
                         <h2>Business Class</h2>
