@@ -1,0 +1,44 @@
+.box-login {
+    margin: auto;
+    background: rgba(0,0,0,0.5);
+    width: 300px; 
+    height: 60vh;
+    color: white;
+    text-align: center;
+}
+
+.box-title {
+    text-align: center;
+}
+
+.box-social {
+    padding-left: 2px;
+    padding-right: 2px;
+}
+
+.button-social {
+    width: 50px !important;
+    height: 50px !important;
+    font-size: 20px !important;
+    margin: auto !important;
+}
+
+.twitter {
+    background: #2DAAE2 !important;
+}
+
+.button-login {
+    background: green !important;
+}
+
+.input-login {
+    color:  white !important;
+}
+
+label {
+    color: white !important;
+}
+
+.google {
+    background: red !important;
+}
