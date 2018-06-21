@@ -118,7 +118,6 @@ class Particles extends Component {
 
     }
 
-
     start() {
         console.log(document.getElementsByClassName('c-particles')[0]);
         this.canvas = document.getElementsByClassName('c-particles')[0];
