@@ -21,5 +21,7 @@ export const proyects = database.child('/proyects')
 export const chats = database.child('/chats')
 //Exportando el auth para la autenticacion
 export const auth = firebase.auth()
+//Exportando el storage para guardar imagenes
+export const storage = firebase.storage
 
 

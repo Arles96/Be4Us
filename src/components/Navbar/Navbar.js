@@ -65,7 +65,7 @@ class Navbar extends Component {
 
             return (
                 <div className="navbar" >
-                    <AppBar position="static">
+                    <AppBar position="fixed">
                         <Toolbar className="toolbar">
                             <IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
                                 <MenuIcon />
