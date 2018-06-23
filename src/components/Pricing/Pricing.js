@@ -6,7 +6,7 @@ import Button from '@material-ui/core/Button'
 import './Pricing.css'
 
 export default ()=> (
-    <div className="pricing-container" >
+    <div id="Pricing_" className="pricing-container" >
         <Grid container spacing={24} >
             <Grid item sm={6}>
                 <Card className="card-pricing" >

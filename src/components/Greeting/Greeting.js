@@ -73,7 +73,7 @@ class Greeting extends Component {
 
     render() {
         return (
-            <div className="greeting">
+            <div id="Home_" className="greeting">
                 <div className="contain-greet" >
                     {/* Contenedor del Logo General*/}
                     <div className="grid-container">

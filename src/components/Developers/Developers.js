@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 
 import React from 'react';
 import PropTypes from 'prop-types';
@@ -58,19 +57,6 @@ function Developers(props) {
                         </p>
                     </div>
                 </Paper>
-=======
-import React from 'react'
-import Grid from '@material-ui/core/Grid';
-import './Developers.css';
-
-export default () => (
-    <div className="developers" >
-        <div className="contain-dev" >
-            <Grid className="Logo_Grid" container spacing={24}>
-                <Grid item xs >
-                    <p className="Logo_4" >4</p>
-                </Grid>
->>>>>>> 07da50103123c60af126e270066668237f9ea9ea
             </Grid>
             <Grid item xs={6} sm={4}>
                 <Paper className={classes.paper}>

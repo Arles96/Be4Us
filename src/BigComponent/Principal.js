@@ -2,10 +2,10 @@ import React, { Component } from 'react'
 import AboutUs from '../components/AboutUS/AboutUs'
 import Blog from '../components/Blog/Blog'
 import Navbar from '../components/Navbar/Navbar'
-// import GetStarted from '../components/GetStarted/GetStarted'
+import GetStarted from '../components/GetStarted/GetStarted'
 import Greeting from '../components/Greeting/Greeting'
-// import Pricing from '../components/Pricing/Pricing'
-// import Developers from '../components/Developers/Developers'
+import Pricing from '../components/Pricing/Pricing'
+import Developers from '../components/Developers/Developers'
 
 export default class Principal extends Component {
 
@@ -57,9 +57,14 @@ export default class Principal extends Component {
 
     render() {
         return (
-            <div onWheel={this.handleScroll} >
+            <div>
                 <Navbar />
-                {this.handleContent()}
+                <Greeting />
+                <AboutUs />
+                <GetStarted />
+                <Blog />
+                
+                <Pricing />
             </div>
         )
     }

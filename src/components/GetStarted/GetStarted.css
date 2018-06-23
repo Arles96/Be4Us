@@ -1,17 +1,18 @@
 .get-started {
     margin: 0 !important;
-    height: 100vh;
-    background: url(../../img/img4.jpg) no-repeat top center;
+    background: #F1F1F1;
     background-size: cover;
     display: flex;
     align-items: center;
 }
 
 .contain-started {
-    color: white;
+    color: black;
     width: 80%;
     margin: auto;
     padding: 10px;
+    margin-bottom: 10vmin;
+    margin-top: 10vmin;
 }
 
 .title-started {
