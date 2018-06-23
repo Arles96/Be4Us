@@ -1,4 +1,4 @@
-import firebase from 'firebase/app'
+import firebase from 'firebase'
 
 // Initialize Firebase
 var config = {
@@ -9,18 +9,13 @@ var config = {
     storageBucket: "b4us-e9e2a.appspot.com",
     messagingSenderId: "229628115831"
 };
+
 firebase.initializeApp(config)
 
 //Referencia de la raiz de la base de datos
-const database = firebase.database().ref()
-//Exportando la raiz de tasks de la base de datos
-export const tasks = database.child('/tasks')
-//Exportando la raiz de proyects de la base de datos
-export const proyects = database.child('/proyects')
-//Exportando la raiz de chats de la base de datos
-export const chats = database.child('/chats')
+export const database = firebase.database
 //Exportando el auth para la autenticacion
-export const auth = firebase.auth()
+export const auth = firebase.auth
 //Exportando el storage para guardar imagenes
 export const storage = firebase.storage
 

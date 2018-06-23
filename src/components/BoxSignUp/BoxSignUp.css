@@ -1,0 +1,38 @@
+.box-signup {
+    margin: auto !important;
+    height: auto;
+    width: 60%;
+    color: white;
+}
+
+.line-signup {
+    background: white;
+    width: 100%;
+}
+
+.form-signup {
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.text-signup {
+    color: white !important;
+}
+
+.input-signup {
+    border-bottom: 1px solid rgba(250, 248, 248, 0.411);
+    width: 100% !important;
+}
+
+.formControl-signup {
+    width: 100%;
+}
+
+.section-social {
+    display: flex;
+    align-items: center;
+}
+
+.social-signup {
+    margin: auto;
+    cursor: pointer;
+}
