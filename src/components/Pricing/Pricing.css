@@ -17,7 +17,7 @@
 .card-pricing {
     width: 350px;
     margin: auto;
-    height: 600px;
+    height: 550px;
 }
 
 .cardContent-pricing { 
@@ -26,6 +26,21 @@
 
 .options-pricing {
     margin: 0;
-    width: 100%;
     border-bottom: 1px solid black;
+    font-size: 14px;
+}
+
+.btn-pricing {
+    background: black !important;
+}
+
+.btn-pricing:hover {
+    background: #FFD185 !important;
+    color: black !important;
+}
+
+@media screen and (max-width: 767px) {
+    .card-pricing {
+        width: 300px;
+    }
 }

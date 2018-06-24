@@ -22,13 +22,13 @@ export default ()=> (
                             <p>Crea cualquier cantidad de tareas</p>
                         </div>
                         <div className="m-3 options-pricing" >
-                            <p>Puedes importar imagenes para fondo de tu proyecto</p>
+                            <p>Importa imagenes para fondo de tu proyecto</p>
                         </div>
                         <div className="pricing" >
                             <h4>FREE</h4>
                         </div>
                         <div className="begin-princig" >
-                            <button className="btn btn-secondary" >Comenzar</button>
+                            <button className="btn btn-secondary btn-pricing btn-block mt-5" >Comenzar</button>
                         </div>
                     </CardContent>
                 </Card>
@@ -55,10 +55,10 @@ export default ()=> (
                             <p>Realiza videollamadas con tus colaboradores</p>
                         </div>
                         <div className="pricing" >
-                            <h4>FREE</h4>
+                            <h4>$ 3.99</h4>
                         </div>
                         <div className="begin-princig" >
-                            <button className="btn btn-secondary" >Comenzar</button>
+                            <button className="btn btn-secondary btn-pricing btn-block" >Comenzar</button>
                         </div>
                     </CardContent>
                 </Card>
