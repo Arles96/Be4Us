@@ -1,41 +1,23 @@
-.AboutUs {
+.developers {
     margin: 0;
-    height: 100vh;
-    background: url(../../img/img12.png) no-repeat bottom center;
-    background-position-x: -10vw;
-    background-size: 110vw 100vh;
+    height: 90vh;
+    background: url(../../img/img6.jpg) no-repeat top center;
+    background-size: cover;
     display: flex;
     align-items: center;
 }
 
-.contain-about {
+.contain-dev {
     color: white;
     width: 80%;
     margin: auto;
     padding: 10px;
-    margin-top: 15vmin;
 }
 
-.title-about {
-    margin: 0;
-    margin-top: 10vmin;
-    width: fit-content;
-    align-content: flex-end !important;
-    color: white;
-    font-weight: bolder !important;
-    font-size: 10vmin;
-}
-
-.text-about {
-    opacity: 1 !important;
-    margin-top: 10vmin;
-    font-size:  4vmin;
-    margin-right: 10vw;
-    text-align: justify;
-    color: rgb(194, 194, 194);
-    letter-spacing: 0;
-}
-
-#color-soft {
-    color: #FFD185 !important;
+#aboutusContainer {
+    background-image: url("../../img/img1.jpg");
+    height: 90vh;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 20px;
 }
