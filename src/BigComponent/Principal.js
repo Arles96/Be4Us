@@ -32,7 +32,7 @@ export default class Principal extends Component {
                 <Greeting />
                 <GetStarted />
                 <Developers/>
-                <Blog/>
+                <Blog />
                 <AboutUs />
                 <Pricing />
             </div>

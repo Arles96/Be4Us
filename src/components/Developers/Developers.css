@@ -1,15 +1,21 @@
-.developers {
-    margin: 0;
+#aboutusContainer {
+    background-image: url("../../img/img1.jpg");
     height: 90vh;
-    background: url(../../img/img6.jpg) no-repeat top center;
-    background-size: cover;
-    display: flex;
-    align-items: center;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 20px;
+    flex-grow: 1;
 }
 
-.contain-dev {
-    color: white;
-    width: 80%;
-    margin: auto;
-    padding: 10px;
+.paperAboutUs {
+    padding: 15px;
+    text-align: 'left';
+    color: grey;
+}
+
+.imageAboutUs{
+    margin-left: auto;
+    margin-right: auto;
+    height: 200px;
+    width: 90%;
 }
