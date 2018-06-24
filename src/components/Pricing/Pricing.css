@@ -1,11 +1,31 @@
 .pricing-container {
-    height: 90vh;
     overflow: hidden;
+}
+
+.cardHeader-pricing{
     display: flex;
     align-items: center;
+    background: black;
+    color: white;
+    height: 90px;
+}
+
+.titleCard-pricing {
+    margin: auto;
 }
 
 .card-pricing {
-    height: 60vh;
-    margin: 5rem;
+    width: 350px;
+    margin: auto;
+    height: 600px;
+}
+
+.cardContent-pricing { 
+    margin: 5px !important;
+}
+
+.options-pricing {
+    margin: 0;
+    width: 100%;
+    border-bottom: 1px solid black;
 }
