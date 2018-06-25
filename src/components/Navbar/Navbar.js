@@ -127,7 +127,7 @@ class Navbar extends Component {
                                                 color="inherit"
                                             >
 
-                                                <p className="btn_text" color="inherit">Iniciar Sesión</p>
+                                                <p className="btn_text" href="/login" color="inherit">Iniciar Sesión</p>
                                             </IconButton>
                                             <Menu
                                                 id="menu-appbar"
