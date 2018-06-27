@@ -1,9 +1,16 @@
 .navbar {
+<<<<<<< HEAD
     position: fixed !important;
     top: 0;
     margin: 0 !important;
     padding: 0 !important;
     width: 100% !important;
+=======
+    position: fixed;
+    margin: 0;
+    padding: 0;
+    width: 100vw !important;
+>>>>>>> e0d4540792bb3b0c3e7403cfde836570e85a3425
     height: 10vh !important;
     align-self: top;
     opacity: 0.7;
@@ -11,19 +18,30 @@
 }
 
 .toolbar {
+    width: 100vw !important;
+    padding: 0 !important;
+    background-color: rgb(22, 32, 33);
+}
+.toolbar_ {
+    background-color: rgb(22, 32, 33);
+}
+.appbar {
+    width: 100vw !important;
+    padding: 0 !important;
     background-color: rgb(22, 32, 33);
 }
 
 .btn_text {
     opacity: 1 !important;
     color: white;
-    font-size: 2vw;
+    font-size: 1.5vw;
     text-align: center !important;
     margin: 0 !important;
     border: 0 !important;
     padding: 0 !important;
     z-index:20;
 }
+
 .btn_text_small {
     opacity: 1 !important;
     color: white;
@@ -46,4 +64,25 @@
 /* Standard syntax */
 @keyframes mymove {
 100% {background-color: rgb(37, 55, 56)}
+}
+
+#IconButton {
+    width: 100% !important;
+    height: 100% !important;
+}
+#IconButton_ {
+    height: 100% !important;
+}
+
+#IconButton:hover {
+    opacity: 1 !important;
+    color: white;
+    background-color: rgb(37, 55, 56);
+    z-index:201;
+}
+#IconButton_:hover {
+    opacity: 1 !important;
+    color: white;
+    background-color: rgb(37, 55, 56);
+    z-index:201;
 }

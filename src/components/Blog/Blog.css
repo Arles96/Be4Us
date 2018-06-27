@@ -1,7 +1,6 @@
 .blog {
     margin: 0;
-    height: 100vh;
-    background: url(../../img/img5.jpg) no-repeat top center;
+    background: #616161;
     background-size: cover;
     display: flex;
     align-items: center;
@@ -9,8 +8,9 @@
 
 .blog-container {
     color: white;
-    width: 80%;
+    width: 90%;
     margin: auto;
+    margin-bottom: 10vmin;
     padding: 10px;
 }
 

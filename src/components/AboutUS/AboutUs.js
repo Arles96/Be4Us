@@ -34,6 +34,7 @@ class AboutUs extends Component {
             this.changeSizeFormat(0);
         }
     }
+    
     changeSizeFormat(k) {
         //console.log(this.state.width + ", " + this.state.height);
         if (k === 0) {
@@ -55,7 +56,7 @@ class AboutUs extends Component {
     render() {
         return (
 
-            <div className="AboutUs" >
+            <div id="AboutUs_" className="AboutUs" >
                 <div className="contain-about" >
 
                     <h2 className="title-about" >¿Qué es <i id="color-soft">Be4Us</i>?</h2>

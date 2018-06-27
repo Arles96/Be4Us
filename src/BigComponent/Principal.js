@@ -23,8 +23,8 @@ export default class Principal extends Component {
                 <Greeting />
                 <AboutUs />
                 <GetStarted />
-                <Developers />
                 <Blog />
+                
                 <Pricing />
             </div>
         )

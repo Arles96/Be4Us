@@ -1,41 +1,36 @@
 .AboutUs {
     margin: 0;
-    height: 100vh;
-    background: url(../../img/img12.png) no-repeat bottom center;
-    background-position-x: -10vw;
-    background-size: 110vw 100vh;
+    background: #ffffff;
     display: flex;
     align-items: center;
 }
 
 .contain-about {
-    color: white;
+    color: black;
     width: 80%;
     margin: auto;
+    margin-bottom: 10vmin;
+    margin-top: 10vmin;
     padding: 10px;
-    margin-top: 15vmin;
 }
 
 .title-about {
     margin: 0;
-    margin-top: 10vmin;
     width: fit-content;
     align-content: flex-end !important;
-    color: white;
+    color: black;
     font-weight: bolder !important;
-    font-size: 10vmin;
+    font-size: 8vmin;
 }
 
 .text-about {
     opacity: 1 !important;
-    margin-top: 10vmin;
-    font-size:  4vmin;
-    margin-right: 10vw;
-    text-align: justify;
-    color: rgb(194, 194, 194);
+    text-align: center;
+    font-size:  3.5vmin;
+    color: rgb(29, 28, 28);
     letter-spacing: 0;
 }
 
 #color-soft {
-    color: #FFD185 !important;
+    color: #0D2941 !important;
 }
