@@ -4,11 +4,8 @@ import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
 import Grid from '@material-ui/core/Grid';
 import { withStyles } from '@material-ui/core/styles';
-//import { slide as Menu } from 'react-burger-menu'
-
 import MenuIcon from '@material-ui/icons/Menu';
 import PropTypes from 'prop-types';
-//import Switch from '@material-ui/core/Switch';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import ResizeDetector from 'react-resize-detector';
@@ -127,7 +124,7 @@ class Navbar extends Component {
                                                 color="inherit"
                                             >
 
-                                                <p className="btn_text" href="/login" color="inherit">Iniciar Sesión</p>
+                                                <i className="fas fa-sign-in-alt"></i>
                                             </IconButton>
                                             <Menu
                                                 id="menu-appbar"

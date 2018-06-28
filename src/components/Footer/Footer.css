@@ -1,0 +1,17 @@
+.footer-container {
+    background: #616161;
+    height: 30vh;
+    display: flex;
+    align-items: center;
+}
+
+.social-container {
+    margin: auto;
+    color: white;
+}
+
+.social-footer {
+    margin: auto;
+    font-size: 2rem;
+    color: white;
+}

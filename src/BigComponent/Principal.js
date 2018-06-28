@@ -6,6 +6,7 @@ import GetStarted from '../components/GetStarted/GetStarted'
 import Greeting from '../components/Greeting/Greeting'
 import Pricing from '../components/Pricing/Pricing'
 import Developers from '../components/Developers/Developers'
+import Footer from '../components/Footer/Footer'
 
 export default class Principal extends Component {
 
@@ -24,8 +25,9 @@ export default class Principal extends Component {
                 <AboutUs />
                 <GetStarted />
                 <Blog />
-                
+                <Developers/>
                 <Pricing />
+                <Footer />
             </div>
         )
     }
