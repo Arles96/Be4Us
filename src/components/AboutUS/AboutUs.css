@@ -34,3 +34,14 @@
 #color-soft {
     color: #0D2941 !important;
 }
+
+.img-container-img {
+    display: flex;
+    align-items: center;
+}
+
+.img-about {
+    margin: auto !important;
+    width: 400px;
+    height: 280px;
+}

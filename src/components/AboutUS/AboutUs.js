@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 //import Grid from '@material-ui/core/Grid';
 import ResizeDetector from 'react-resize-detector';
-
+import img12 from '../../img/img12.png'
 import './AboutUs.css';
 
 class AboutUs extends Component {
@@ -57,10 +57,20 @@ class AboutUs extends Component {
         return (
 
             <div id="AboutUs_" className="AboutUs" >
-                <div className="contain-about" >
-
-                    <h2 className="title-about" >¿Qué es <i id="color-soft">Be4Us</i>?</h2>
-                    <p className="text-about" >"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+                <div className="contain-about row" >
+                    <div className="col-sm-6" >
+                        <h2 className="title-about ml-3" >¿Qué es <i id="color-soft">Be4Us</i>?</h2>
+                        <p className="text-about ml-3 mt-4" >
+                            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt 
+                            ut labore et dolore magna aliqua. Ut enim ad minim veniam. Duis aute irure dolor in reprehenderit in 
+                            voluptate velit esse cillum dolore eu fugiat nulla pariatur."
+                        </p>
+                    </div>
+                    <div className="col-sm-6" >
+                        <div className="img-container-img" >
+                            <img className="img-about" src={img12} alt="Saludo" />
+                        </div>
+                    </div>
                 </div>
 
                 <ResizeDetector handleWidth handleHeight onResize={this.onResize} />

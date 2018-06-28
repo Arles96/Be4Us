@@ -24,7 +24,7 @@ export default ()=> (
                         <div className="m-3 options-pricing" >
                             <p>Puedes importar imagenes para fondo de tu proyecto</p>
                         </div>
-                        <div className="pricing" >
+                        <div className="pricing mt-5" >
                             <h4>FREE</h4>
                         </div>
                         <div className="begin-princig" >

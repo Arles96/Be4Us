@@ -20,7 +20,7 @@ class Header extends Component {
                     <i className="grid-item grid-center fas fa-child fa-lg"></i>
                 </div>
                 <div id="i3" className="grid-item">
-                    <a className="header-logo-default Width-fit-content" href="/Desk"><h1 className="Color-white Width-fit-content">Be<a className="Color-logo-soft">4</a>Us</h1></a>
+                    <span className="header-logo-default Width-fit-content" href="/Desk"><h1 className="Color-white Width-fit-content">Be<a className="Color-logo-soft">4</a>Us</h1></span>
                 </div>
                 <div id="i5" className="grid-container-3 grid-item">
                     <i className="grid-item grid-center fas fa-plus fa-lg"></i>
