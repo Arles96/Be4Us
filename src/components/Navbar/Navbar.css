@@ -1,26 +1,21 @@
 .navbar {
     position: fixed !important;
+    top: 0;
     margin: 0 !important;
-    border: 0 !important;
     padding: 0 !important;
     width: 100% !important;
     height: 10vh !important;
-    align-self: top !important;
-    opacity: 0.7 !important;
-    z-index:100 !important;
+    align-self: top;
+    opacity: 0.9;
+    z-index:100;
 }
 
 .toolbar {
     width: 100vw !important;
-    margin: 0 !important;
-    border: 0 !important;
     padding: 0 !important;
     background-color: rgb(22, 32, 33);
 }
 .toolbar_ {
-    margin: 0 !important;
-    border: 0 !important;
-    padding: 0 !important;
     background-color: rgb(22, 32, 33);
 }
 .appbar {

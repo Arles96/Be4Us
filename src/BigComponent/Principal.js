@@ -24,7 +24,8 @@ export default class Principal extends Component {
                 <AboutUs />
                 <GetStarted />
                 <Blog />
-                <Developers />
+                
+                <Pricing />
             </div>
         )
     }

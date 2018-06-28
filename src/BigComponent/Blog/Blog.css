@@ -5,7 +5,7 @@
      5px -5px blue, 15px -15px red, 25px -25px green, 35px -35px yellow;
 }*/
 .post-button {
-    margin-left: 80%;
+    margin-left: 92%;
     border: double 5px;
     background-color: #999;
 }
@@ -45,15 +45,4 @@
     color: #333;
     padding-top: 15px;
     
-}
-
-.blog-button {
-    text-align: right;
-}
-
-.blog-button- {
-    background: #E13318 !important;
-    color: white !important;
-    height: 64px;
-    width: 20%;
 }

@@ -1,0 +1,86 @@
+.Desk_Header {
+    position: relative;
+    align-self: top;
+    z-index: 100;
+    
+    top: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    
+    width: 100vw !important;
+    height: 5vmin !important;
+    background-color: rgba(22, 32, 33, 0.9);
+    
+    font-size: 3vmin;
+    
+    color: white;
+}
+
+.header-logo-default:hover {
+    font-size: 2vmin !important;
+    color: whitesmoke;
+}
+
+.grid-container { 
+  display: grid;
+}
+
+.grid-container-3 { 
+  display: grid;
+  grid-template-columns: auto auto auto;
+}
+
+.grid-item {
+    color: inherit;
+    padding-top: 1vh;
+}
+
+.grid-center {
+    text-align: center;
+}
+
+
+#i1 {
+    grid-column: 1 / 2; 
+    text-align: left;
+}
+#i3 {
+    grid-column: 3 / 4;
+    text-align: center;
+}
+#i5 {
+    grid-column: 5 / 6;
+    text-align: right;
+}
+
+.Color-logo-soft{
+    color: #FFD185 !important;    
+}
+
+.Color-logo-dark{
+    color: #0D2941 !important;    
+}
+
+.Color-white {
+    color: white !important;
+}
+
+.Color-dark-grey {
+    color: rgb(21, 21, 21) !important;
+}
+
+.Width-fit-content {
+    width: fit-content !important;
+    align-self: center;
+}
+
+.Height-1em {
+    height: 1rem !important;
+    font-size: small;
+}
+
+input{
+    margin: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+}

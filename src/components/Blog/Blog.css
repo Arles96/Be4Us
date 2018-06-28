@@ -1,13 +1,9 @@
-/*h1 {
-    text-shadow: 5px 5px blue, 15px 15px red, 25px 25px green, 35px 35px yellow,
-     -5px -5px blue, -15px -15px red, -25px -25px green, -35px -35px yellow,
-     -5px 5px blue, -15px 15px red, -25px 25px green, -35px 35px yellow,
-     5px -5px blue, 15px -15px red, 25px -25px green, 35px -35px yellow;
-}*/
-.post-button {
-    margin-left: 80%;
-    border: double 5px;
-    background-color: #999;
+.blog {
+    margin: 0;
+    background: #616161;
+    background-size: cover;
+    display: flex;
+    align-items: center;
 }
 
 .blog-container {
@@ -40,16 +36,12 @@
 
 @media screen and (max-width: 1000px) {
     
-}
+    .title-started {
+        font-size: 32px;
+    }
 
-.blog-button {
-    text-align: right;
-    padding-right: 5px; 
-}
+    .text-started {
+        font-size: 16px;
+    }
 
-.blog-button- {
-    background: #E13318 !important;
-    color: white !important;
-    height: 64px;
-    width: 20%;
 }

@@ -1,9 +1,10 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 //import Grid from '@material-ui/core/Grid';
 import ResizeDetector from 'react-resize-detector';
+
 import './AboutUs.css';
 
-export default class AboutUs extends Component {
+class AboutUs extends Component {
 
     constructor() {
         super();
@@ -33,7 +34,7 @@ export default class AboutUs extends Component {
             this.changeSizeFormat(0);
         }
     }
-
+    
     changeSizeFormat(k) {
         //console.log(this.state.width + ", " + this.state.height);
         if (k === 0) {
@@ -66,6 +67,8 @@ export default class AboutUs extends Component {
                 <ResizeDetector handleWidth handleHeight onResize={this.sizeChange} />
                 {window.resizeTo(window.innerWidth, window.innerHeight)}
             </div>
-        )
+        );
     }
 }
+
+export default AboutUs;
