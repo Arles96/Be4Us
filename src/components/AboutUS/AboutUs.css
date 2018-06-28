@@ -25,7 +25,6 @@
 
 .text-about {
     opacity: 1 !important;
-    text-align: center;
     font-size:  3.5vmin;
     color: rgb(29, 28, 28);
     letter-spacing: 0;
@@ -33,4 +32,15 @@
 
 #color-soft {
     color: #0D2941 !important;
+}
+
+.img-container-img {
+    display: flex;
+    align-items: center;
+}
+
+.img-about {
+    margin: auto !important;
+    width: 400px;
+    height: 280px;
 }
