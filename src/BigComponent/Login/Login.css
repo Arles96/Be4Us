@@ -1,0 +1,7 @@
+.login {
+    height: 100vh;
+    display: flex;
+    align-content: center;
+    background: url(../../img/img14.jpeg) no-repeat bottom center;
+    background-size: cover;
+}

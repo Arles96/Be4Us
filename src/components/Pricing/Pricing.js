@@ -1,32 +1,69 @@
 import React from 'react'
-import Grid from '@material-ui/core/Grid'
-import Card from '@material-ui/core/Card'
-import CardContent from '@material-ui/core/CardContent'
-import Button from '@material-ui/core/Button'
 import './Pricing.css'
+import { Card, CardContent} from '@material-ui/core'
 
 export default ()=> (
-    <div id="Pricing_" className="pricing-container" >
-        <Grid container spacing={24} >
-            <Grid item sm={6}>
+    <div className="pricing-container" >
+        <h2 className="text-center m-5" >Precios</h2>
+        <div className="row" >
+            <div className="col-sm-6 text-center mb-4" >
                 <Card className="card-pricing" >
-                    <CardContent>
-                        <h2>Free</h2>
-                        <p>Un simple y poderosa herramienta para poder administrar tus tareas</p>
-                        <Button>Sign up</Button>
+                    <div className="cardHeader-pricing" >
+                        <h3 className="titleCard-pricing" >Basico</h3>
+                    </div>
+                    <CardContent className="cardContent-pricing" >
+                        <div className="m-3 options-pricing" >
+                            <p>Puedes generar grupos</p>
+                        </div>
+                        <div className="m-3 options-pricing" >
+                            <p>Chatea con tus colaboradores</p>
+                        </div>
+                        <div className="m-3 options-pricing" >
+                            <p>Crea cualquier cantidad de tareas</p>
+                        </div>
+                        <div className="m-3 options-pricing" >
+                            <p>Importa imagenes para fondo de tu proyecto</p>
+                        </div>
+                        <div className="pricing" >
+                            <h4>FREE</h4>
+                        </div>
+                        <div className="begin-princig" >
+                            <button className="btn btn-secondary btn-pricing btn-block mt-5" >Comenzar</button>
+                        </div>
                     </CardContent>
                 </Card>
-            </Grid>
-            <Grid item sm={6}>
+            </div>
+            <div className="col-sm-6 text-center mb-4">
                 <Card className="card-pricing" >
-                    <CardContent>
-                        <h2>Business Class</h2>
-                        <p>Herramientas especializadas para el trabajo en equipo y aplicacion de la metología SCRUM </p>
-                        <p>$4.99</p>
-                        <Button>Adquirir</Button>
+                    <div className="cardHeader-pricing" >
+                        <h3 className="titleCard-pricing" >Premium</h3>
+                    </div>
+                    <CardContent className="cardContent-pricing" >
+                        <div className="m-3 options-pricing" >
+                            <p>Puedes generar grupos</p>
+                        </div>
+                        <div className="m-3 options-pricing" >
+                            <p>Chatea con tus colaboradores</p>
+                        </div>
+                        <div className="m-3 options-pricing" >
+                            <p>Crea cualquier cantidad de tareas</p>
+                        </div>
+                        <div className="m-3 options-pricing" >
+                            <p>Importa imagenes para fondo de tus proyectos</p>
+                        </div>
+                        <div className="m-3 options-pricing" >
+                            <p>Realiza videollamadas con tus colaboradores</p>
+                        </div>
+                        <div className="pricing" >
+                            <h4>$ 3.99</h4>
+                        </div>
+                        <div className="begin-princig" >
+                            <button className="btn btn-secondary btn-pricing btn-block" >Comenzar</button>
+                        </div>
                     </CardContent>
                 </Card>
-            </Grid>
-        </Grid>
+            </div>
+        </div>
+        
     </div>
 )
