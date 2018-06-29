@@ -1,0 +1,28 @@
+.Element {
+    padding: 0 !important;
+    width: fit-content !important;
+    margin: auto !important;
+    margin-top: 5% !important;
+}
+
+.Element:hover {
+    background:  rgba(255, 209, 133, 0.8) !important;
+    color: white !important;
+    align-items: center !important;
+}
+
+.Img {
+    width: 25vw !important;
+    margin: auto !important;
+    align-items: center !important;
+    text-align: center;
+}
+
+
+@media screen and (max-height: 40vh) {
+    
+    .Img {
+        height: 40vh !important;
+    }
+
+}

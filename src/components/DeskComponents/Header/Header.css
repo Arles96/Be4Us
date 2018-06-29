@@ -1,48 +1,53 @@
 .Desk_Header {
-    position: relative;
+    position: fixed !important;
     align-self: top;
     z-index: 100;
     
     top: 0 !important;
     margin: 0 !important;
     padding: 0 !important;
+    border: 0 !important;
     
     width: 100vw !important;
-    height: 5vmin !important;
-    background-color: rgba(22, 32, 33, 0.9);
+    height: 8% !important;
+    background: rgba(22, 32, 33, 0.9);
+    background:linear-gradient(-197deg, rgba(22, 32, 33, 0.9) 10%,  rgba(13, 41, 65, 1) 100%), rgba(13, 41, 65, 0.9) 70%;
     
     font-size: 3vmin;
-    
     color: white;
 }
 
+.header-logo-default {    
+    margin: auto !important;
+    font-size: 5vmin !important;
+}
 .header-logo-default:hover {
-    font-size: 2vmin !important;
     color: whitesmoke;
 }
 
 .grid-container { 
+  align-items: center;
   display: grid;
 }
 
 .grid-container-3 { 
-  display: grid;
+    align-items: center;
+    display: grid;
   grid-template-columns: auto auto auto;
 }
 
 .grid-item {
     color: inherit;
-    padding-top: 1vh;
 }
 
 .grid-center {
+    margin: auto !important;
     text-align: center;
 }
 
 
 #i1 {
     grid-column: 1 / 2; 
-    text-align: left;
 }
 #i3 {
     grid-column: 3 / 4;
@@ -50,11 +55,10 @@
 }
 #i5 {
     grid-column: 5 / 6;
-    text-align: right;
 }
 
 .Color-logo-soft{
-    color: #FFD185 !important;    
+    color: #ffd185 !important;    
 }
 
 .Color-logo-dark{
@@ -73,14 +77,22 @@
     width: fit-content !important;
     align-self: center;
 }
+.Height-fit-content {
+    height: fit-content !important;
+    align-self: center;
+}
 
 .Height-1em {
-    height: 1rem !important;
+    height: 1.5rem !important;
     font-size: small;
 }
 
-input{
-    margin: 0 !important;
-    padding: 0 !important;
-    border: 0 !important;
+.input-navbar{
+    width: 30vw !important;
+    margin: auto !important;
+}
+
+.Header-item:hover {
+    cursor: pointer;
+    color: rgba(255, 209, 133, 1);
 }

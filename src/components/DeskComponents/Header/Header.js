@@ -6,26 +6,24 @@ class Header extends Component {
     constructor() {
         super();
         this.state = {
-            width: document.innerWidth,
-            height: document.innerHeight,
-            sizeFormat: 0
         };
     }
 
     render() {
-        return (
+        return ( 
             <div className="Desk_Header grid-container">
-                <div id="i1" className="grid-container grid-item">
-                    <input className="grid-item Color-dark-grey Height-1em"></input>
-                    <i className="grid-item grid-center fas fa-child fa-lg"></i>
+                <div id="i1" className="grid-container-3 grid-item container-input">
+                    <div className="grid-item" />
+                    <input type="text" className="form-control grid-item Color-dark-grey Height-1em input-navbar" placeholder="Buscar..." aria-label="Buscar" aria-describedby="basic-addon2" />
+                    <i className="Header-item grid-item grid-center fas fa-search fa-lg"></i>
                 </div>
                 <div id="i3" className="grid-item">
-                    <span className="header-logo-default Width-fit-content" href="/Desk"><h1 className="Color-white Width-fit-content">Be<a className="Color-logo-soft">4</a>Us</h1></span>
+                    <a className="header-logo-default Color-white Width-fit-content mt-5">Be<i className="Color-logo-soft">4</i>Us</a>
                 </div>
                 <div id="i5" className="grid-container-3 grid-item">
-                    <i className="grid-item grid-center fas fa-plus fa-lg"></i>
-                    <i className="grid-item grid-center fas fa-bell fa-lg"></i>
-                    <i className="grid-item grid-center fas fa-child fa-lg"></i>
+                    <i className="Header-item grid-item grid-center fas fa-plus fa-lg"></i>
+                    <i className="Header-item grid-item grid-center fas fa-bell fa-lg"></i>
+                    <i className="Header-item grid-item grid-center fas fa-child fa-lg"></i>
                 </div>
             </div>
         );

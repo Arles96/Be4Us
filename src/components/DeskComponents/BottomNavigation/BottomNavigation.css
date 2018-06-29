@@ -1,0 +1,13 @@
+.BottomNavigation {
+    position: fixed  !important;
+    align-self: flex-end !important;
+    z-index: 105;
+
+    border: 0 !important;
+
+    width: 100vw !important;
+    height: 6vh !important;
+
+    background: rgba(22, 32, 33, 1);
+    color: white;
+}
