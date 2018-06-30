@@ -65,3 +65,18 @@
     cursor: pointer;
     color: rgba(255, 209, 133, 1);
 }
+
+.Load-spinner {
+    font-size: 20vmin !important;
+    height: 1em !important;
+    width: 1em !important;
+    margin-top: 35vh !important;
+    margin-left: 35vw !important;
+    position: fixed !important;
+    color: rgba(13, 41, 65, 1);
+    z-index: 1000;
+}
+
+.Load-spinner:hover {
+    color: rgba(255, 209, 133, 1);
+}

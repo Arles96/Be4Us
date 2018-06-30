@@ -6,6 +6,7 @@
 }
 
 .Element:hover {
+    cursor: pointer;
     background:  rgba(255, 209, 133, 0.8) !important;
     color: white !important;
     align-items: center !important;

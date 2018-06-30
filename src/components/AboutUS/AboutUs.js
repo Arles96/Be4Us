@@ -75,7 +75,6 @@ class AboutUs extends Component {
 
                 <ResizeDetector handleWidth handleHeight onResize={this.onResize} />
                 <ResizeDetector handleWidth handleHeight onResize={this.sizeChange} />
-                {window.resizeTo(window.innerWidth, window.innerHeight)}
             </div>
         );
     }

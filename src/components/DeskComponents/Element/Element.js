@@ -3,24 +3,25 @@ import './Element.css';
 
 class Element extends Component {
 
-    constructor(props) {
-        super(props);
+    constructor() {
+        super();
         this.state = {
-            title: props.title,
-            date: props.date,
-            image: props.image,
-            
         };
+        this.GO = this.GO.bind(this);
+    }
+
+    GO() {
+        this.props.GO(this.props.id, this.props.levels);
     }
 
     render() {
-        const { title, date, image } = this.props;
+        const { title, date, image, description, id } = this.props;
         return (
-            <div className="Element card col">
+            <div id={id} onClick={this.GO} className="Element card col">
                 <div className="card-Title">{title}</div>
                 <div className="text-muted">{date}</div>
                 <img className="Img" src={image} alt="Card cap" />
-                <div className="text-muted">{date}</div>
+                <div className="text-muted">{description}</div>
             </div>
         );
     }
