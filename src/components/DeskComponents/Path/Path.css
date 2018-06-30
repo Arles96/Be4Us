@@ -1,0 +1,53 @@
+.Path {
+    position: fixed !important;
+    align-self: bottom;
+    z-index: 101;
+    
+    top: 8% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+    padding-left: 2vw !important; 
+    
+    width: 100vw !important;
+    height: 1.6em !important;
+    background: rgba(22, 32, 33, 0.1);
+    
+    font-size: 3vmin;
+}
+
+.tasks { 
+    color: rgba(17, 17, 17, 0.3) !important;
+}
+
+.tasks:hover { 
+    color: rgba(17, 17, 17, 1) !important;
+    cursor: default;
+}
+
+.bodies { 
+    color: rgba(13, 41, 65, 0.3) !important;
+}
+
+.bodies:hover { 
+    color: rgba(13, 41, 65, 1) !important;
+    cursor: default;
+}
+
+.projects { 
+    color: rgba(255, 209, 133, 0.3) !important;
+}
+
+.projects:hover { 
+    color: rgba(255, 209, 133, 1) !important;
+    cursor: default;
+}
+
+.Loading-path {
+    color: rgba(17, 17, 17, 0.3) !important;
+}
+
+.Loading-path:hover {
+    color: rgba(17, 17, 17, 1) !important;
+    cursor: default;
+}

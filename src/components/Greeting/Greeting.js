@@ -88,7 +88,6 @@ class Greeting extends Component {
                 <ResizeDetector handleWidth handleHeight onResize={this.onResize} />
                 <ResizeDetector handleWidth handleHeight onResize={this.sizeChange} />
                 <ResizeDetector handleWidth handleHeight onResize={this.draw} />
-                {window.resizeTo(window.innerWidth, window.innerHeight)}
                 {this.draw()}
             </div>
         );

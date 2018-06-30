@@ -9,6 +9,7 @@ import SignUp from './BigComponent/SignUp/SignUp'
 export default () =>(
     <BrowserRouter>
         <Switch>
+            <Route path="/index.html" exact component={Principal} />
             <Route path="/" exact component={Principal} />
             <Route path="/Desk/" exact component={Desk} />
             <Route path="/login" exact component={Login} />
