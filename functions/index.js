@@ -94,25 +94,29 @@ exports.signUpThirdParty = functions.https.onRequest((req, res) => {
 });
 
 exports.signUp = functions.https.onRequest((req, res) => {
+    const uid = req.query.email;
     const email = req.query.email;
+    const nombre = req.query.nombre;
     const password = req.query.password;
     const empresa = req.query.empresa;
 
     var response = false;
 
     const data = {
+        email: email,
         password: password,
+        nombre: nombre,
         empresa: empresa
     }
 
-    var user = dbS.collection("Users").doc(email);
+    var user = dbS.collection("Users").doc(uid);
 
     user.get().then(function(doc) {
         if (doc.exists) {
             console.log("Usuario ya existe.");
         } else {
             response = true;
-            dbS.collection("Users").doc(email).set(data);
+            dbS.collection("Users").doc(uid).set(data);
         }
     })
     .then(function(user) {
@@ -282,7 +286,7 @@ exports.addParticipantTask = functions.https.onRequest((req, res) => {
     const proyId = req.query.proyId;
     const taskId = req.query.taskId;
 
-    var user = (uid != "0") ? uid : email;
+    var user = (uid != 0) ? uid : email;
 
     const data = {}
     data['/proyects/' + proyId + "/tasks/" + taskId + "/participants/" + user] = "uid";
@@ -298,7 +302,7 @@ exports.removeParticipantTask = functions.https.onRequest((req, res) => {
     const proyId = req.query.proyId;
     const taskId = req.query.taskId;
 
-    var user = (uid != "0") ? uid : email;
+    var user = (uid != 0) ? uid : email;
 
     admin.database().ref('/proyects/' + proyId + "/tasks/" + taskId + "/participants/" + user).remove();
 
