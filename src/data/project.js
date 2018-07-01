@@ -28,6 +28,9 @@ export const insertProject = (uid, email, description, title) => {
  * @param  title titulo del proyecto
  * @param  description descripcion del proyecto
  */
+
+
+
 export const updateProject = (uid, email, proyid, title, description) => {
     return fetch(`${url}/updateProyect?uid=${uid}&email=${email}&proyid=${proyid}&title=${title}&content=${description}`)
         .then(res => {
