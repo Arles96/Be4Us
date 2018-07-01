@@ -8,6 +8,7 @@ const url = 'http://localhost:5000/b4us-e9e2a/us-central1'
  * @param  description description del proyecto
  * @param  title titulo que contendra el proyecto 
  * @param  email email de usuario
+ * @returns retorna false si ocurrio algun error, sino retorna la respuesta del servidor
  */
 export const insertProject = (uid, email, description, title) => {
     return fetch(`${url}/addProyect?uid=${uid}&email=${email}&title=${title}&content=${description}`)
@@ -76,5 +77,5 @@ export const insertUserTask = (uid, name) => {
  * @param cb callback (funcion) para manipular los proyectos 
  */
 export const getAllProject = (cb) => {
-    database().ref().on('value', cb)
+    database().ref('/proyects/').on('value', cb)
 }
