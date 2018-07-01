@@ -1,0 +1,46 @@
+[debug] [2018-07-01T05:16:50.688Z] ----------------------------------------------------------------------
+[debug] [2018-07-01T05:16:50.691Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\arles\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase serve --only functions
+[debug] [2018-07-01T05:16:50.691Z] CLI Version:   3.18.5
+[debug] [2018-07-01T05:16:50.691Z] Platform:      win32
+[debug] [2018-07-01T05:16:50.691Z] Node Version:  v8.11.1
+[debug] [2018-07-01T05:16:50.691Z] Time:          Sat Jun 30 2018 23:16:50 GMT-0600 (Hora estándar, América Central)
+[debug] [2018-07-01T05:16:50.691Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-07-01T05:16:50.881Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-07-01T05:16:50.883Z] > authorizing via signed-in user
+[debug] [2018-07-01T05:16:50.887Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2018-07-01T05:16:50.887Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ { refresh_token: '1/9ZQbh2wRp0H9t2_HnnvGU2okHIJnghlvZPWpU129utA',
+  client_id: '563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com',
+  client_secret: 'j9iVZfS8kkCEFUPaAeJV0sAi',
+  grant_type: 'refresh_token',
+  scope: 'email https://www.googleapis.com/auth/cloud-platform https://www.googleapis.com/auth/cloudplatformprojects.readonly https://www.googleapis.com/auth/firebase openid' } 
+ Sat Jun 30 2018 23:16:50 GMT-0600 (Hora estándar, América Central)
+[debug] [2018-07-01T05:16:51.307Z] <<< HTTP RESPONSE 200
+[debug] [2018-07-01T05:16:51.513Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/b4us-e9e2a  
+  
+ Sat Jun 30 2018 23:16:51 GMT-0600 (Hora estándar, América Central)
+[debug] [2018-07-01T05:16:52.168Z] <<< HTTP RESPONSE 200
+[debug] [2018-07-01T05:16:52.171Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/b4us-e9e2a/tokens  
+  
+ Sat Jun 30 2018 23:16:52 GMT-0600 (Hora estándar, América Central)
+[debug] [2018-07-01T05:16:52.732Z] <<< HTTP RESPONSE 200
+[debug] [2018-07-01T05:16:52.733Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/b4us-e9e2a  
+  
+ Sat Jun 30 2018 23:16:52 GMT-0600 (Hora estándar, América Central)
+[debug] [2018-07-01T05:16:53.160Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from 'C:\Users\arles\Documents\Proyecto UX\Be4Us'...
+[info] 
+[info] i  functions: Preparing to emulate functions.
+[debug] [2018-07-01T05:17:28.404Z] Fetching environment
+[debug] [2018-07-01T05:17:28.427Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/229628115831:getServerAppConfig  
+  
+ Sat Jun 30 2018 23:17:28 GMT-0600 (Hora estándar, América Central)
+[debug] [2018-07-01T05:17:30.088Z] <<< HTTP RESPONSE 200
+[debug] [2018-07-01T05:17:30.089Z] Starting @google-cloud/functions-emulator
+[debug] [2018-07-01T05:17:46.299Z] Parsing function triggers
+[info] +  functions: confirmLoginThirdParty: http://localhost:5000/b4us-e9e2a/us-central1/confirmLoginThirdParty
+[info] +  functions: confirmLogin: http://localhost:5000/b4us-e9e2a/us-central1/confirmLogin
+[info] +  functions: signUpThirdParty: http://localhost:5000/b4us-e9e2a/us-central1/signUpThirdParty
+[info] +  functions: signUp: http://localhost:5000/b4us-e9e2a/us-central1/signUp
