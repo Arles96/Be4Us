@@ -123,3 +123,64 @@ exports.signUp = functions.https.onRequest((req, res) => {
         res.send(false)
     });
 });
+
+/*#########################################################################
+                                Proyectos
+##########################################################################*/
+
+exports.addProyect = functions.https.onRequest((req, res) => {
+    const uid = req.query.uid;
+    const email = req.query.email;
+    const title = req.query.title;
+    const content = req.query.content;
+    const date = (new Date()).getUTCDate();
+
+    var user = (uid != 0) ? uid : email;
+
+    var response = false;
+
+    const data = {
+        owner: user,
+        title: title,
+        content: content,
+        date: date
+    }
+
+    //Agregado a realtime db
+    var newKey = admin.database().ref('/proyects/').push().key;
+
+    admin.database().ref('/proyects/' + newKey).set(data);
+    
+    //Agregado a lista de proyectos del usuario
+    dbS.collection("Users").doc(user).collection("ProyList").doc(title).set({key: newKey});
+
+    res.send(true);
+});
+
+exports.updateProyect = functions.https.onRequest((req, res) => {
+    const uid = req.query.uid;
+    const email = req.query.email;
+    const proyId = req.query.proyId;
+    const title = req.query.title;
+    const content = req.query.content;
+    const date = (new Date()).getUTCDate();
+
+    var user = (uid != 0) ? uid : email;
+
+    var response = false;
+
+    const data = {
+        owner: user,
+        title: title,
+        content: content,
+        date: date
+    }
+
+    //Agregado a realtime db
+    admin.database().ref('/proyects/' + proyId).set(data);
+    
+    //Agregado a lista de proyectos del usuario
+    //dbS.collection("Users").doc(user).collection("ProyList").doc(title).set({key: newKey});
+
+    res.send(true);
+});
