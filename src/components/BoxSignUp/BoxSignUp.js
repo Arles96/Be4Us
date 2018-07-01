@@ -33,7 +33,7 @@ export default class BoxSignUp extends Component {
                             <Input className="input-signup" />
                         </FormControl>
                         <FormControl className="formControl-signup m-1" >
-                            <InputLabel>Contraseñia</InputLabel>
+                            <InputLabel>Contraseña</InputLabel>
                             <Input className="input-signup" />
                         </FormControl>
                         <div className="text-center mt-5 mb-4" >
