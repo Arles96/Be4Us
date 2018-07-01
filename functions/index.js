@@ -130,10 +130,13 @@ exports.signUp = functions.https.onRequest((req, res) => {
 
 exports.addProyect = functions.https.onRequest((req, res) => {
     const uid = req.query.uid;
+    const groupId = req.query.groupId;
     const email = req.query.email;
     const title = req.query.title;
     const content = req.query.content;
-    const date = (new Date()).getUTCDate();
+
+    var d = new Date();
+    const date = d.getFullYear() + "-" + d.getMonth() + "-" + d.getDate()
 
     var user = (uid != 0) ? uid : email;
 
@@ -143,7 +146,8 @@ exports.addProyect = functions.https.onRequest((req, res) => {
         owner: user,
         title: title,
         content: content,
-        date: date
+        date: date,
+        groupId: groupId
     }
 
     //Agregado a realtime db
@@ -152,7 +156,7 @@ exports.addProyect = functions.https.onRequest((req, res) => {
     admin.database().ref('/proyects/' + newKey).set(data);
     
     //Agregado a lista de proyectos del usuario
-    dbS.collection("Users").doc(user).collection("ProyList").doc(title).set({key: newKey});
+    dbS.collection("Users").doc(user).collection("ProyList").doc(newKey).set({groupId: groupId});
 
     res.send(true);
 });
@@ -161,9 +165,12 @@ exports.updateProyect = functions.https.onRequest((req, res) => {
     const uid = req.query.uid;
     const email = req.query.email;
     const proyId = req.query.proyId;
+    const groupId = req.query.groupId;
     const title = req.query.title;
     const content = req.query.content;
-    const date = (new Date()).getUTCDate();
+
+    var d = new Date();
+    const date = d.getFullYear() + "-" + d.getMonth() + "-" + d.getDate()
 
     var user = (uid != 0) ? uid : email;
 
@@ -173,14 +180,28 @@ exports.updateProyect = functions.https.onRequest((req, res) => {
         owner: user,
         title: title,
         content: content,
-        date: date
+        date: date,
+        groupId: groupId
     }
 
-    //Agregado a realtime db
+    //Modificado en realtime db
     admin.database().ref('/proyects/' + proyId).set(data);
-    
-    //Agregado a lista de proyectos del usuario
-    //dbS.collection("Users").doc(user).collection("ProyList").doc(title).set({key: newKey});
+
+    res.send(true);
+});
+
+exports.deleteProyect = functions.https.onRequest((req, res) => {
+    const uid = req.query.uid;
+    const email = req.query.email;
+    const proyId = req.query.proyId;
+
+    var user = (uid != 0) ? uid : email;
+
+    var response = false;
+
+    //Borrando de realtime db y store
+    admin.database().ref('/proyects/' + proyId).remove();
+    dbS.collection("Users").doc(user).collection("ProyList").doc(proyId).delete();
 
     res.send(true);
 });
