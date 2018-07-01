@@ -20,6 +20,7 @@ export default class Desk extends Component {
         this.onBACK = this.onBACK.bind(this);
         this.getDeep = this.getDeep.bind(this);
         this.getLevels = this.getLevels.bind(this);
+        this.createNew = this.createNew.bind(this);
     }
 
     ramKey() {
@@ -50,21 +51,28 @@ export default class Desk extends Component {
 
     getLevels() {
         let image1 = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQBfR8vP9Jv6HsU7LTM7r8FY3dUkExO-OH2nARhfabPRWbM1etRGQ";
-        let lastLevel = [
-            { level: 2, title: "Task1", date: "##/##/20##", image: image1, description: "Description", key: 0, levels: null },
-            { level: 2, title: "Task2", date: "##/##/20##", image: image1, description: "Description", key: 1, levels: null }
+        let lastLevel1 = [
+            { admin: null, users: [], visitCount: 0, enabled: true, visible:0, level: 2, title: "Task1", date: "##/##/20##", deadLine: "", image: image1, description: "Description", color: "", tags: [], fatherId: 0, id: 0, key: 0, levels: null },
+            { admin: null, users: [], visitCount: 0, enabled: true, visible:0, level: 2, title: "Task2", date: "##/##/20##", deadLine: "", image: image1, description: "Description", color: "", tags: [], fatherId: 0, id: 1, key: 1, levels: null }
+        ];
+        let lastLevel2 = [
+            { admin: null, users: [], visitCount: 0, enabled: true, visible:0, level: 2, title: "Task1", date: "##/##/20##", deadLine: "", image: image1, description: "Description", color: "", tags: [], fatherId: 1, id: 0, key: 0, levels: null },
+            { admin: null, users: [], visitCount: 0, enabled: true, visible:0, level: 2, title: "Task2", date: "##/##/20##", deadLine: "", image: image1, description: "Description", color: "", tags: [], fatherId: 1, id: 1, key: 1, levels: null }
         ];
 
-        let subLevels = [
-            { level: 1, title: "Project1", date: "##/##/20##", image: image1, description: "Description", key: 0, levels: lastLevel },
-            { level: 1, title: "Project2", date: "##/##/20##", image: image1, description: "Description", key: 1, levels: lastLevel }
+        let subLevels1 = [
+            { admin: null, users: [], visitCount: 0, enabled: true, visible:0, level: 1, title: "Project1", date: "##/##/20##", deadLine: "", image: image1, description: "Description", color: "", tags: [], fatherId: 0, id: 0, key: 0, levels: lastLevel1 },
+            { admin: null, users: [], visitCount: 0, enabled: true, visible:0, level: 1, title: "Project2", date: "##/##/20##", deadLine: "", image: image1, description: "Description", color: "", tags: [], fatherId: 0, id: 1, key: 1, levels: lastLevel2 }
+        ];
+
+        let subLevels2 = [
+            { admin: null, users: [], visitCount: 0, enabled: true, visible:0, level: 1, title: "Project1", date: "##/##/20##", deadLine: "", image: image1, description: "Description", color: "", tags: [], fatherId: 1, id: 0, key: 0, levels: lastLevel1 },
+            { admin: null, users: [], visitCount: 0, enabled: true, visible:0, level: 1, title: "Project2", date: "##/##/20##", deadLine: "", image: image1, description: "Description", color: "", tags: [], fatherId: 1, id: 1, key: 1, levels: lastLevel2 }
         ];
 
         let levels = [
-            { level: 0, title: "Body1", date: "##/##/20##", image: image1, description: "Description", key: 0, levels: subLevels },
-            { level: 0, title: "Body2", date: "##/##/20##", image: image1, description: "Description", key: 1, levels: subLevels },
-            { level: 0, title: "Body3", date: "##/##/20##", image: image1, description: "Description", key: 2, levels: subLevels },
-            { level: 0, title: "Body4", date: "##/##/20##", image: image1, description: "Description", key: 3, levels: subLevels }
+            { admin: null, users: [], visitCount: 0, enabled: true, visible:0, level: 0, title: "Body1", date: "##/##/20##", deadLine: "", image: image1, description: "Description", color: "", tags: [], fatherId: -1, id: 0, key: 0, levels: subLevels1 },
+            { admin: null, users: [], visitCount: 0, enabled: true, visible:0, level: 0, title: "Body2", date: "##/##/20##", deadLine: "", image: image1, description: "Description", color: "", tags: [], fatherId: -1, id: 1, key: 1, levels: subLevels2 }
         ];
         return levels;
     }
@@ -73,10 +81,13 @@ export default class Desk extends Component {
         return this.state.deep;
     }
 
+    createNew() {
+    }
+
     render() {
         return (
             <div className="Desk">
-                <Header isDeep={this.getDeep} onBACK={this.onBACK} />
+                <Header isDeep={this.getDeep} onBACK={this.onBACK} createNew={this.createNew} />
                 <Path levels={this.getLevels()} path={this.state.path} />
                 <Board onGO={this.onGO} levels={this.getLevels()} path={this.state.path} />
             </div>

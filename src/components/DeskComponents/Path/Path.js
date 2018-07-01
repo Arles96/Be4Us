@@ -28,6 +28,7 @@ class Path extends Component {
                 } else {
                     className = "tasks"
                 }
+                // eslint-disable-next-line
                 paths.push(<a className={className} key={this.state.id++} >{levels[this.props.path[i]].title}/</a>)
                 levels = levels[this.props.path[i]].levels
             }
