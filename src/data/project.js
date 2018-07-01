@@ -7,9 +7,10 @@ const url = 'http://localhost:5000/b4us-e9e2a/us-central1'
  * @param  uid uid del usuario propietario
  * @param  description description del proyecto
  * @param  title titulo que contendra el proyecto 
+ * @param  email email de usuario
  */
-export const insertProject = (uid, description, title) => {
-    return fetch(`${url}/`)
+export const insertProject = (uid, email, description, title) => {
+    return fetch(`${url}/addProyect?uid=${uid}&email=${email}&title=${title}&content=${description}`)
         .then( res => {
             return res
         })
@@ -18,6 +19,24 @@ export const insertProject = (uid, description, title) => {
             return false
         })
 }
+/**
+ * Funcion para actualizar todos los datos del proyecto excepto la listas de las tareas
+ * @param  uid uid del usuario propietario
+ * @param  email email del usuario
+ * @param  proyid id del proyecto
+ * @param  title titulo del proyecto
+ * @param  description descripcion del proyecto
+ */
+export const updateProject = (uid, email, proyid, title, description) => {
+    return fetch(`${url}/updateProyect?uid=${uid}&email=${email}&proyid=${proyid}&title=${title}&content=${description}`)
+        .then(res => {
+            return res
+        })
+        .catch(err => {
+            console.log(err) 
+            return false
+        })
+}   
 
 /**
  * Función para agregar una tarea a un proyecto
