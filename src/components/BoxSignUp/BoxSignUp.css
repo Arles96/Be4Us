@@ -19,6 +19,7 @@
 }
 
 .input-signup {
+    color:white !important;
     border-bottom: 1px solid rgba(250, 248, 248, 0.411);
     width: 100% !important;
 }

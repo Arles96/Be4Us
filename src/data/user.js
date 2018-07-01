@@ -1,4 +1,4 @@
-import {auth, database, storage, url} from './firebase'
+import {storage, url} from './firebase'
 
 /**
  * Funcion para capturar la informacion del usuario por medio del servidor
@@ -13,12 +13,37 @@ export const getUser = (email) => {
    })
 }
 
+/**
+ * Funcion para hace un signupde terceros
+ * @param uid id del usuario
+ * @param empresa Empresa del usuario
+ */
+export const signupSocialBackend = (uid, empresa) => {
+    return fetch(`${url}/signUpThirdParty?uid=${uid}&empresa=${empresa}`)
+        .then(res => {
+            return res
+        })
+        .catch(err => {
+            return err
+        })
+}
 
 /**
- * Funcion para realizar el signup por medio del backend
+ * Funcion para agregar un usuario estandar
+ * @param  email email del usuario
+ * @param  password password del usuario
+ * @param  empresa empresa o universidad que pertenece el usuario
  */
-export const signupBackend = () => {
-    fetch(`${url}/`)
+export const signupBackend = (email, password, empresa) => {
+    fetch(`${url}/signUp?email=${email}&password=${password}&empresa=${empresa}`)
+        .then(res => {
+            console.log(res)
+            return res
+        })
+        .catch(err => {
+            console.log(err)
+            return false
+        })
 }
 
 /**

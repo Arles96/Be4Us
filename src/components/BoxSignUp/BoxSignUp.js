@@ -1,8 +1,43 @@
 import React, {Component} from 'react'
 import './BoxSignUp.css'
 import {InputLabel, FormControl, Input} from '@material-ui/core'
+import {signupBackend} from '../../data/user'
+import { auth } from '../../data/firebase'
 
 export default class BoxSignUp extends Component {
+
+    constructor(){
+        super()
+        this.handleSubmit = this.handleSubmit.bind(this)
+    }
+
+    handleSubmit(e){
+        e.preventDefault()
+        let name = e.target.name.value
+        let email = e.target.email.value
+        let company = e.target.company.value
+        let password = e.target.password.value
+        auth().createUserWithEmailAndPassword(email, password)
+            .then(response => {
+                console.log(response)
+                if (response.code) {
+                    alert("Y existe este usuario")
+                }else {
+                    let data = signupBackend(email, password, company)
+                    Promise.resolve(data).then(res => {
+                        if (res) {
+                            
+                        }else {
+                            console.log(res)
+                        }
+                    })
+                }
+            })
+            .catch(err => {
+                console.log(err)
+            })
+        
+    }
 
     render(){
         return (
@@ -19,22 +54,22 @@ export default class BoxSignUp extends Component {
                 <div className="col-sm-6 form-signup" >
                     <h3 className="text-center m-4" >Registro</h3>
                     <hr className="line-signup" />
-                    <form>
+                    <form onSubmit={this.handleSubmit}>
                         <FormControl className="formControl-signup m-1" >
                             <InputLabel>Nombre completo</InputLabel>
-                            <Input className="input-signup" />
+                            <Input className="input-signup" name="name" />
                         </FormControl>
                         <FormControl className="formControl-signup m-1" >
                             <InputLabel>Compañia o universidad</InputLabel>
-                            <Input className="input-signup" />
+                            <Input className="input-signup" name="company" />
                         </FormControl>
                         <FormControl className="formControl-signup m-1" >
                             <InputLabel>Correo</InputLabel>
-                            <Input className="input-signup" />
+                            <Input className="input-signup" name="email" />
                         </FormControl>
                         <FormControl className="formControl-signup m-1" >
                             <InputLabel>Contraseña</InputLabel>
-                            <Input className="input-signup" />
+                            <Input className="input-signup" name="password" type="password" />
                         </FormControl>
                         <div className="text-center mt-5 mb-4" >
                             <button className="btn btn-outline-light" >Comenzar</button>
