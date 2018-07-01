@@ -37,7 +37,7 @@ class ElementManager extends Component {
         // }
         alert()
 
-        let data = insertProject('uid', 'email@myemail.com', 'description', 'title'); //deadline, fatherid
+        let data = insertProject('uid', 'email', 'description', 'title', 'groupid', 'dueDate')
 Promise.resolve(data).then((element) => {
 
         console.log(element);

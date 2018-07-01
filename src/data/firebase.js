@@ -18,5 +18,7 @@ export const database = firebase.database
 export const auth = firebase.auth
 //Exportando el storage para guardar imagenes
 export const storage = firebase.storage
+//Exportando la url de las cloud functions
+export const url  = "http://localhost:5000/b4us-e9e2a/us-central1"
 
 
