@@ -134,9 +134,10 @@ exports.addProyect = functions.https.onRequest((req, res) => {
     const email = req.query.email;
     const title = req.query.title;
     const content = req.query.content;
+    const dueDate = req.query.dueDate;
 
     var d = new Date();
-    const date = d.getFullYear() + "-" + d.getMonth() + "-" + d.getDate()
+    const creationDate = d.getFullYear() + "-" + d.getMonth() + "-" + d.getDate()
 
     var user = (uid != 0) ? uid : email;
 
@@ -146,8 +147,9 @@ exports.addProyect = functions.https.onRequest((req, res) => {
         owner: user,
         title: title,
         content: content,
-        date: date,
-        groupId: groupId
+        creationDate: creationDate,
+        groupId: groupId,
+        dueDate: dueDate
     }
 
     //Agregado a realtime db
@@ -168,9 +170,10 @@ exports.updateProyect = functions.https.onRequest((req, res) => {
     const groupId = req.query.groupId;
     const title = req.query.title;
     const content = req.query.content;
+    const dueDate = req.query.dueDate;
 
     var d = new Date();
-    const date = d.getFullYear() + "-" + d.getMonth() + "-" + d.getDate()
+    const creationDate = d.getFullYear() + "-" + d.getMonth() + "-" + d.getDate()
 
     var user = (uid != 0) ? uid : email;
 
@@ -180,8 +183,9 @@ exports.updateProyect = functions.https.onRequest((req, res) => {
         owner: user,
         title: title,
         content: content,
-        date: date,
-        groupId: groupId
+        creationDate: creationDate,
+        groupId: groupId,
+        dueDate:dueDate
     }
 
     //Modificado en realtime db
