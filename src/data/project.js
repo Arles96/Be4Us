@@ -1,6 +1,4 @@
-import {database} from './firebase'
-
-const url = 'http://localhost:5000/b4us-e9e2a/us-central1'
+import {database, url} from './firebase'
 
 /**
  * Funcion para agregar un proyecto 
@@ -8,10 +6,12 @@ const url = 'http://localhost:5000/b4us-e9e2a/us-central1'
  * @param  description description del proyecto
  * @param  title titulo que contendra el proyecto 
  * @param  email email de usuario
- * @returns retorna false si ocurrio algun error, sino retorna la respuesta del servidor
+ * @param  groupid el id del grupo o del padre
+ * @param  dueDate la fecha limite que contendra el proyecto
+ * @returns retorna un promesa con el valor false si ocurrio algun error, sino retorna la respuesta del servidor
  */
-export const insertProject = (uid, email, description, title) => {
-    return fetch(`${url}/addProyect?uid=${uid}&email=${email}&title=${title}&content=${description}`)
+export const insertProject = (uid, email, description, title, groupid, dueDate) => {
+    return fetch(`${url}/addProyect?uid=${uid}&email=${email}&title=${title}&content=${description}&groupId=${groupid}&dueDate=${dueDate}`)
         .then( res => {
             return res
         })
@@ -27,6 +27,9 @@ export const insertProject = (uid, email, description, title) => {
  * @param  proyid id del proyecto
  * @param  title titulo del proyecto
  * @param  description descripcion del proyecto
+ * @param  groupid el id del grupo o del padre
+ * @param  dueDate la fecha limite que contendra el proyecto
+ * @returns retorna una promesa con el valor false si ocurrio un error, sino retorna un respuesta del servidor
  */
 export const updateProject = (uid, email, proyid, title, description) => {
     return fetch(`${url}/updateProyect?uid=${uid}&email=${email}&proyid=${proyid}&title=${title}&content=${description}`)
@@ -40,33 +43,18 @@ export const updateProject = (uid, email, proyid, title, description) => {
 }   
 
 /**
- * Función para agregar una tarea a un proyecto
- * @param  title Titulo de la tarea
- * @param  description Descripcion de la tarea
- * @param  date Fecha limite
+ * Funcion para eliminar un proyecto
+ * @param  uid uid del usuario
+ * @param  email email del usuario propietario
+ * @param  proyid id del proyecto
+ * @returns retorna un promesa con el valor false si ocurre un error, sino retorna la respuesta del servidor
  */
-export const insertTask = (title, description, date) => {
-    return fetch(`${url}/`)
+export const deleteProject = (uid, email, proyid) => {
+    return fetch(`${url}/deleteProyect?uid=${uid}&email=${email}&proyId=${proyid}`)
         .then(res => {
             return res
         })
-        .catch( err => {
-            console.log(err)
-            return false
-        })
-}
-
-/**
- * Función para agregar a un usuario en una tarea
- * @param  uid uid del usuario que se va agregar
- * @param name nombre del usuario que se agregara
- */
-export const insertUserTask = (uid, name) => {
-    return fetch(`${url}`)
-        .then( res => {
-            return res
-        })
-        .catch( err => {
+        .catch(err=> {
             console.log(err)
             return false
         })
@@ -74,8 +62,9 @@ export const insertUserTask = (uid, name) => {
 
 /**
  * Funcion para obtener todos los proyectos de un grupo
- * @param cb callback (funcion) para manipular los proyectos 
+ * @param cb callback para la capturar los valores de los proyectos de un grupo
+ * @returns retorna una promesa con un valor json, que son level y listP 
  */
 export const getAllProject = (cb) => {
-    database().ref('/proyects/').on('value', cb)
+    return database().ref('/proyects/').on('value', cb)
 }

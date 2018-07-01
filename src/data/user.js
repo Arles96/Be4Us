@@ -1,6 +1,4 @@
-import {auth, database, storage} from './firebase'
-
-const url = 'http://localhost:5000/b4us-e9e2a/us-central1'
+import {auth, database, storage, url} from './firebase'
 
 /**
  * Funcion para capturar la informacion del usuario por medio del servidor
