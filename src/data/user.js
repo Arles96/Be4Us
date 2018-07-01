@@ -29,13 +29,16 @@ export const signupSocialBackend = (uid, empresa) => {
 }
 
 /**
- * Funcion para agregar un usuario estandar
- * @param  email email del usuario
- * @param  password password del usuario
- * @param  empresa empresa o universidad que pertenece el usuario
+ * Funcion para signup de usuario con correo y password
+ * @param  uid uid del usuario de la app
+ * @param email correo del usuario
+ * @param name Nombre completo del usuario
+ * @param password Contraseña del usuario
+ * @param empresa empresa o universidad del usuario
+ * @returns Retorna una promesa
  */
-export const signupBackend = (email, password, empresa) => {
-    fetch(`${url}/signUp?email=${email}&password=${password}&empresa=${empresa}`)
+export const signupBackend = (uid, email, name, password, empresa) => {
+    return fetch(`${url}/signUp?uid=${uid}&name=${name}&email=${email}&password=${password}&empresa=${empresa}`)
         .then(res => {
             console.log(res)
             return res

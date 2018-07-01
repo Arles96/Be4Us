@@ -21,12 +21,14 @@ export default class BoxSignUp extends Component {
             .then(response => {
                 console.log(response)
                 if (response.code) {
-                    alert("Y existe este usuario")
+                    alert("El existe este usuario")
                 }else {
-                    let data = signupBackend(email, password, company)
+                    let uid = response.user.uid
+                    console.log(uid)
+                    let data = signupBackend(uid, email, name, password, company)
                     Promise.resolve(data).then(res => {
                         if (res) {
-                            
+                            console.log(res)
                         }else {
                             console.log(res)
                         }
