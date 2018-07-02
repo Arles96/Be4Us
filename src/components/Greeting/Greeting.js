@@ -71,8 +71,8 @@ class Greeting extends Component {
                 <div className="contain-greet" >
                     {/* Contenedor del Logo General*/}
                     <div className="grid-container">
-                        <canvas id="Soft" className="canvas_g Canvas_Soft"></canvas>
-                        <canvas id="Dark" className="canvas_g Canvas_Dark"></canvas>
+                        <canvas id="Soft" className="canvas_g Canvas_Soft "></canvas>
+                        <canvas id="Dark" className="canvas_g Canvas_Dark "></canvas>
                         <p className="Logo_ Be_">Be</p>
                         <p className="Logo_ For_">4</p>
                         <p className="Logo_ Us_">Us</p>

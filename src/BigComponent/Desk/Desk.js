@@ -1,10 +1,13 @@
 import React, { Component } from 'react'
 import './Desk.css';
 import Header from '../../components/DeskComponents/Header/Header'
-import { auth } from '../../data/firebase'
 import Path from '../../components/DeskComponents/Path/Path'
 import Board from '../../components/DeskComponents/Board/Board'
 import ElementManager from '../../components/DeskComponents/ElementManager/ElementManager'
+import { auth } from '../../data/firebase'
+import { getAllGroups } from '../../data/group'
+import { getAllProjects } from '../../data/project'
+// import { auth } from '../../data/firebase'
 //import BottomNavigation from '../../components/DeskComponents/BottomNavigation/BottomNavigation'
 
 class Desk extends Component {
@@ -29,14 +32,46 @@ class Desk extends Component {
         this.onGO = this.onGO.bind(this);
         this.onBACK = this.onBACK.bind(this);
         this.getDeep = this.getDeep.bind(this);
+        this.getLevels = this.getLevels.bind(this);
+        this.getLevelsDB = this.getLevelsDB.bind(this);
         this.createNew = this.createNew.bind(this);
         this.onDone = this.onDone.bind(this);
     }
 
-    componentWillMount() {
-        auth().onAuthStateChanged(function (user) {
+    getLevelsDB() {
+        let groups = [];
+
+        getAllGroups((element) => {
+            element.forEach((data) => {
+                //console.log(data.val())
+                //console.log(this.state.user.uid)
+                if (data.val().owner === this.state.user.uid) {
+                    groups.push({
+                        id: data.key,
+                        content: data.val().content,
+                        deadLine: data.val().dueDate,
+                        image: data.val().imageUrl,
+                        admin: this.state.user,
+                        users: data.val().participants,
+                        title: data.val().title,
+                        levels: data.val().levels,
+                        date: data.val().creationDate
+                    });
+                }
+            })
+        })
+
+        console.log(groups)
+        return groups;
+    }
+
+    componentDidMount() {
+        auth().onAuthStateChanged((user) => {
             if (user) {
                 let image1 = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQBfR8vP9Jv6HsU7LTM7r8FY3dUkExO-OH2nARhfabPRWbM1etRGQ";
+
+
+
                 let lastLevel1 = [
                     { admin: null, users: [], visitCount: 0, enabled: true, visible: 0, level: 2, title: "Prueba", date: "##/##/20##", deadLine: "", image: image1, description: "Description", color: "", fatherId: 0, id: 0, key: 0, levels: null },
                     { admin: null, users: [], visitCount: 0, enabled: true, visible: 0, level: 2, title: "Investigacion", date: "##/##/20##", deadLine: "", image: image1, description: "Description", color: "", fatherId: 0, id: 1, key: 1, levels: null }
@@ -61,11 +96,10 @@ class Desk extends Component {
                     { admin: null, users: [], visitCount: 0, enabled: true, visible: 0, level: 0, title: "Xmen", date: "##/##/20##", image: image1, description: "Description", color: "", fatherId: -1, id: 0, key: 0, levels: subLevels1 },
                     { admin: null, users: [], visitCount: 0, enabled: true, visible: 0, level: 0, title: "FSociety", date: "##/##/20##", image: image1, description: "Description", color: "", fatherId: -1, id: 1, key: 1, levels: subLevels2 }
                 ];
-                console.log(this.state)
-                
+
                 this.setState((element) => ({
                     user: user,
-                    levels: levels
+                    levels: this.getLevelsDB()
                 }));
             } else {
                 window.location = '/Login';
@@ -92,13 +126,11 @@ class Desk extends Component {
     }
 
     onGO(currentKey) {
-        console.log(this.state)
         this.setState((element) => ({
             currentKey: currentKey,
             deep: true
         }));
         this.state.path.push(currentKey);
-
     }
 
     getDeep() {
@@ -113,8 +145,8 @@ class Desk extends Component {
         }))
     }
 
-    getCreate() {
-        return this.state.create;
+    getLevels() {
+        return this.state.levels;
     }
 
     onDone() {
@@ -125,13 +157,14 @@ class Desk extends Component {
         }));
     }
 
+
     render() {
         return (
             <div className="Desk">
-                <ElementManager levels={this.state.levels} path={this.state.path} management={this.state.management} onCreate={this.onDone} />
+                <ElementManager levels={this.getLevels} path={this.state.path} management={this.state.management} onCreate={this.onDone} />
                 <Header isDeep={this.getDeep} onBACK={this.onBACK} createNew={this.createNew} />
-                <Path levels={this.state.levels} path={this.state.path} />
-                <Board onGO={this.onGO} levels={this.state.levels} path={this.state.path} />
+                <Path levels={this.getLevels} path={this.state.path} />
+                <Board onGO={this.onGO} levels={this.getLevels} path={this.state.path} />
             </div>
         )
     }

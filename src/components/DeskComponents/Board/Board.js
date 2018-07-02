@@ -18,7 +18,7 @@ class Board extends Component {
     GO(currentKey, nextLevel) {
         if (nextLevel !== null) {            
             this.props.onGO(currentKey);
-        } else {
+        } else {    
             alert("Fondo")
         }
     }
@@ -26,13 +26,13 @@ class Board extends Component {
 
     render() {
         let cards = [];
-
         // Levels
-        if (this.props.levels != null) {
-            let levels = this.props.levels;
-            for (let i = 1; i < this.props.path.length; i++) {
+        if (this.props.levels().length != 0) {
+            let levels = this.props.levels();
+            for (let i = 0; i < this.props.path.length; i++) {
                 levels = levels[this.props.path[i]].levels
             }
+            console.log(levels)
             levels.forEach((level) => {
                 // Current Level
                 cards.push(<Element GO={this.GO} title={level.title} date={level.date} image={level.image} levels={level.levels} key={level.key} id={level.key} description={level.description} />)

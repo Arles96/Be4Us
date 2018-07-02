@@ -11,7 +11,7 @@ class ElementManager extends Component {
     }
 
     render() {
-        const levels = this.props.levels;
+        const levels = this.props.levels();
         const path = this.props.path;
         const management = this.props.management;
         const option = management.action;
