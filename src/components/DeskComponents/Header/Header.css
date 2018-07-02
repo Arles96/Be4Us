@@ -1,7 +1,7 @@
 .Desk_Header {
     position: fixed !important;
     align-self: top;
-    z-index: 100;
+    z-index: 105 !important;
     
     top: 0 !important;
     margin: 0 !important;

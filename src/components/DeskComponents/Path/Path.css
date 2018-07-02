@@ -1,7 +1,7 @@
 .Path {
     position: fixed !important;
     align-self: bottom;
-    z-index: 101;
+    z-index: 104 !important;
     
     top: 8% !important;
     margin: 0 !important;

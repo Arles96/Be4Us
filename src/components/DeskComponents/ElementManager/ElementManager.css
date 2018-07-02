@@ -1,0 +1,44 @@
+.nulo{
+    z-index: 104 !important;
+}
+
+.ElementManager {
+    position: fixed !important;
+    align-self: center !important;
+    z-index: 107 !important;
+    
+    top: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+    
+    width: 100vw !important;
+    height: 8% !important;
+}
+
+.firewall {
+    background-position-x: 0 !important;
+    background-position-y: 0 !important;
+    position: absolute !important;
+    align-self: top !important;
+    
+    margin: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+
+    z-index: 106 !important;
+    
+    width: 100vw !important;
+    height: 100vh !important;
+    background-color: #0D2941;
+    opacity: 0.63;
+
+}
+
+.newElementForm {
+    color: black !important;
+}
+
+.newElementForm-1 {
+    color: rgb(29, 29, 29) !important;
+}
