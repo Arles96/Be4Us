@@ -49,7 +49,7 @@ class Header extends Component {
                 <div id="i5" className="grid-container-3 grid-item">
                     <i onClick={this.createNew} className="Header-item grid-item grid-center fas fa-plus fa-lg" />
                     <i className="Header-item grid-item grid-center fas fa-bell fa-lg" />
-                    <i className="Header-item grid-item grid-center fas fa-child fa-lg fa-spin " />
+                    <i onClick={this.handleSignOut} className="Header-item grid-item grid-center fas fa-child fa-lg fa-spin " />
                 </div>
             </div>
         );

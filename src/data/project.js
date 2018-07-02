@@ -109,7 +109,7 @@ export const removeUserProject = (uid, email, proyId, groupId) => {
  * @param  proyId es el id del proyecto
  * @param  file es el archivo que se desea subir
  */
-export const uploadImage = (proyId, groupId, file) => {
+export const uploadImageProject = (proyId, groupId, file) => {
     storage().ref(`/${proyId}/${file.name}`).put(file)
     storage().ref(`/${proyId}/${file.name}`).getDownloadURL().then(res => {
         fetch(`${url}/setImageProyect?proyId=${proyId}&imgUrl=${res}&groupId=${groupId}`, modeF)
@@ -122,7 +122,7 @@ export const uploadImage = (proyId, groupId, file) => {
  * @param proyId es el id del proyecto
  * @param filename es el nombre de la imagen
  */
-export const removeImage = (proyId, filename, groupId) => {
+export const removeImageProject = (proyId, filename, groupId) => {
     storage().ref(`/${proyId}/${filename}`).delete()
     fetch(`${url}/setImageProyect?proyId=${proyId}&imgUrl=null&groupId=${groupId}`, modeF)
     

@@ -73,7 +73,7 @@ export const removeUserTask=(uid, email, proyId, groupId, taskId) => {
  * @param  taskId id de la tarea
  * @param  file Imagen que se desea subir
  */
-export const uploadImage = (proyId, taskId, groupId, file) => {
+export const uploadImageTask = (proyId, taskId, groupId, file) => {
     storage().ref(`/${proyId}/${taskId}/${file.name}`).put(file)
     storage().ref(`/${proyId}/${taskId}/${file.name}`).getDownloadURL().then(res => {
         fetch(`${url}/setImageTask?proyId=${proyId}&taskId=${taskId}&imgUrl=${res}&groupId=${groupId}`, modeF)
@@ -87,7 +87,7 @@ export const uploadImage = (proyId, taskId, groupId, file) => {
  * @param  taskId id de la tarea
  * @param  filename nombre de la imagen
  */
-export const removeImage = (proyId, taskId, groupId, filename) => {
+export const removeImageTask = (proyId, taskId, groupId, filename) => {
     storage().ref(`/${proyId}/${taskId}/${filename}`).delete()
     fetch(`${url}/setImageTask?proyId=${proyId}&taskId=${taskId}&imgUrl=null&groupId=${groupId}`, modeF)
 }

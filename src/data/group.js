@@ -92,7 +92,7 @@ export const getAllParticipant = (groupID, cb) => {
  * @param  groupId id del grupo
  * @param  file imagen de desea subir
  */
-export const uploadImage = (groupId, file) => {
+export const uploadImageGroup = (groupId, file) => {
     storage().ref(`/${groupId}/${file.name}`).put(file)
     storage().ref(`/${groupId}/${file.name}`).getDownloadURL().then(res => {
         fetch(`${url}/setImageGroup?groupId=${groupId}&imgUrl=${res}`, modeF)
@@ -104,7 +104,7 @@ export const uploadImage = (groupId, file) => {
  * @param  groupId id del grupo
  * @param  filename nombre de la imagen
  */
-export const removeImage = (groupId, filename) => {
+export const removeImageGroup = (groupId, filename) => {
     storage().ref(`/${groupId}/${filename}`).delete()
     fetch(`${url}/setImageGroup?groupId=${groupId}&imgUrl=null`, modeF)
 }

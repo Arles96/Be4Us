@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
 import './ElementManager.css';
+import {} from '../../../data/firebase'
+import  {addGroup, uploadImageGroup} from '../../../data/group'
+import {insertProject} from '../../../data/project'
+import {insertTask} from '../../../data/task'
 // import { insertProject } from '../../../data/project'
 
 class ElementManager extends Component {
@@ -12,11 +16,43 @@ class ElementManager extends Component {
 
     handleSubmit(e){
         e.preventDefault()
-
+        let title = e.target.title.value
+        let description = e.target.description.value
+        let date = e.target.date.value
+        let user = this.props.levels[0].admin
+        let path = this.props.path
+        if (path.length===0) {
+            let data = addGroup(user.uid, user.email, title, description, date)
+            Promise.resolve(data).then(res => {
+                if (res) {
+                    alert("Se agrego un Grupo")
+                }else {
+                    alert("No se pudo agregar el grupo")
+                }
+            })
+        }else if (path.length===1) {
+            let data = insertProject(user.uid, user.email, description, title, path[0], date)
+            Promise.resolve(data).then(res => {
+                if (res) {
+                    alert("Se agrego un proyecto")
+                }else {
+                    alert("No se pudo agregar el proyecto")
+                }
+            })
+        }else {
+            let data = insertTask(path[1], path[0], title, description, date)
+            Promise.resolve(data).then(res => {
+                if (res){
+                    alert("Se agrego una tarea")
+                }else {
+                    alert("No se pudo agregar la tarea")
+                }
+            })
+        }
     }
 
     render() {
-        const levels = this.props.levels();
+        const levels = this.props.levels;
         const path = this.props.path;
         const management = this.props.management;
         const option = management.action;
