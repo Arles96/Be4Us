@@ -1,46 +1,19 @@
 import React, { Component } from 'react'
 import './Desk.css';
 import Header from '../../components/DeskComponents/Header/Header'
+import { auth } from '../../data/firebase'
 import Path from '../../components/DeskComponents/Path/Path'
 import Board from '../../components/DeskComponents/Board/Board'
 import ElementManager from '../../components/DeskComponents/ElementManager/ElementManager'
 //import BottomNavigation from '../../components/DeskComponents/BottomNavigation/BottomNavigation'
 
-export default class Desk extends Component {
+class Desk extends Component {
 
     constructor() {
-        super()
-
-
-        let image1 = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQBfR8vP9Jv6HsU7LTM7r8FY3dUkExO-OH2nARhfabPRWbM1etRGQ";
-        let lastLevel1 = [
-            { admin: null, users: [], visitCount: 0, enabled: true, visible: 0, level: 2, title: "Task1", date: "##/##/20##", deadLine: "", image: image1, description: "Description", color: "", fatherId: 0, id: 0, key: 0, levels: null },
-            { admin: null, users: [], visitCount: 0, enabled: true, visible: 0, level: 2, title: "Task2", date: "##/##/20##", deadLine: "", image: image1, description: "Description", color: "", fatherId: 0, id: 1, key: 1, levels: null }
-        ];
-
-        let lastLevel2 = [
-            { admin: null, users: [], visitCount: 0, enabled: true, visible: 0, level: 2, title: "Task1", date: "##/##/20##", deadLine: "", image: image1, description: "Description", color: "", fatherId: 1, id: 0, key: 0, levels: null },
-            { admin: null, users: [], visitCount: 0, enabled: true, visible: 0, level: 2, title: "Task2", date: "##/##/20##", deadLine: "", image: image1, description: "Description", color: "", fatherId: 1, id: 1, key: 1, levels: null }
-        ];
-
-        let subLevels1 = [
-            { admin: null, users: [], visitCount: 0, enabled: true, visible: 0, level: 1, title: "Project1", date: "##/##/20##", deadLine: "", image: image1, description: "Description", color: "", fatherId: 0, id: 0, key: 0, levels: lastLevel1 },
-            { admin: null, users: [], visitCount: 0, enabled: true, visible: 0, level: 1, title: "Project2", date: "##/##/20##", deadLine: "", image: image1, description: "Description", color: "", fatherId: 0, id: 1, key: 1, levels: lastLevel2 }
-        ];
-
-        let subLevels2 = [
-            { admin: null, users: [], visitCount: 0, enabled: true, visible: 0, level: 1, title: "Project1", date: "##/##/20##", deadLine: "", image: image1, description: "Description", color: "", fatherId: 1, id: 0, key: 0, levels: lastLevel1 },
-            { admin: null, users: [], visitCount: 0, enabled: true, visible: 0, level: 1, title: "Project2", date: "##/##/20##", deadLine: "", image: image1, description: "Description", color: "", fatherId: 1, id: 1, key: 1, levels: lastLevel2 }
-        ];
-
-        let levels = [
-            { admin: null, users: [], visitCount: 0, enabled: true, visible: 0, level: 0, title: "Body1", date: "##/##/20##", image: image1, description: "Description", color: "", fatherId: -1, id: 0, key: 0, levels: subLevels1 },
-            { admin: null, users: [], visitCount: 0, enabled: true, visible: 0, level: 0, title: "Body2", date: "##/##/20##", image: image1, description: "Description", color: "", fatherId: -1, id: 1, key: 1, levels: subLevels2 }
-        ];
-
+        super();
 
         this.state = {
-            levels: levels,
+            levels: [],
             currentLevel: 0,
             currentKey: 0,
             deep: false,
@@ -48,14 +21,57 @@ export default class Desk extends Component {
             create: false,
             management: {
                 action: -1
-            }
+            },
+            user: null
         }
+
         this.ramKey = this.ramKey.bind(this);
         this.onGO = this.onGO.bind(this);
         this.onBACK = this.onBACK.bind(this);
         this.getDeep = this.getDeep.bind(this);
         this.createNew = this.createNew.bind(this);
         this.onDone = this.onDone.bind(this);
+    }
+
+    componentWillMount() {
+        auth().onAuthStateChanged(function (user) {
+            if (user) {
+                let image1 = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQBfR8vP9Jv6HsU7LTM7r8FY3dUkExO-OH2nARhfabPRWbM1etRGQ";
+                let lastLevel1 = [
+                    { admin: null, users: [], visitCount: 0, enabled: true, visible: 0, level: 2, title: "Prueba", date: "##/##/20##", deadLine: "", image: image1, description: "Description", color: "", fatherId: 0, id: 0, key: 0, levels: null },
+                    { admin: null, users: [], visitCount: 0, enabled: true, visible: 0, level: 2, title: "Investigacion", date: "##/##/20##", deadLine: "", image: image1, description: "Description", color: "", fatherId: 0, id: 1, key: 1, levels: null }
+                ];
+
+                let lastLevel2 = [
+                    { admin: null, users: [], visitCount: 0, enabled: true, visible: 0, level: 2, title: "Entrega", date: "##/##/20##", deadLine: "", image: image1, description: "Description", color: "", fatherId: 1, id: 0, key: 0, levels: null },
+                    { admin: null, users: [], visitCount: 0, enabled: true, visible: 0, level: 2, title: "Avance", date: "##/##/20##", deadLine: "", image: image1, description: "Description", color: "", fatherId: 1, id: 1, key: 1, levels: null }
+                ];
+
+                let subLevels1 = [
+                    { admin: null, users: [], visitCount: 0, enabled: true, visible: 0, level: 1, title: "DB", date: "##/##/20##", deadLine: "", image: image1, description: "Description", color: "", fatherId: 0, id: 0, key: 0, levels: lastLevel1 },
+                    { admin: null, users: [], visitCount: 0, enabled: true, visible: 0, level: 1, title: "Ux", date: "##/##/20##", deadLine: "", image: image1, description: "Description", color: "", fatherId: 0, id: 1, key: 1, levels: lastLevel2 }
+                ];
+
+                let subLevels2 = [
+                    { admin: null, users: [], visitCount: 0, enabled: true, visible: 0, level: 1, title: "Techo", date: "##/##/20##", deadLine: "", image: image1, description: "Description", color: "", fatherId: 1, id: 0, key: 0, levels: lastLevel1 },
+                    { admin: null, users: [], visitCount: 0, enabled: true, visible: 0, level: 1, title: "Terra", date: "##/##/20##", deadLine: "", image: image1, description: "Description", color: "", fatherId: 1, id: 1, key: 1, levels: lastLevel2 }
+                ];
+
+                let levels = [
+                    { admin: null, users: [], visitCount: 0, enabled: true, visible: 0, level: 0, title: "Xmen", date: "##/##/20##", image: image1, description: "Description", color: "", fatherId: -1, id: 0, key: 0, levels: subLevels1 },
+                    { admin: null, users: [], visitCount: 0, enabled: true, visible: 0, level: 0, title: "FSociety", date: "##/##/20##", image: image1, description: "Description", color: "", fatherId: -1, id: 1, key: 1, levels: subLevels2 }
+                ];
+                console.log(this.state)
+                
+                this.setState((element) => ({
+                    user: user,
+                    levels: levels
+                }));
+            } else {
+                window.location = '/Login';
+            }
+        });
+
     }
 
     ramKey() {
@@ -76,6 +92,7 @@ export default class Desk extends Component {
     }
 
     onGO(currentKey) {
+        console.log(this.state)
         this.setState((element) => ({
             currentKey: currentKey,
             deep: true
@@ -120,3 +137,5 @@ export default class Desk extends Component {
     }
 
 }
+
+export default Desk;

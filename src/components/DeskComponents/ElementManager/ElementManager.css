@@ -1,5 +1,8 @@
 .nulo{
     z-index: 104 !important;
+    
+    width: 70vw !important;
+    height: 70vh !important;
 }
 
 .ElementManager {
@@ -12,8 +15,8 @@
     padding: 0 !important;
     border: 0 !important;
     
-    width: 100vw !important;
-    height: 8% !important;
+    width: 100% !important;
+    height: 100% !important;
 }
 
 .firewall {
@@ -25,14 +28,14 @@
     margin: 0 !important;
     padding: 0 !important;
     border: 0 !important;
-
+    
     z-index: 106 !important;
     
     width: 100vw !important;
     height: 100vh !important;
     background-color: #0D2941;
     opacity: 0.63;
-
+    
 }
 
 .newElementForm {
