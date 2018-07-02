@@ -28,7 +28,8 @@ export default class BoxSignUp extends Component {
                     let data = signupBackend(uid, email, name, password, company)
                     Promise.resolve(data).then(res => {
                         if (res) {
-                            console.log(res)
+                            alert("Se ha registrado con exito. Por favor inicie login en la siguiente pagina")
+                            window.location = "/login"
                         }else {
                             console.log(res)
                         }
@@ -67,7 +68,7 @@ export default class BoxSignUp extends Component {
                         </FormControl>
                         <FormControl className="formControl-signup m-1" >
                             <InputLabel>Correo</InputLabel>
-                            <Input className="input-signup" name="email" />
+                            <Input className="input-signup" name="email" type="email" />
                         </FormControl>
                         <FormControl className="formControl-signup m-1" >
                             <InputLabel>Contraseña</InputLabel>

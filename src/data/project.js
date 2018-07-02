@@ -1,4 +1,4 @@
-import {database, url} from './firebase'
+import {database, url, modeF, storage} from './firebase'
 
 /**
  * Funcion para agregar un proyecto 
@@ -11,7 +11,7 @@ import {database, url} from './firebase'
  * @returns retorna un promesa con el valor false si ocurrio algun error, sino retorna la respuesta del servidor
  */
 export const insertProject = (uid, email, description, title, groupid, dueDate) => {
-    return fetch(`${url}/addProyect?uid=${uid}&email=${email}&title=${title}&content=${description}&groupId=${groupid}&dueDate=${dueDate}`)
+    return fetch(`${url}/addProyect?uid=${uid}&email=${email}&title=${title}&content=${description}&groupId=${groupid}&dueDate=${dueDate}`,modeF)
         .then( res => {
             return res
         })
@@ -32,7 +32,7 @@ export const insertProject = (uid, email, description, title, groupid, dueDate) 
  * @returns retorna una promesa con el valor false si ocurrio un error, sino retorna un respuesta del servidor
  */
 export const updateProject = (uid, email, proyid, title, description) => {
-    return fetch(`${url}/updateProyect?uid=${uid}&email=${email}&proyid=${proyid}&title=${title}&content=${description}`)
+    return fetch(`${url}/updateProyect?uid=${uid}&email=${email}&proyid=${proyid}&title=${title}&content=${description}`,modeF)
         .then(res => {
             return res
         })
@@ -50,7 +50,7 @@ export const updateProject = (uid, email, proyid, title, description) => {
  * @returns retorna un promesa con el valor false si ocurre un error, sino retorna la respuesta del servidor
  */
 export const deleteProject = (uid, email, proyid) => {
-    return fetch(`${url}/deleteProyect?uid=${uid}&email=${email}&proyId=${proyid}`)
+    return fetch(`${url}/deleteProyect?uid=${uid}&email=${email}&proyId=${proyid}`,modeF)
         .then(res => {
             return res
         })
@@ -67,4 +67,58 @@ export const deleteProject = (uid, email, proyid) => {
  */
 export const getAllProject = (cb) => {
     return database().ref('/proyects/').on('value', cb)
+}
+/**
+ * Funcion para agregar un participante a un proyecto
+ * @param  uid uid del usuario de la app
+ * @param  email email del usuario
+ * @param  proyId id del proyect
+ * @returns retorna una promesa 
+ */
+export const insertUserProject = (uid, email, proyId) => {
+    return fetch(`${url}/addParticipant?uid=${uid}&email=${email}&proyId=${proyId}`,modeF)
+        .then(res => {
+            return res
+        })
+        .catch(err => {
+            console.log(err)
+            return false
+        })
+}
+
+/**
+ * Funcion para eliminar un usuario de un proyecto
+ * @param  uid uid del usuario de la app
+ * @param  email email del usuario
+ * @param  proyId id del proyectp
+ * @returns retirna una promesa
+ */
+export const removeUserProject = (uid, email, proyId) => {
+    return fetch(`${url}/removeParticipant?uid=${uid}&email=${email}&proyId=${proyId}`,modeF)
+        .then( res => {
+            return res
+        })
+        .catch( err => {
+            console.log(err)
+            return false
+        })
+}
+
+/**
+ * Funcion para subir una imagen 
+ * @param  projectID es el id del proyecto
+ * @param  file es el archivo que se desea subir
+ */
+export const uploadImage = (projectID, file) => {
+    storage().ref(`/${projectID}/${file.name}`).put(file)
+}
+
+
+/**
+ * Funcion para una imagen del storage del usuario
+ * @param projectID es el id del proyecto
+ * @param filename es el nombre de la imagen
+ */
+export const removeImage = (projectID, filename) => {
+    storage().ref(`/${projectID}/${filename}`).delete()
 }
