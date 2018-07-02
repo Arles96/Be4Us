@@ -423,3 +423,15 @@ exports.setImageProyect = functions.https.onRequest((req, res) => {
 
     res.send(true);
 });
+
+exports.setImageTask = functions.https.onRequest((req, res) => {
+    const proyId = req.query.proyId;
+    const taskId = req.query.taskId;
+    const imgUrl= req.query.imgUrl;
+    const data = {}
+    data['/proyects/' + proyId + "/tasks/" + taskId + "/imageUrl/"] = imgUrl;
+
+    admin.database().ref().update(data);
+
+    res.send(true);
+});
