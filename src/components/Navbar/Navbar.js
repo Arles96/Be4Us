@@ -35,6 +35,7 @@ class Navbar extends Component {
         };
         this.render = this.render.bind(this);
         this.exp = this.exp.bind(this);
+        this.goDesk = this.goDesk.bind(this);
     }
 
     exp() {
@@ -52,6 +53,10 @@ class Navbar extends Component {
     handleClose = () => {
         this.setState({ anchorEl: null });
     };
+
+    goDesk() {
+        window.open('/Desk');
+    }
 
     render() {
         const { classes } = this.props;
@@ -94,7 +99,7 @@ class Navbar extends Component {
                                         open={open}
                                         onClose={this.handleClose}
                                     >
-                                        <MenuItem onClick={this.handleClose}>Profile</MenuItem>
+                                        <MenuItem onClick={this.goDesk}>Profile</MenuItem>
                                         <MenuItem onClick={this.handleClose}>My account</MenuItem>
                                     </Menu>
                                 </div>
@@ -114,37 +119,9 @@ class Navbar extends Component {
 
                             <Grid container>
                                 <Grid item xs className="btn_text">
-
-                                    {auth && (
-                                        <div className="btn_text">
-                                            <IconButton id="IconButton_" className="btn_text"
-                                                aria-owns={open ? 'menu-appbar' : null}
-                                                aria-haspopup="true"
-                                                onClick={this.handleMenu}
-                                                color="inherit"
-                                            >
-
-                                                <i className="fas fa-sign-in-alt"></i>
-                                            </IconButton>
-                                            <Menu
-                                                id="menu-appbar"
-                                                anchorEl={anchorEl}
-                                                anchorOrigin={{
-                                                    vertical: 'top',
-                                                    horizontal: 'left',
-                                                }}
-                                                transformOrigin={{
-                                                    vertical: 'top',
-                                                    horizontal: 'left',
-                                                }}
-                                                open={open}
-                                                onClose={this.handleClose}
-                                            >
-                                                <MenuItem onClick={this.handleClose}>Profile</MenuItem>
-                                                <MenuItem onClick={this.handleClose}>My account</MenuItem>
-                                            </Menu>
-                                        </div>
-                                    )}
+                                    <IconButton id="IconButton" className={classes.flex} color="inherit" href="/Login">
+                                        <i className="fas fa-sign-in-alt"></i>
+                                    </IconButton>
                                 </Grid>
                                 <Grid item xs className="btn_text">
                                     <IconButton id="IconButton" className={classes.flex} color="inherit" href="#Home_">

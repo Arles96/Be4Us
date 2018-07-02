@@ -11,8 +11,7 @@
     color: white;
     width: 80%;
     margin: auto;
-    padding: 10px;
-    margin-top: 20vh;
+    margin-top: 16vh;
 }
 
 .grid-container {
@@ -49,7 +48,8 @@
     grid-row: 1 / 2;
     color: #F5F5F5 !important;
     text-align: right;
-    font-size: 25vh !important;
+    font-size: 25vmin !important; 
+    height: 28vmin;
     
 }
 
@@ -58,17 +58,20 @@
     grid-row: 2 / 3;
     color: #F5F5F5 !important;
     text-align: left;
-    font-size: 25vh !important;
+    
+    font-size: 25vmin !important; 
+    height: 28vmin;
 }
 
 .For_ {
     grid-column: 1 / 3;
     grid-row: 1 / 3;
-    color: #FFD185 !important;
+    color: #FFD185 !important; 
     position: relative;
-    line-height : 45vh !important;
     text-align: center !important;
-    font-size: 60vh !important;
+    font-size: 60vmin !important; 
+    height: 18vmin; 
+    line-height : 10vmin !important;
 }
 
 /*45 vw + 60vh*/
@@ -81,7 +84,7 @@
     z-index:10;
 }
 
-canvas {
+.canvas_g {
     align-self:  center !important;
     justify-self:  center !important;    
     grid-column: 1 / 3;

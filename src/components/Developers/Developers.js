@@ -5,7 +5,7 @@ import './Developers.css';
 import developer from '../../img/developer.svg';
 
 export default () => (
-    <div id="developersContainer">
+    <div id="Developers_">
         <h2 className="text-center m-5" >Desarrolladores</h2>
         <div className="row" >
         <div className="col-sm-4" >

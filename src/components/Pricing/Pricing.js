@@ -3,7 +3,7 @@ import './Pricing.css'
 import { Card, CardContent} from '@material-ui/core'
 
 export default ()=> (
-    <div className="pricing-container" >
+    <div id="Pricing_" className="pricing-container" >
         <h2 className="text-center m-5" >Precios</h2>
         <div className="row" >
             <div className="col-sm-6 text-center mb-4" >

@@ -1,12 +1,12 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 import { Grid, Button, TextField } from '@material-ui/core'
 import './BoxLogin.css'
-import {auth} from '../../data/firebase'
-import {signupSocialBackend } from '../../data/user'
+import { auth } from '../../data/firebase'
+import { signupSocialBackend } from '../../data/user'
 
 export default class BoxLogin extends Component {
 
-    constructor(props){
+    constructor(props) {
         super(props)
         this.handleAuthGoogle = this.handleAuthGoogle.bind(this)
         this.handleAuthFacebook = this.handleAuthFacebook.bind(this)
@@ -22,7 +22,7 @@ export default class BoxLogin extends Component {
             .then(res => {
                 if (res.user) {
                     window.location = '/desk'
-                }else {
+                } else {
                     alert("Erro correo o contraseña incorrecta")
                 }
             })
@@ -31,17 +31,17 @@ export default class BoxLogin extends Component {
             })
     }
 
-    handleAuthTwitter(){
+    handleAuthTwitter() {
         auth().signInWithPopup(new auth.TwitterAuthProvider())
             .then(res => {
                 let uid = res.user.uid
                 signupSocialBackend(uid, 'null')
                 window.location = '/desk'
             })
-            .catch(err =>  console.log(err))
+            .catch(err => console.log(err))
     }
 
-    handleAuthFacebook(){
+    handleAuthFacebook() {
         auth().signInWithPopup(new auth.FacebookAuthProvider())
             .then(res => {
                 let uid = res.user.uid
@@ -51,7 +51,7 @@ export default class BoxLogin extends Component {
             .catch(err => console.log(err))
     }
 
-    handleAuthGoogle(){
+    handleAuthGoogle() {
         auth().signInWithPopup(new auth.GoogleAuthProvider())
             .then(res => {
                 let uid = res.user.uid
@@ -61,7 +61,7 @@ export default class BoxLogin extends Component {
             .catch(err => console.log(err))
     }
 
-    render(){
+    render() {
         return (
             <div className="box-login" >
                 <h2 className="box-title mt-4" >Login</h2>
@@ -101,6 +101,9 @@ export default class BoxLogin extends Component {
                             type="password"
                         />
                     </div>
+                    <a href="./Signup" className="btn mt-5 toSignup" >
+                        No tengo una cuenta
+                    </a>
                     <button type="submit" className="btn btn-outline-light mt-5" >
                         Empezar
                     </button>

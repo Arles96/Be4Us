@@ -46,7 +46,7 @@ export default class BoxSignUp extends Component {
         return (
             <div className="row box-signup">
                 <div className="col-sm-6" >
-                    <h2>Registrate Ahora!</h2>
+                    <h2>¡Registrate Ahora!</h2>
                     <hr className="line-signup" />
                     <p>
                         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem repellendus quasi fuga nesciunt 

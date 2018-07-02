@@ -43,3 +43,12 @@ label {
     background: red !important;
 }
 
+.toSignup {
+    background-color: rgba(233, 150, 122, 0) !important;
+    border: inherit !important;
+    color: rgba(22, 22, 22, 0.583) !important;
+}
+ 
+.toSignup:hover {
+    color: antiquewhite !important;
+}
