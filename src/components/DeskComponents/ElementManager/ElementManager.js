@@ -15,20 +15,23 @@ class ElementManager extends Component {
         const path = this.props.path;
         const management = this.props.management;
         const option = management.action;
-        
+
         let subColor = "NONE";
         let elementType = "NONE";
         let managerAction = "NONE";
-        let section = <div className="alert alert-primary" role="alert" >Sección</div>;
-        // let user;
+        let section = <div className="alert alert-primary" role="alert">Principal</div>
+        let user;
         // let email;
-        // let fatherID;
-        // let image;
+        let fatherID = "";
+        let image = "";
 
 
         let level = levels;
         for (let i = 0; i < path.length; i++) {
-            level = level[path[i]].levels
+            fatherID = path[i];
+            section = <div className="alert alert-primary" role="alert" >{level[path[i]].title}</div>
+            image = level[path[i]].title;
+            level = level[path[i]].levels;
         }
 
 

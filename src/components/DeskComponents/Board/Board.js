@@ -30,7 +30,7 @@ class Board extends Component {
         // Levels
         if (this.props.levels != null) {
             let levels = this.props.levels;
-            for (let i = 0; i < this.props.path.length; i++) {
+            for (let i = 1; i < this.props.path.length; i++) {
                 levels = levels[this.props.path[i]].levels
             }
             levels.forEach((level) => {
