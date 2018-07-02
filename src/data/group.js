@@ -1,4 +1,4 @@
-import { url, modeF, database } from './firebase'
+import { url, modeF, database, storage } from './firebase'
 
 /**
  * Funcion para agregar un grupos a la base de datos    

@@ -14,8 +14,8 @@ class Path extends Component {
         let paths = [];
 
         // Levels
-        if (this.props.levels != null) {
-            let levels = this.props.levels;
+        if (this.props.levels() != null) {
+            let levels = this.props.levels();
             for (let i = 0; i < this.props.path.length; i++) {
 
 
