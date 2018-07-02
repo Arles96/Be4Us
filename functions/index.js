@@ -360,7 +360,7 @@ exports.deleteGroup = functions.https.onRequest((req, res) => {
 
     var user = (uid != 0) ? uid : email;
     //Agregado a realtime db
-    admin.database().ref('/group/' + groupId).remove();
+    admin.database().ref('/groups/' + groupId).remove();
 
     dbS.collection("Users").doc(user).collection("GroupList").doc(groupId).remove();
 

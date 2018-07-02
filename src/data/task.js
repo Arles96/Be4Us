@@ -98,6 +98,12 @@ export const getUrlImage = (taskId) => {
     
 }
 
-export const updateTask = () => {
-    return fetch(`${url}`, modeF)
+/**
+ * Funcion para obtener los participantes de una tarea
+ * @param  proyId id del proyecto
+ * @param  taskId id de la tarea
+ * @param  cb callback para obtener los datos
+ */
+export const getAllUsers = (proyId, taskId, cb) => {
+    database().ref(`/proyects/${proyId}/tasks/${taskId}`).on('value', cb)
 }

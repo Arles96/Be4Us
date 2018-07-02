@@ -1,4 +1,4 @@
-import {storage, url, modeF} from './firebase'
+import {url, modeF} from './firebase'
 
 /**
  * Funcion para capturar la informacion del usuario por medio del servidor

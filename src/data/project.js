@@ -122,3 +122,12 @@ export const uploadImage = (projectID, file) => {
 export const removeImage = (projectID, filename) => {
     storage().ref(`/${projectID}/${filename}`).delete()
 }
+
+/**
+ * Funciones para obtener los participantes de los proyectos
+ * @param  proyId id del proyecto
+ * @param  cb callback para obtener los datos
+ */
+export const getAllUsers = (proyId, cb) => {
+    database().ref(`/proyects/${proyId}/participants`).on('value', cb)
+}
