@@ -37,6 +37,7 @@ export default class BoxSignUp extends Component {
                 }
             })
             .catch(err => {
+                alert("Error al crear el usuario")
                 console.log(err)
             })
         

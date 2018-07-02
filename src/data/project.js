@@ -31,8 +31,8 @@ export const insertProject = (uid, email, description, title, groupid, dueDate) 
  * @param  dueDate la fecha limite que contendra el proyecto
  * @returns retorna una promesa con el valor false si ocurrio un error, sino retorna un respuesta del servidor
  */
-export const updateProject = (uid, email, proyid, title, description) => {
-    return fetch(`${url}/updateProyect?uid=${uid}&email=${email}&proyid=${proyid}&title=${title}&content=${description}`,modeF)
+export const updateProject = (uid, email, proyid, title, description, groupId) => {
+    return fetch(`${url}/updateProyect?uid=${uid}&email=${email}&proyid=${proyid}&title=${title}&content=${description}&groupId=${groupId}`,modeF)
         .then(res => {
             return res
         })
@@ -49,8 +49,8 @@ export const updateProject = (uid, email, proyid, title, description) => {
  * @param  proyid id del proyecto
  * @returns retorna un promesa con el valor false si ocurre un error, sino retorna la respuesta del servidor
  */
-export const deleteProject = (uid, email, proyid) => {
-    return fetch(`${url}/deleteProyect?uid=${uid}&email=${email}&proyId=${proyid}`,modeF)
+export const deleteProject = (uid, email, proyid, groupId) => {
+    return fetch(`${url}/deleteProyect?uid=${uid}&email=${email}&proyId=${proyid}&groupId=${groupId}`,modeF)
         .then(res => {
             return res
         })
@@ -65,8 +65,8 @@ export const deleteProject = (uid, email, proyid) => {
  * @param cb callback para la capturar los valores de los proyectos de un grupo
  * @returns retorna una promesa con un valor json, que son level y listP 
  */
-export const getAllProject = (cb) => {
-    return database().ref('/proyects/').on('value', cb)
+export const getAllProject = (groupId, cb) => {
+    return database().ref('/groups/'+groupId+'/proyects/').on('value', cb)
 }
 /**
  * Funcion para agregar un participante a un proyecto
@@ -75,8 +75,8 @@ export const getAllProject = (cb) => {
  * @param  proyId id del proyect
  * @returns retorna una promesa 
  */
-export const insertUserProject = (uid, email, proyId) => {
-    return fetch(`${url}/addParticipant?uid=${uid}&email=${email}&proyId=${proyId}`,modeF)
+export const insertUserProject = (uid, email, proyId, groupId) => {
+    return fetch(`${url}/addParticipant?uid=${uid}&email=${email}&proyId=${proyId}&groupId=${groupId}`,modeF)
         .then(res => {
             return res
         })
@@ -93,8 +93,8 @@ export const insertUserProject = (uid, email, proyId) => {
  * @param  proyId id del proyectp
  * @returns retirna una promesa
  */
-export const removeUserProject = (uid, email, proyId) => {
-    return fetch(`${url}/removeParticipant?uid=${uid}&email=${email}&proyId=${proyId}`,modeF)
+export const removeUserProject = (uid, email, proyId, groupId) => {
+    return fetch(`${url}/removeParticipant?uid=${uid}&email=${email}&proyId=${proyId}&groupId${groupId}`,modeF)
         .then( res => {
             return res
         })
@@ -109,10 +109,10 @@ export const removeUserProject = (uid, email, proyId) => {
  * @param  proyId es el id del proyecto
  * @param  file es el archivo que se desea subir
  */
-export const uploadImage = (proyId, file) => {
+export const uploadImage = (proyId, groupId, file) => {
     storage().ref(`/${proyId}/${file.name}`).put(file)
     storage().ref(`/${proyId}/${file.name}`).getDownloadURL().then(res => {
-        fetch(`${url}/setImageProyect?proyId=${proyId}&imgUrl=${res}`, modeF)
+        fetch(`${url}/setImageProyect?proyId=${proyId}&imgUrl=${res}&groupId=${groupId}`, modeF)
     })
 }
 
@@ -122,9 +122,9 @@ export const uploadImage = (proyId, file) => {
  * @param proyId es el id del proyecto
  * @param filename es el nombre de la imagen
  */
-export const removeImage = (proyId, filename) => {
+export const removeImage = (proyId, filename, groupId) => {
     storage().ref(`/${proyId}/${filename}`).delete()
-    fetch(`${url}/setImageProyect?proyId=${proyId}&imgUrl=null`, modeF)
+    fetch(`${url}/setImageProyect?proyId=${proyId}&imgUrl=null&groupId=${groupId}`, modeF)
     
 }
 
@@ -133,6 +133,6 @@ export const removeImage = (proyId, filename) => {
  * @param  proyId id del proyecto
  * @param  cb callback para obtener los datos
  */
-export const getAllUsers = (proyId, cb) => {
-    database().ref(`/proyects/${proyId}/participants`).on('value', cb)
+export const getAllUsers = (proyId,groupId, cb) => {
+    database().ref(`/groups/${groupId}/proyects/${proyId}/participants`).on('value', cb)
 }

@@ -15,11 +15,11 @@
 }
 
 .blog-title {
-    font-size: 64px;
+    font-size: 8vmin;
 }
 
 .blog-text {
-    font-size: 32px;
+    font-size:  3.5vmin;
     text-align: center;
 }
 

@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import './Header.css';
+import {} from '../../../data/firebase'
+import { auth } from 'firebase';
 
 class Header extends Component {
 
@@ -10,7 +12,13 @@ class Header extends Component {
         };
         this.BACK = this.BACK.bind(this);
         this.createNew = this.createNew.bind(this);
+        this.handleSignOut = this.handleSignOut.bind(this)
     }
+
+    handleSignOut(){
+        auth().signOut()
+        window.location = '/login'
+    }    
 
     BACK() {
         this.props.onBACK();

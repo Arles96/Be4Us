@@ -68,7 +68,7 @@ class AboutUs extends Component {
                     </div>
                     <div className="col-sm-6" >
                         <div className="img-container-img" >
-                            <img className="img-about" src={img12} alt="Saludo" />
+                            <img className="img-about m-5" src={img12} alt="Saludo" />
                         </div>
                     </div>
                 </div>
