@@ -66,23 +66,30 @@ export const removeUserTask=(uid, email, proyId, taskId) => {
         })
 }
 
+
 /**
- * Funcion para subir una imagen 
- * @param  taskId es el id de la tarea
- * @param  file es el archivo que se desea subir
+ * Funcion para subir y guardar una image
+ * @param  proyId id del proyecto
+ * @param  taskId id de la tarea
+ * @param  file Imagen que se desea subir
  */
-export const uploadImage = (taskID, file) => {
-    storage().ref(`/${taskID}/${file.name}`).put(file)
+export const uploadImage = (proyId, taskId, file) => {
+    storage().ref(`/${proyId}/${taskId}/${file.name}`).put(file)
+    storage().ref(`/${proyId}/${taskId}/${file.name}`).getDownloadURL().then(res => {
+        fetch(`${url}/setImageTask?proyId=${proyId}&taskId=${taskId}&imgUrl=${res}`, modeF)
+    })
 }
 
 
 /**
- * Funcion para una imagen del storage del usuario
- * @param taskId es el id de la tarea
- * @param filename es el nombre de la imagen
+ * Funcion para eliminar una imagen
+ * @param  proyId id del proyecto
+ * @param  taskId id de la tarea
+ * @param  filename nombre de la imagen
  */
-export const removeImage = (taskId, filename) => {
-    storage().ref(`/${taskId}/${filename}`).delete()
+export const removeImage = (proyId, taskId, filename) => {
+    storage().ref(`/${proyId}/${taskId}/${filename}`).delete()
+    fetch(`${url}/setImageTask?proyId=${proyId}&taskId=${taskId}&imgUrl=null`, modeF)
 }
 
 /**
@@ -93,10 +100,6 @@ export const removeImage = (taskId, filename) => {
 export const getAllTask = (proyectID, cb) => {
     database().ref(`/proyects/${proyectID}/tasks`).on('value', cb)
 } 
-
-export const getUrlImage = (taskId) => {
-    
-}
 
 /**
  * Funcion para obtener los participantes de una tarea
