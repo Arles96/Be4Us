@@ -68,3 +68,38 @@ export const deleteProject = (uid, email, proyid) => {
 export const getAllProject = (cb) => {
     return database().ref('/proyects/').on('value', cb)
 }
+/**
+ * Funcion para agregar un participante a un proyecto
+ * @param  uid uid del usuario de la app
+ * @param  email email del usuario
+ * @param  proyId id del proyect
+ * @returns retorna una promesa 
+ */
+export const insertUserProject = (uid, email, proyId) => {
+    return fetch(`${url}/addParticipant?uid=${uid}&email=${email}&proyId=${proyId}`)
+        .then(res => {
+            return res
+        })
+        .catch(err => {
+            console.log(err)
+            return false
+        })
+}
+
+/**
+ * Funcion para eliminar un usuario de un proyecto
+ * @param  uid uid del usuario de la app
+ * @param  email email del usuario
+ * @param  proyId id del proyectp
+ * @returns retirna una promesa
+ */
+export const removeUserProject = (uid, email, proyId) => {
+    return fetch(`${url}/removeParticipant?uid=${uid}&email=${email}&proyId=${proyId}`)
+        .then( res => {
+            return res
+        })
+        .catch( err => {
+            console.log(err)
+            return false
+        })
+}
