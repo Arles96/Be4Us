@@ -35,12 +35,13 @@ exports.confirmLoginThirdParty = functions.https.onRequest((req, res) => {
 
 exports.confirmLogin = functions.https.onRequest((req, res) => {
     /*agregar al final de la url ?uid=<uid>&email=<email>&password=<password>*/
+    const uid = req.query.uid;
     const email = req.query.email;
     const password = req.query.password;
 
     var response = false;
 
-    var user = dbS.collection("Users").doc(email);
+    var user = dbS.collection("Users").doc(uid);
 
     user.get().then(function(doc) {
         if (doc.exists) {
@@ -308,3 +309,7 @@ exports.removeParticipantTask = functions.https.onRequest((req, res) => {
 
     res.send(true);
 });
+
+/*#################################################
+                    Grupos
+#################################################*/
