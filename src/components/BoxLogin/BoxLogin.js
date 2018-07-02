@@ -27,6 +27,7 @@ export default class BoxLogin extends Component {
                 }
             })
             .catch(err => {
+                alert("Error al iniciar sesion")
                 console.log(err)
             })
     }

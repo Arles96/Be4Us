@@ -10,6 +10,11 @@ class ElementManager extends Component {
         };
     }
 
+    handleSubmit(e){
+        e.preventDefault()
+
+    }
+
     render() {
         const levels = this.props.levels;
         const path = this.props.path;
@@ -94,7 +99,7 @@ class ElementManager extends Component {
                                     <form key="-4" className="needs-validation" noValidate>
                                         <div className="form-group newElementForm">
                                             <label htmlFor="validationCustom01" className="newElementForm">Titulo</label>
-                                            <input className="form-control form-control-lg" id="validationCustom01" type="text" placeholder="Titulo..." required />
+                                            <input name="title" className="form-control form-control-lg" id="validationCustom01" type="text" placeholder="Titulo..." required />
                                             <div className="valid-feedback">
                                                 Correcto
                                             </div>
@@ -104,18 +109,18 @@ class ElementManager extends Component {
                                         </div>
                                         <div className="form-group">
                                             <label htmlFor="validationCustom02" className="newElementForm" >Descripcion:</label>
-                                            <textarea className="form-control" id="validationCustom02" placeholder="Descripcion..." rows="3" required></textarea>
+                                            <textarea name="description" className="form-control" id="validationCustom02" placeholder="Descripcion..." rows="3" required></textarea>
                                             <div className="valid-feedback">
                                                 Correcto
                                             </div>
                                         </div>
                                         <div className="form-group centered">
                                             <label className="newElementForm">Fecha limite:</label>
-                                            <input type="date" className="date form-control" id="date" lang="es" />
+                                            <input type="date" className="date form-control" name="date" id="date" lang="es" />
                                         </div>
                                         <div className="form-group">
                                             <div className="custom-file">
-                                                <input type="file" className="custom-file-input" id="customFileLang" lang="es" placeholder="Subir" />
+                                                <input name="file" type="file" className="custom-file-input" id="customFileLang" lang="es" placeholder="Subir" />
                                                 <label className=" newElementForm-1 custom-file-label" htmlFor="customFileLang">Imagen</label>
                                             </div>
                                         </div>

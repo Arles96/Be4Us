@@ -6,8 +6,6 @@ import Grid from '@material-ui/core/Grid';
 import { withStyles } from '@material-ui/core/styles';
 import MenuIcon from '@material-ui/icons/Menu';
 import PropTypes from 'prop-types';
-import MenuItem from '@material-ui/core/MenuItem';
-import Menu from '@material-ui/core/Menu';
 import ResizeDetector from 'react-resize-detector';
 import { auth } from '../../data/firebase'
 import './Navbar.css';
@@ -50,7 +48,7 @@ class Navbar extends Component {
 
     handleIconAuth() {
         const { classes } = this.props;
-        const { auth, anchorEl } = this.state;
+        const { anchorEl } = this.state;
         const open = Boolean(anchorEl);
         if (this.state.auth) {
             return (
@@ -107,8 +105,6 @@ class Navbar extends Component {
 
     render() {
         const { classes } = this.props;
-        const { auth, anchorEl } = this.state;
-        const open = Boolean(anchorEl);
         if (window.innerWidth <= 650) {
 
             return (
