@@ -1,4 +1,4 @@
-import {database, url} from './firebase'
+import {database, url, modeF} from './firebase'
 
 /**
  * Funcion para agregar un proyecto 
@@ -11,7 +11,7 @@ import {database, url} from './firebase'
  * @returns retorna un promesa con el valor false si ocurrio algun error, sino retorna la respuesta del servidor
  */
 export const insertProject = (uid, email, description, title, groupid, dueDate) => {
-    return fetch(`${url}/addProyect?uid=${uid}&email=${email}&title=${title}&content=${description}&groupId=${groupid}&dueDate=${dueDate}`)
+    return fetch(`${url}/addProyect?uid=${uid}&email=${email}&title=${title}&content=${description}&groupId=${groupid}&dueDate=${dueDate}`,modeF)
         .then( res => {
             return res
         })
@@ -32,7 +32,7 @@ export const insertProject = (uid, email, description, title, groupid, dueDate) 
  * @returns retorna una promesa con el valor false si ocurrio un error, sino retorna un respuesta del servidor
  */
 export const updateProject = (uid, email, proyid, title, description) => {
-    return fetch(`${url}/updateProyect?uid=${uid}&email=${email}&proyid=${proyid}&title=${title}&content=${description}`)
+    return fetch(`${url}/updateProyect?uid=${uid}&email=${email}&proyid=${proyid}&title=${title}&content=${description}`,modeF)
         .then(res => {
             return res
         })
@@ -50,7 +50,7 @@ export const updateProject = (uid, email, proyid, title, description) => {
  * @returns retorna un promesa con el valor false si ocurre un error, sino retorna la respuesta del servidor
  */
 export const deleteProject = (uid, email, proyid) => {
-    return fetch(`${url}/deleteProyect?uid=${uid}&email=${email}&proyId=${proyid}`)
+    return fetch(`${url}/deleteProyect?uid=${uid}&email=${email}&proyId=${proyid}`,modeF)
         .then(res => {
             return res
         })
@@ -76,7 +76,7 @@ export const getAllProject = (cb) => {
  * @returns retorna una promesa 
  */
 export const insertUserProject = (uid, email, proyId) => {
-    return fetch(`${url}/addParticipant?uid=${uid}&email=${email}&proyId=${proyId}`)
+    return fetch(`${url}/addParticipant?uid=${uid}&email=${email}&proyId=${proyId}`,modeF)
         .then(res => {
             return res
         })
@@ -94,7 +94,7 @@ export const insertUserProject = (uid, email, proyId) => {
  * @returns retirna una promesa
  */
 export const removeUserProject = (uid, email, proyId) => {
-    return fetch(`${url}/removeParticipant?uid=${uid}&email=${email}&proyId=${proyId}`)
+    return fetch(`${url}/removeParticipant?uid=${uid}&email=${email}&proyId=${proyId}`,modeF)
         .then( res => {
             return res
         })

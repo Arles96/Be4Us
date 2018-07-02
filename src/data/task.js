@@ -1,4 +1,4 @@
-import {database, url} from './firebase'
+import {database, url, modeF} from './firebase'
 
 /**
  * Funcion para agregar una tarea
@@ -8,7 +8,7 @@ import {database, url} from './firebase'
  * @param  duedate Fecha limite
  */
 export const insertTask = (proyId, title, content, duedate) => {
-    return fetch(`${url}/addTodo?proyID=${proyId}&title=${title}&content=${content}&dueDate=${duedate}`)
+    return fetch(`${url}/addTodo?proyID=${proyId}&title=${title}&content=${content}&dueDate=${duedate}`, modeF)
         .then(res => {
             return res
         })
@@ -19,7 +19,7 @@ export const insertTask = (proyId, title, content, duedate) => {
 }
 
 export const removeTask = (proyId, taskId ) => {
-    return fetch(`${url}/removeTodo?proyId=${proyId}&taskId=${taskId}`)
+    return fetch(`${url}/removeTodo?proyId=${proyId}&taskId=${taskId}`, modeF)
         .then(res => {
             return res
         })
@@ -37,7 +37,7 @@ export const removeTask = (proyId, taskId ) => {
  * @param  taskId id de la tarea
  */
 export const insertUserTask = (uid, email, proyId, taskId) => {
-    return fetch(`${url}/addParticipantTask?uid=${uid}&email=${email}&proyId=${proyId}&taskId=${taskId}`)
+    return fetch(`${url}/addParticipantTask?uid=${uid}&email=${email}&proyId=${proyId}&taskId=${taskId}`, modeF)
         .then( res => {
             return res
         })
@@ -56,7 +56,7 @@ export const insertUserTask = (uid, email, proyId, taskId) => {
  * @returns retorna una promesa con las respuesta
  */
 export const removeUserTask=(uid, email, proyId, taskId) => {
-    return fetch(`${url}/removeParticipantTask?uid=${uid}&email=${email}&proyId=${proyId}&taskId=${taskId}`)
+    return fetch(`${url}/removeParticipantTask?uid=${uid}&email=${email}&proyId=${proyId}&taskId=${taskId}`, modeF)
         .then(res => {
             return res
         })
@@ -67,5 +67,5 @@ export const removeUserTask=(uid, email, proyId, taskId) => {
 }
 
 export const updateTask = () => {
-    return fetch(`${url}`)
+    return fetch(`${url}`, modeF)
 }
