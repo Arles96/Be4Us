@@ -1,4 +1,4 @@
-import {database, url, modeF} from './firebase'
+import {database, url, modeF, storage} from './firebase'
 
 /**
  * Funcion para agregar una tarea

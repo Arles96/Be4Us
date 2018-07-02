@@ -68,7 +68,7 @@ export default class BoxSignUp extends Component {
                         </FormControl>
                         <FormControl className="formControl-signup m-1" >
                             <InputLabel>Correo</InputLabel>
-                            <Input className="input-signup" name="email" />
+                            <Input className="input-signup" name="email" type="email" />
                         </FormControl>
                         <FormControl className="formControl-signup m-1" >
                             <InputLabel>Contraseña</InputLabel>
