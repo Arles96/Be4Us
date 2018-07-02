@@ -9,7 +9,7 @@ import PropTypes from 'prop-types';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import ResizeDetector from 'react-resize-detector';
-
+import { auth } from '../../data/firebase'
 import './Navbar.css';
 
 
@@ -36,6 +36,53 @@ class Navbar extends Component {
         this.render = this.render.bind(this);
         this.exp = this.exp.bind(this);
         this.goDesk = this.goDesk.bind(this);
+    }
+
+    componentDidMount(){
+        auth().onAuthStateChanged(user => {
+            if (user) {
+                this.setState({
+                    auth : false
+                })
+            }
+        })
+    }
+
+    handleIconAuth() {
+        const { classes } = this.props;
+        const { auth, anchorEl } = this.state;
+        const open = Boolean(anchorEl);
+        if (this.state.auth) {
+            return (
+                <div>
+                    <IconButton
+                        aria-owns={open ? 'menu-appbar' : null}
+                        aria-haspopup="true"
+                        onClick={this.handleMenu}
+                        color="inherit"
+                    >
+                    <IconButton id="IconButton" className={classes.flex} color="inherit" href="/Login">
+                        <i className="fas fa-sign-in-alt"></i>
+                    </IconButton>
+                    </IconButton>
+                </div>
+            )
+        }else {
+            return (
+                <div>
+                    <IconButton
+                        aria-owns={open ? 'menu-appbar' : null}
+                        aria-haspopup="true"
+                        onClick={this.handleMenu}
+                        color="inherit"
+                    >
+                    <IconButton id="IconButton" className={classes.flex} color="inherit" href="/desk">
+                        <i className="fas fa-user-tie"></i>
+                    </IconButton>
+                    </IconButton>
+                </div>
+            )
+        }
     }
 
     exp() {
@@ -75,35 +122,7 @@ class Navbar extends Component {
                             <IconButton className={classes.flex} color="inherit">
                                 <p className="btn_text_small" color="inherit">Be4Us</p>
                             </IconButton>
-                            {auth && (
-                                <div>
-                                    <IconButton
-                                        aria-owns={open ? 'menu-appbar' : null}
-                                        aria-haspopup="true"
-                                        onClick={this.handleMenu}
-                                        color="inherit"
-                                    >
-                                        <p className="btn_text_small" color="inherit">Iniciar Sesión</p>
-                                    </IconButton>
-                                    <Menu
-                                        id="menu-appbar"
-                                        anchorEl={anchorEl}
-                                        anchorOrigin={{
-                                            vertical: 'top',
-                                            horizontal: 'right',
-                                        }}
-                                        transformOrigin={{
-                                            vertical: 'top',
-                                            horizontal: 'right',
-                                        }}
-                                        open={open}
-                                        onClose={this.handleClose}
-                                    >
-                                        <MenuItem onClick={this.goDesk}>Profile</MenuItem>
-                                        <MenuItem onClick={this.handleClose}>My account</MenuItem>
-                                    </Menu>
-                                </div>
-                            )}
+                            {this.handleIconAuth()}
                         </Toolbar>
                     </AppBar>
                     <ResizeDetector handleWidth handleHeight onResize={this.render} />
@@ -119,9 +138,7 @@ class Navbar extends Component {
 
                             <Grid container>
                                 <Grid item xs className="btn_text">
-                                    <IconButton id="IconButton" className={classes.flex} color="inherit" href="/Login">
-                                        <i className="fas fa-sign-in-alt"></i>
-                                    </IconButton>
+                                    {this.handleIconAuth()}
                                 </Grid>
                                 <Grid item xs className="btn_text">
                                     <IconButton id="IconButton" className={classes.flex} color="inherit" href="#Home_">

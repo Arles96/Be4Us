@@ -41,7 +41,15 @@
 }
 
 .img-about {
-    margin: auto !important;
     width: 400px;
-    height: 280px;
+    height: 250px;
+}
+
+@media screen and (max-width: 1000px) {
+    
+    .img-about {
+        width: 300px;
+        height: 175px;
+    }
+
 }

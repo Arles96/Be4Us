@@ -164,7 +164,7 @@ exports.addProyect = functions.https.onRequest((req, res) => {
     dbS.collection("Users").doc(user).collection("ProyList").doc(newKey).set({groupId: groupId});
 
     const dataUp = {}
-    dataUp['/groups/' + groupId + "/proyList/" + newKey] = title;
+    dataUp['/groups/' + groupId + "/proyects/" + newKey] = data;
     admin.database().ref().update(dataUp);
 
     res.send(true);
@@ -194,7 +194,7 @@ exports.updateProyect = functions.https.onRequest((req, res) => {
     }
 
     //Modificado en realtime db
-    admin.database().ref('/proyects/' + proyId).set(data);
+    admin.database().ref('/groups/' + groupId + "/proyects/" + proyId).set(data);
 
     res.send(true);
 });
@@ -203,11 +203,12 @@ exports.deleteProyect = functions.https.onRequest((req, res) => {
     const uid = req.query.uid;
     const email = req.query.email;
     const proyId = req.query.proyId;
+    const groupId = req.query.groupId;
 
     var user = (uid != 0) ? uid : email;
 
     //Borrando de realtime db y store
-    admin.database().ref('/proyects/' + proyId).remove();
+    admin.database().ref('/groups/' + groupId + '/proyects/' + proyId).remove();
     dbS.collection("Users").doc(user).collection("ProyList").doc(proyId).delete();
 
     res.send(true);
@@ -231,7 +232,7 @@ exports.addParticipant = functions.https.onRequest((req, res) => {
     data['/proyects/' + proyId + "/participants/" + newKey] = uid;*/
 
     const data = {}
-    data['/proyects/' + proyId + "/participants/" + user] = "uid";
+    data['/groups/' + groupId +'/proyects/' + proyId + "/participants/" + user] = "uid";
 
     admin.database().ref().update(data);
 
@@ -244,10 +245,11 @@ exports.removeParticipant = functions.https.onRequest((req, res) => {
     const uid = req.query.uid;
     const email = req.query.email;
     const proyId = req.query.proyId;
+    const groupId = req.query.groupId;
 
     var user = (uid != 0) ? uid : email;
 
-    admin.database().ref('/proyects/' + proyId + "/participants/" + user).remove();
+    admin.database().ref('/groups/' + groupId + '/proyects/' + proyId + "/participants/" + user).remove();
     dbS.collection("Users").doc(user).collection("ProyList").doc(proyId).remove();
 
     res.send(true);
@@ -259,6 +261,7 @@ exports.removeParticipant = functions.https.onRequest((req, res) => {
 
 exports.addTodo = functions.https.onRequest((req, res) => {
     const proyId = req.query.proyId;
+    const groupId = req.query.groupId;
     const title = req.query.title;
     const content = req.query.content;
     const dueDate = req.query.dueDate;
@@ -273,9 +276,9 @@ exports.addTodo = functions.https.onRequest((req, res) => {
     }
 
     //Agregado a realtime db
-    var newKey = admin.database().ref('/proyects/' + proyId + "/tasks/").push().key;
+    var newKey = admin.database().ref('/groups/' + groupId + '/proyects/' + proyId + "/tasks/").push().key;
 
-    admin.database().ref('/proyects/' + proyId + "/tasks/" + newKey).set(data);
+    admin.database().ref('/groups/' + groupId + '/proyects/' + proyId + '/tasks/' + newKey).set(data);
 
     res.send(true);
 });
@@ -283,8 +286,9 @@ exports.addTodo = functions.https.onRequest((req, res) => {
 exports.removeTodo = functions.https.onRequest((req, res) => {
     const proyId = req.query.proyId;
     const taskId = req.query.taskId;
+    const groupId = req.query.groupId;
 
-    admin.database().ref('/proyects/' + proyId + "/tasks/" + taskId).remove();
+    admin.database().ref('/groups/' + groupId + '/proyects/' + proyId + "/tasks/" + taskId).remove();
 
     dbS.collection("Users").doc(user).collection("TaskList").doc(newKey).remove();
 
@@ -296,11 +300,12 @@ exports.addParticipantTask = functions.https.onRequest((req, res) => {
     const email = req.query.email;
     const proyId = req.query.proyId;
     const taskId = req.query.taskId;
+    const groupId = req.query.groupId;
 
     var user = (uid != 0) ? uid : email;
 
     const data = {}
-    data['/proyects/' + proyId + "/tasks/" + taskId + "/participants/" + user] = "uid";
+    data['/groups/' + groupId + '/proyects/' + proyId + "/tasks/" + taskId + "/participants/" + user] = "uid";
 
     admin.database().ref().update(data);
 
@@ -317,7 +322,7 @@ exports.removeParticipantTask = functions.https.onRequest((req, res) => {
 
     var user = (uid != 0) ? uid : email;
 
-    admin.database().ref('/proyects/' + proyId + "/tasks/" + taskId + "/participants/" + user).remove();
+    admin.database().ref('/groups/' + groupId + '/proyects/' + proyId + "/tasks/" + taskId + "/participants/" + user).remove();
 
     dbS.collection("Users").doc(user).collection("TaskList").doc(taskId).remove();
 
@@ -416,8 +421,9 @@ exports.setImageGroup = functions.https.onRequest((req, res) => {
 exports.setImageProyect = functions.https.onRequest((req, res) => {
     const proyId = req.query.proyId;
     const imgUrl= req.query.imgUrl;
+    const groupId = req.query.groupId;
     const data = {}
-    data['/proyects/' + proyId + "/imageUrl/"] = imgUrl;
+    data['/groups/' + groupId + '/proyects/' + proyId + "/imageUrl/"] = imgUrl;
 
     admin.database().ref().update(data);
 
@@ -427,9 +433,10 @@ exports.setImageProyect = functions.https.onRequest((req, res) => {
 exports.setImageTask = functions.https.onRequest((req, res) => {
     const proyId = req.query.proyId;
     const taskId = req.query.taskId;
+    const groupId = req.query.groupId;
     const imgUrl= req.query.imgUrl;
     const data = {}
-    data['/proyects/' + proyId + "/tasks/" + taskId + "/imageUrl/"] = imgUrl;
+    data['/groups/' + groupId + '/proyects/' + proyId + "/tasks/" + taskId + "/imageUrl/"] = imgUrl;
 
     admin.database().ref().update(data);
 

@@ -16,11 +16,11 @@
 }
 
 .title-started {
-    font-size: 64px;
+    font-size: 8vmin;
 }
 
 .text-started {
-    font-size: 32px;
+    font-size:  3.5vmin;
     text-align: center;
 }
 
