@@ -103,3 +103,22 @@ export const removeUserProject = (uid, email, proyId) => {
             return false
         })
 }
+
+/**
+ * Funcion para subir una imagen 
+ * @param  projectID es el id del proyecto
+ * @param  file es el archivo que se desea subir
+ */
+export const uploadImage = (projectID, file) => {
+    storage().ref(`/${projectID}/${file.name}`).put(file)
+}
+
+
+/**
+ * Funcion para una imagen del storage del usuario
+ * @param projectID es el id del proyecto
+ * @param filename es el nombre de la imagen
+ */
+export const removeImage = (projectID, filename) => {
+    storage().ref(`/${projectID}/${filename}`).delete()
+}

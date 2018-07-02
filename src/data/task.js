@@ -66,6 +66,29 @@ export const removeUserTask=(uid, email, proyId, taskId) => {
         })
 }
 
+/**
+ * Funcion para subir una imagen 
+ * @param  taskId es el id de la tarea
+ * @param  file es el archivo que se desea subir
+ */
+export const uploadImage = (taskID, file) => {
+    storage().ref(`/${taskID}/${file.name}`).put(file)
+}
+
+
+/**
+ * Funcion para una imagen del storage del usuario
+ * @param taskId es el id de la tarea
+ * @param filename es el nombre de la imagen
+ */
+export const removeImage = (taskId, filename) => {
+    storage().ref(`/${taskId}/${filename}`).delete()
+}
+
+export const getUrlImage = (taskId) => {
+    
+}
+
 export const updateTask = () => {
     return fetch(`${url}`, modeF)
 }
