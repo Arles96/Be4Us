@@ -85,6 +85,15 @@ export const removeImage = (taskId, filename) => {
     storage().ref(`/${taskId}/${filename}`).delete()
 }
 
+/**
+ * Funcion para obtener todas las tareas de un proyecto
+ * @param  proyectID Id del proyecto o padre
+ * @param  cb callback para la base de datos
+ */
+export const getAllTask = (proyectID, cb) => {
+    database().ref(`/proyects/${proyectID}/tasks`).on('value', cb)
+} 
+
 export const getUrlImage = (taskId) => {
     
 }
