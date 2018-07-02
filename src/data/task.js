@@ -7,8 +7,8 @@ import {database, url, modeF, storage} from './firebase'
  * @param  content Desccripcion de la tarea
  * @param  duedate Fecha limite
  */
-export const insertTask = (proyId, title, content, duedate) => {
-    return fetch(`${url}/addTodo?proyID=${proyId}&title=${title}&content=${content}&dueDate=${duedate}`, modeF)
+export const insertTask = (proyId, groupId, title, content, duedate) => {
+    return fetch(`${url}/addTodo?proyID=${proyId}&title=${title}&content=${content}&dueDate=${duedate}&groupId${groupId}`, modeF)
         .then(res => {
             return res
         })
@@ -18,8 +18,8 @@ export const insertTask = (proyId, title, content, duedate) => {
         })
 }
 
-export const removeTask = (proyId, taskId ) => {
-    return fetch(`${url}/removeTodo?proyId=${proyId}&taskId=${taskId}`, modeF)
+export const removeTask = (proyId, groupId, taskId ) => {
+    return fetch(`${url}/removeTodo?proyId=${proyId}&taskId=${taskId}&groupId=${groupId}`, modeF)
         .then(res => {
             return res
         })
@@ -36,8 +36,8 @@ export const removeTask = (proyId, taskId ) => {
  * @param  proyId id del proyecto
  * @param  taskId id de la tarea
  */
-export const insertUserTask = (uid, email, proyId, taskId) => {
-    return fetch(`${url}/addParticipantTask?uid=${uid}&email=${email}&proyId=${proyId}&taskId=${taskId}`, modeF)
+export const insertUserTask = (uid, groupId, email, proyId, taskId) => {
+    return fetch(`${url}/addParticipantTask?uid=${uid}&email=${email}&proyId=${proyId}&taskId=${taskId}&groupId=${groupId}`, modeF)
         .then( res => {
             return res
         })
@@ -55,8 +55,8 @@ export const insertUserTask = (uid, email, proyId, taskId) => {
  * @param  taskId id de la tarea
  * @returns retorna una promesa con las respuesta
  */
-export const removeUserTask=(uid, email, proyId, taskId) => {
-    return fetch(`${url}/removeParticipantTask?uid=${uid}&email=${email}&proyId=${proyId}&taskId=${taskId}`, modeF)
+export const removeUserTask=(uid, email, proyId, groupId, taskId) => {
+    return fetch(`${url}/removeParticipantTask?uid=${uid}&email=${email}&proyId=${proyId}&taskId=${taskId}&groupId=${groupId}`, modeF)
         .then(res => {
             return res
         })
@@ -73,10 +73,10 @@ export const removeUserTask=(uid, email, proyId, taskId) => {
  * @param  taskId id de la tarea
  * @param  file Imagen que se desea subir
  */
-export const uploadImage = (proyId, taskId, file) => {
+export const uploadImage = (proyId, taskId, groupId, file) => {
     storage().ref(`/${proyId}/${taskId}/${file.name}`).put(file)
     storage().ref(`/${proyId}/${taskId}/${file.name}`).getDownloadURL().then(res => {
-        fetch(`${url}/setImageTask?proyId=${proyId}&taskId=${taskId}&imgUrl=${res}`, modeF)
+        fetch(`${url}/setImageTask?proyId=${proyId}&taskId=${taskId}&imgUrl=${res}&groupId=${groupId}`, modeF)
     })
 }
 
@@ -87,9 +87,9 @@ export const uploadImage = (proyId, taskId, file) => {
  * @param  taskId id de la tarea
  * @param  filename nombre de la imagen
  */
-export const removeImage = (proyId, taskId, filename) => {
+export const removeImage = (proyId, taskId, groupId, filename) => {
     storage().ref(`/${proyId}/${taskId}/${filename}`).delete()
-    fetch(`${url}/setImageTask?proyId=${proyId}&taskId=${taskId}&imgUrl=null`, modeF)
+    fetch(`${url}/setImageTask?proyId=${proyId}&taskId=${taskId}&imgUrl=null&groupId=${groupId}`, modeF)
 }
 
 /**
@@ -97,8 +97,8 @@ export const removeImage = (proyId, taskId, filename) => {
  * @param  proyectID Id del proyecto o padre
  * @param  cb callback para la base de datos
  */
-export const getAllTask = (proyectID, cb) => {
-    database().ref(`/proyects/${proyectID}/tasks`).on('value', cb)
+export const getAllTask = (proyectID, groupId, cb) => {
+    database().ref(`/groups/${groupId}/proyects/${proyectID}/tasks`).on('value', cb)
 } 
 
 /**
@@ -107,6 +107,6 @@ export const getAllTask = (proyectID, cb) => {
  * @param  taskId id de la tarea
  * @param  cb callback para obtener los datos
  */
-export const getAllUsers = (proyId, taskId, cb) => {
-    database().ref(`/proyects/${proyId}/tasks/${taskId}`).on('value', cb)
+export const getAllUsers = (proyId, groupId, taskId, cb) => {
+    database().ref(`/groups/${groupId}/proyects/${proyId}/tasks/${taskId}`).on('value', cb)
 }

@@ -319,6 +319,7 @@ exports.removeParticipantTask = functions.https.onRequest((req, res) => {
     const email = req.query.email;
     const proyId = req.query.proyId;
     const taskId = req.query.taskId;
+    const groupId = req.query.groupId;
 
     var user = (uid != 0) ? uid : email;
 
