@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import { Grid, Button, TextField } from '@material-ui/core'
 import './BoxLogin.css'
 import {auth} from '../../data/firebase'
+import {signupSocialBackend } from '../../data/user'
 
 export default class BoxLogin extends Component {
 
@@ -10,12 +11,32 @@ export default class BoxLogin extends Component {
         this.handleAuthGoogle = this.handleAuthGoogle.bind(this)
         this.handleAuthFacebook = this.handleAuthFacebook.bind(this)
         this.handleAuthTwitter = this.handleAuthTwitter.bind(this)
+        this.handleAuthEmail = this.handleAuthEmail.bind(this)
+    }
+
+    handleAuthEmail(e) {
+        e.preventDefault()
+        let email = e.target.email.value
+        let password = e.target.password.value
+        auth().signInWithEmailAndPassword(email, password)
+            .then(res => {
+                if (res.user) {
+                    window.location = '/desk'
+                }else {
+                    alert("Erro correo o contraseña incorrecta")
+                }
+            })
+            .catch(err => {
+                console.log(err)
+            })
     }
 
     handleAuthTwitter(){
         auth().signInWithPopup(new auth.TwitterAuthProvider())
             .then(res => {
-                console.log(res)
+                let uid = res.user.uid
+                signupSocialBackend(uid, 'null')
+                window.location = '/desk'
             })
             .catch(err =>  console.log(err))
     }
@@ -23,7 +44,9 @@ export default class BoxLogin extends Component {
     handleAuthFacebook(){
         auth().signInWithPopup(new auth.FacebookAuthProvider())
             .then(res => {
-                console.log(res)
+                let uid = res.user.uid
+                signupSocialBackend(uid, 'null')
+                window.location = '/desk'
             })
             .catch(err => console.log(err))
     }
@@ -31,7 +54,9 @@ export default class BoxLogin extends Component {
     handleAuthGoogle(){
         auth().signInWithPopup(new auth.GoogleAuthProvider())
             .then(res => {
-                console.log(res)
+                let uid = res.user.uid
+                signupSocialBackend(uid, 'null')
+                window.location = '/desk'
             })
             .catch(err => console.log(err))
     }
@@ -59,7 +84,7 @@ export default class BoxLogin extends Component {
                         </Grid>
                     </Grid>
                 </div>
-                <form className="mt-3" >
+                <form className="mt-3" onSubmit={this.handleAuthEmail} >
                     <div>
                         <TextField
                             label="Email"
@@ -76,7 +101,7 @@ export default class BoxLogin extends Component {
                             type="password"
                         />
                     </div>
-                    <button className="btn btn-outline-light mt-5" >
+                    <button type="submit" className="btn btn-outline-light mt-5" >
                         Empezar
                     </button>
                 </form>
