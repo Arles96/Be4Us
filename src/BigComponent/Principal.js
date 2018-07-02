@@ -13,11 +13,19 @@ export default class Principal extends Component {
     constructor() {
         super()
         this.state = {
-            counter: 0
+            counter: 0, 
+            hola : null
         }
     }
 
+    componentDidMount(){
+        this.setState({
+            hola : "Hola mundo"
+        })
+    }
+
     render() {
+        console.log(this.state.hola)
         return (
             <div>
                 <Navbar />
