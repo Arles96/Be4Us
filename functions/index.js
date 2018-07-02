@@ -97,16 +97,16 @@ exports.signUpThirdParty = functions.https.onRequest((req, res) => {
 exports.signUp = functions.https.onRequest((req, res) => {
     const uid = req.query.uid;
     const email = req.query.email;
-    const nombre = req.query.nombre;
+    const name = req.query.name;
     const password = req.query.password;
     const empresa = req.query.empresa;
-    console.log(uid)
+    
     var response = false;
 
     const data = {
         email: email,
         password: password,
-        nombre: nombre,
+        name: name,
         empresa: empresa
     }
 
