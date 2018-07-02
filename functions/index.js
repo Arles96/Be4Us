@@ -397,3 +397,29 @@ exports.removeParticipantGroup = functions.https.onRequest((req, res) => {
 
     res.send(true);
 });
+
+/*#################################################
+                    Imagenes
+#################################################*/
+
+exports.setImageGroup = functions.https.onRequest((req, res) => {
+    const groupId = req.query.groupId;
+    const imgUrl= req.query.imgUrl;
+    const data = {}
+    data['/groups/' + groupId + "/imageUrl/"] = imgUrl;
+
+    admin.database().ref().update(data);
+
+    res.send(true);
+});
+
+exports.setImageProyect = functions.https.onRequest((req, res) => {
+    const proyId = req.query.proyId;
+    const imgUrl= req.query.imgUrl;
+    const data = {}
+    data['/proyects/' + proyId + "/imageUrl/"] = imgUrl;
+
+    admin.database().ref().update(data);
+
+    res.send(true);
+});
