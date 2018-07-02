@@ -100,7 +100,7 @@ exports.signUp = functions.https.onRequest((req, res) => {
     const name = req.query.name;
     const password = req.query.password;
     const empresa = req.query.empresa;
-    
+
     var response = false;
 
     const data = {
@@ -163,6 +163,10 @@ exports.addProyect = functions.https.onRequest((req, res) => {
     //Agregado a lista de proyectos del usuario
     dbS.collection("Users").doc(user).collection("ProyList").doc(newKey).set({groupId: groupId});
 
+    const dataUp = {}
+    dataUp['/groups/' + groupId + "/proyList/" + newKey] = title;
+    admin.database().ref().update(dataUp);
+
     res.send(true);
 });
 
@@ -216,6 +220,7 @@ exports.addParticipant = functions.https.onRequest((req, res) => {
     const uid = req.query.uid;
     const email = req.query.email;
     const proyId = req.query.proyId;
+    const groupId = req.query.groupId;
 
     var user = (uid != 0) ? uid : email;
     
@@ -230,6 +235,8 @@ exports.addParticipant = functions.https.onRequest((req, res) => {
 
     admin.database().ref().update(data);
 
+    dbS.collection("Users").doc(user).collection("ProyList").doc(proyId).set({groupId: groupId});
+
     res.send(true);
 });
 
@@ -241,6 +248,7 @@ exports.removeParticipant = functions.https.onRequest((req, res) => {
     var user = (uid != 0) ? uid : email;
 
     admin.database().ref('/proyects/' + proyId + "/participants/" + user).remove();
+    dbS.collection("Users").doc(user).collection("ProyList").doc(proyId).remove();
 
     res.send(true);
 });
@@ -278,6 +286,8 @@ exports.removeTodo = functions.https.onRequest((req, res) => {
 
     admin.database().ref('/proyects/' + proyId + "/tasks/" + taskId).remove();
 
+    dbS.collection("Users").doc(user).collection("TaskList").doc(newKey).remove();
+
     res.send(true);
 });
 
@@ -294,6 +304,8 @@ exports.addParticipantTask = functions.https.onRequest((req, res) => {
 
     admin.database().ref().update(data);
 
+    dbS.collection("Users").doc(user).collection("TaskList").doc(taskId).set({proyId:proyId});
+
     res.send(true);
 });
 
@@ -307,9 +319,81 @@ exports.removeParticipantTask = functions.https.onRequest((req, res) => {
 
     admin.database().ref('/proyects/' + proyId + "/tasks/" + taskId + "/participants/" + user).remove();
 
+    dbS.collection("Users").doc(user).collection("TaskList").doc(taskId).remove();
+
     res.send(true);
 });
 
 /*#################################################
                     Grupos
 #################################################*/
+exports.addGroup = functions.https.onRequest((req, res) => {
+    const uid = req.query.uid;
+    const email = req.query.email;
+    const title = req.query.title;
+    const content = req.query.content;
+    const dueDate = req.query.dueDate;
+
+    var user = (uid != 0) ? uid : email;
+
+    const data = {
+        owner: user,
+        title: title,
+        content: content,
+        dueDate: dueDate
+    }
+
+    //Agregado a realtime db
+    var newKey = admin.database().ref('/groups/').push().key;
+
+    admin.database().ref('/groups/' + newKey).set(data);
+
+    dbS.collection("Users").doc(user).collection("GroupList").doc(newKey).set({empty: ""});
+
+    res.send(true);
+});
+
+exports.deleteGroup = functions.https.onRequest((req, res) => {
+    const uid = req.query.uid;
+    const email = req.query.email;
+    const groupId = req.query.groupId;
+
+    var user = (uid != 0) ? uid : email;
+    //Agregado a realtime db
+    admin.database().ref('/group/' + groupId).remove();
+
+    dbS.collection("Users").doc(user).collection("GroupList").doc(groupId).remove();
+
+    res.send(true);
+});
+
+exports.addParticipantGroup = functions.https.onRequest((req, res) => {
+    const uid = req.query.uid;
+    const email = req.query.email;
+    const groupId = req.query.groupId;
+
+    var user = (uid != 0) ? uid : email;
+
+    const data = {}
+    data['/groups/' + groupId + "/participants/" + user] = "uid";
+
+    admin.database().ref().update(data);
+
+    dbS.collection("Users").doc(user).collection("GroupList").doc(groupId).set({empty: ""});
+
+    res.send(true);
+});
+
+exports.removeParticipantGroup = functions.https.onRequest((req, res) => {
+    const uid = req.query.uid;
+    const email = req.query.email;
+    const groupId = req.query.groupId;
+
+    var user = (uid != 0) ? uid : email;
+
+    admin.database().ref('/groups/' + groupId + "/participants/" + user).remove();
+
+    dbS.collection("Users").doc(user).collection("GroupList").doc(groupId).set({empty: ""});
+
+    res.send(true);
+});
