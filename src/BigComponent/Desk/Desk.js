@@ -6,7 +6,6 @@ import Board from '../../components/DeskComponents/Board/Board'
 import ElementManager from '../../components/DeskComponents/ElementManager/ElementManager'
 import { auth } from '../../data/firebase'
 import { getAllGroups } from '../../data/group'
-//import BottomNavigation from '../../components/DeskComponents/BottomNavigation/BottomNavigation'
 
 class Desk extends Component {
 
@@ -25,38 +24,6 @@ class Desk extends Component {
         this.handleOpenModal = this.handleOpenModal.bind(this)
         this.handleChangeEntity = this.handleChangeEntity.bind(this)
         this.handleGoBack = this.handleGoBack.bind(this)
-        this.handleUpdateChildEntities = this.handleUpdateChildEntities.bind(this)
-    }
-
-    handleUpdateChildEntities(identifier, entity) {
-        let list = []
-        if (identifier===1) {
-            let groups = this.state.groups
-            groups.map(doc => {
-                doc.forEach(pro => {
-                    if (pro.key==="proyects"){
-                        pro.forEach(pro2 => {
-                            list.push(pro2)
-                        })
-                        this.setState({
-                            entities : list, 
-                        })
-                    }
-                })
-            })
-        }
-        if (identifier===2){
-            entity.forEach(doc => {
-                if (doc.key==="tasks") {
-                    doc.forEach(pro => {
-                        list.push(pro)
-                    })
-                }
-            })
-            this.setState({
-                entities : list
-            })
-        }
     }
 
     handleGoBack() {
@@ -147,26 +114,70 @@ class Desk extends Component {
                     user={this.state.user}
                     identifier={this.state.identifier}
                     path = {this.state.path}
-                    update = {this.handleUpdateChildEntities}
                 />
             )
         }
     }
 
-    componentDidMount() {
+    componentWillMount() {
         auth().onAuthStateChanged((user) => {
             if (user) {
                 getAllGroups((snapshot)=> {
                     let list = []
                     snapshot.forEach(doc => {
-                        //if (doc.val().owner===user.uid){
+                        if (doc.val().owner===user.uid){
                             list.push(doc)
-                        //}
+                        }
                     })
                     this.setState({
                         groups : list,
                         entities : list
                     })
+                    if (this.state.identifier===1){
+                        list = []
+                        let group = this.state.path[0]
+                        this.state.groups.map(doc=> {
+                            if (doc.key===group.key) {
+                                doc.forEach(pro => {
+                                    if(pro.key==="proyects"){
+                                        pro.forEach(pro2 => {
+                                            list.push(pro2)
+                                        })
+                                        this.setState({
+                                            entities : list
+                                        })
+                                    }
+                                })
+                            }
+                        })
+                    }
+                    if (this.state.identifier===2){
+                        list = []
+                        let group = this.state.path[0]
+                        let proy = this.state.path[1]
+                        this.state.groups.map(doc=> {
+                            if (doc.key===group.key) {
+                                doc.forEach(pro => {
+                                    if(pro.key==="proyects"){
+                                        pro.forEach(pro2 => {
+                                            if (pro2.key===proy.key){
+                                                pro2.forEach(task => {
+                                                    if (task.key==="tasks"){
+                                                        task.forEach(task2 => {
+                                                            list.push(task2)
+                                                        })
+                                                        this.setState({
+                                                            entities : list
+                                                        })
+                                                    }
+                                                })
+                                            }
+                                        })
+                                    }
+                                })
+                            }
+                        })
+                    }
                 })
                 this.setState({user})
             } else {

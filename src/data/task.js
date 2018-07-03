@@ -8,7 +8,7 @@ import {database, url, modeF, storage} from './firebase'
  * @param  duedate Fecha limite
  */
 export const insertTask = (proyId, groupId, title, content, duedate) => {
-    return fetch(`${url}/addTodo?proyID=${proyId}&title=${title}&content=${content}&dueDate=${duedate}&groupId${groupId}`, modeF)
+    return fetch(`${url}/addTodo?proyId=${proyId}&title=${title}&content=${content}&dueDate=${duedate}&groupId=${groupId}`, modeF)
         .then(res => {
             return res
         })

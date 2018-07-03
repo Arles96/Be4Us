@@ -11,6 +11,7 @@ class ElementManager extends Component {
     constructor() {
         super();
         this.state = {
+            entity : null
         };
         this.handleSubmit = this.handleSubmit.bind(this)
     }
@@ -36,7 +37,6 @@ class ElementManager extends Component {
             let data = insertProject(uid, email, description, title, fatherId, date)
             Promise.resolve(data).then(res => {
                 if (res){
-                    this.props.update(this.props.identifier, fatherId)
                     alert("Se ha agregado un proyecto")
                 }else {
                     alert("No se pudo agregar el proyecto")
@@ -45,14 +45,30 @@ class ElementManager extends Component {
         }else {
             let groupId = this.props.path[0].key
             let proyId = this.props.path[1].key
+            console.log("group " + groupId + ", proyeTD" + proyId)
             let data = insertTask(proyId, groupId, title, description, date)
             Promise.resolve(data).then(res => {
                 if (res) {
-                    this.props.update(this.props.identifier, proyId)
                     alert("Se ha agregado una tarea")
                 }else {
                     alert("No se pudo agregar la tarea")
                 }
+            })
+        }
+    }
+
+    componentDidMount(){
+        if (this.props.identifier===0){
+            this.setState({
+                entity : "Grupo"
+            })
+        }else if (this.props.identifier===1){
+            this.setState({
+                entity : "Proyecto"
+            })
+        }else {
+            this.setState({
+                entity : "Tarea"
             })
         }
     }
@@ -65,7 +81,7 @@ class ElementManager extends Component {
                     <div className="modal-dialog" role="document">
                         <div className="modal-content">
                             <div className="modal-header">
-                                <h5 className="modal-title" id="exampleModalLabel">Agregar</h5>
+                                <h5 className="modal-title" id="exampleModalLabel">Agregar {this.state.entity}</h5>
                                 <button type="reset" onClick={this.props.closeModal}  className="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
