@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import './ElementManager.css';
 import {} from '../../../data/firebase'
-import  {addGroup, uploadImageGroup} from '../../../data/group'
+import  {addGroup} from '../../../data/group'
 import {insertProject} from '../../../data/project'
 import {insertTask} from '../../../data/task'
-// import { insertProject } from '../../../data/project'
 
 class ElementManager extends Component {
 

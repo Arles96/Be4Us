@@ -32,7 +32,7 @@ class Desk extends Component {
             let groups = this.state.groups
             path.pop()
             let list = []
-            groups.map(doc => {
+            groups.forEach(doc => {
                 doc.forEach(pro => {
                     if (pro.key==="proyects"){
                         pro.forEach(pro2 => {
@@ -136,7 +136,7 @@ class Desk extends Component {
                     if (this.state.identifier===1){
                         list = []
                         let group = this.state.path[0]
-                        this.state.groups.map(doc=> {
+                        this.state.groups.forEach(doc=> {
                             if (doc.key===group.key) {
                                 doc.forEach(pro => {
                                     if(pro.key==="proyects"){
@@ -155,7 +155,7 @@ class Desk extends Component {
                         list = []
                         let group = this.state.path[0]
                         let proy = this.state.path[1]
-                        this.state.groups.map(doc=> {
+                        this.state.groups.forEach(doc=> {
                             if (doc.key===group.key) {
                                 doc.forEach(pro => {
                                     if(pro.key==="proyects"){
