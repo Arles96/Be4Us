@@ -61,9 +61,8 @@ class AboutUs extends Component {
                     <div className="col-sm-6" >
                         <h2 className="title-about ml-3" >¿Qué es <i id="color-soft">Be4Us</i>?</h2>
                         <p className="text-about ml-3 mt-4" >
-                            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt 
-                            ut labore et dolore magna aliqua. Ut enim ad minim veniam. Duis aute irure dolor in reprehenderit in 
-                            voluptate velit esse cillum dolore eu fugiat nulla pariatur."
+                            Aplicación web para la gestión de grupos, proyecto y tareas. Creada por estudiantes
+                            de Unitec cuyos nombres son Arles Cerrato, Cristhian Alvarez y Dario Mendoza
                         </p>
                     </div>
                     <div className="col-sm-6" >

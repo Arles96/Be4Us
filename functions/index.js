@@ -22,8 +22,10 @@ exports.confirmLoginThirdParty = functions.https.onRequest((req, res) => {
             console.log("Usuario no existe.");
             response = false;
         }
+        return doc
     }).then((docRef) =>{
         res.send(response);
+        return docRef
     })
     .catch((error) => {
         console.log("Error getting document:", error);
@@ -46,7 +48,7 @@ exports.confirmLogin = functions.https.onRequest((req, res) => {
     user.get().then((doc) =>{
         if (doc.exists) {
             console.log(doc.data().password, password)
-            if(doc.data().password == password){
+            if(doc.data().password === password){
                 console.log("Login sucessful");
                 response = true;
             }
@@ -54,8 +56,10 @@ exports.confirmLogin = functions.https.onRequest((req, res) => {
             console.log("Usuario no existe.");
             response = false;
         }
+        return doc
     }).then((user)=> {
         res.send(response);
+        return user
     })
     .catch((error) => {
         console.log("Error getting document:", error);
@@ -84,9 +88,11 @@ exports.signUpThirdParty = functions.https.onRequest((req, res) => {
             response = true;
             dbS.collection("Users").doc(uid).set(data);
         }
+        return doc
     })
     .then((user) => {
         res.send(response);
+        return user
     })
     .catch((error)=> {
         console.log("Error getting document:", error);
@@ -119,9 +125,11 @@ exports.signUp = functions.https.onRequest((req, res) => {
             response = true;
             dbS.collection("Users").doc(uid).set(data);
         }
+        return doc
     })
     .then((user) => {
         res.send(response);
+        return user
     })
     .catch((error) => {
         console.log("Error getting document:", error);
