@@ -19,7 +19,7 @@ export const auth = firebase.auth
 //Exportando el storage para guardar imagenes
 export const storage = firebase.storage
 //Exportando la url de las cloud functions
-export const url  = "http://localhost:5000/b4us-e9e2a/us-central1"
+export const url  = "https://us-central1-b4us-e9e2a.cloudfunctions.net"
 //modo de configuracion del fetch
 export const modeF = {
     mode: 'no-cors'
