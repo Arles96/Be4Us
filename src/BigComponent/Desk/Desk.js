@@ -6,165 +6,187 @@ import Board from '../../components/DeskComponents/Board/Board'
 import ElementManager from '../../components/DeskComponents/ElementManager/ElementManager'
 import { auth } from '../../data/firebase'
 import { getAllGroups } from '../../data/group'
-import { getAllProjects } from '../../data/project'
-// import { auth } from '../../data/firebase'
 //import BottomNavigation from '../../components/DeskComponents/BottomNavigation/BottomNavigation'
 
 class Desk extends Component {
 
     constructor() {
         super();
-
         this.state = {
-            levels: [],
-            currentLevel: 0,
-            currentKey: 0,
-            deep: false,
-            path: [],
-            create: false,
-            management: {
-                action: -1
-            },
-            user: null
+            groups : [],
+            entities : [],
+            path : [],
+            entity : null,
+            identifier : 0,
+            user: null, 
+            modal : false
         }
-
-        this.ramKey = this.ramKey.bind(this);
-        this.onGO = this.onGO.bind(this);
-        this.onBACK = this.onBACK.bind(this);
-        this.getDeep = this.getDeep.bind(this);
-        this.getLevels = this.getLevels.bind(this);
-        this.getLevelsDB = this.getLevelsDB.bind(this);
-        this.createNew = this.createNew.bind(this);
-        this.onDone = this.onDone.bind(this);
+        this.handleCloseModal = this.handleCloseModal.bind(this)
+        this.handleOpenModal = this.handleOpenModal.bind(this)
+        this.handleChangeEntity = this.handleChangeEntity.bind(this)
+        this.handleGoBack = this.handleGoBack.bind(this)
+        this.handleUpdateChildEntities = this.handleUpdateChildEntities.bind(this)
     }
 
-    getLevelsDB() {
-        let groups = [];
-
-        getAllGroups((element) => {
-            element.forEach((data) => {
-                //console.log(data.val())
-                //console.log(this.state.user.uid)
-                if (data.val().owner === this.state.user.uid) {
-                    groups.push({
-                        id: data.key,
-                        content: data.val().content,
-                        deadLine: data.val().dueDate,
-                        image: data.val().imageUrl,
-                        admin: this.state.user,
-                        users: data.val().participants,
-                        title: data.val().title,
-                        levels: data.val().levels,
-                        date: data.val().creationDate
-                    });
+    handleUpdateChildEntities(identifier, entity) {
+        let list = []
+        if (identifier===1) {
+            let groups = this.state.groups
+            groups.map(doc => {
+                doc.forEach(pro => {
+                    if (pro.key==="proyects"){
+                        pro.forEach(pro2 => {
+                            list.push(pro2)
+                        })
+                        this.setState({
+                            entities : list, 
+                        })
+                    }
+                })
+            })
+        }
+        if (identifier===2){
+            entity.forEach(doc => {
+                if (doc.key==="tasks") {
+                    doc.forEach(pro => {
+                        list.push(pro)
+                    })
                 }
             })
-        })
+            this.setState({
+                entities : list
+            })
+        }
+    }
 
-        console.log(groups)
-        return groups;
+    handleGoBack() {
+        let path = this.state.path
+        if (this.state.identifier===2){
+            let groups = this.state.groups
+            path.pop()
+            let list = []
+            groups.map(doc => {
+                doc.forEach(pro => {
+                    if (pro.key==="proyects"){
+                        pro.forEach(pro2 => {
+                            list.push(pro2)
+                        })
+                        this.setState({
+                            identifier : 1, 
+                            entities : list, 
+                            path : path
+                        })
+                    }
+                })
+            })
+        }else {
+            path.pop()
+            this.setState({
+                identifier : 0,
+                entities : this.state.groups,
+                path : path
+            })
+        }
+    }
+
+    handleOpenModal(){
+        this.setState({
+            modal : true
+        })
+    }
+
+    handleCloseModal() {
+        this.setState({
+            modal : false
+        })
+    }
+
+    handleChangeEntity(entity) {
+        let path = this.state.path
+        if (this.state.identifier===0) {
+            path.push(entity)
+            let list = []
+            entity.forEach(doc => {
+                //console.log(doc.key)
+                if (doc.key==="proyects") {
+                    doc.forEach(pro => {
+                        list.push(pro)
+                    })
+                }
+            })
+            this.setState({
+                entities : list,
+                identifier : 1,
+                path : path
+            })
+        }
+        if (this.state.identifier===1){
+            path.push(entity)
+            let list = []
+            entity.forEach(doc => {
+                //console.log(doc.key)
+                if (doc.key==="tasks") {
+                    doc.forEach(pro => {
+                        list.push(pro)
+                    })
+                }
+            })
+            this.setState({
+                entities : list,
+                identifier : 2,
+                path : path
+            })
+        }
+    }
+
+    handleShowModal() {
+        if (this.state.modal) {
+            return (
+                <ElementManager 
+                    closeModal={this.handleCloseModal} 
+                    user={this.state.user}
+                    identifier={this.state.identifier}
+                    path = {this.state.path}
+                    update = {this.handleUpdateChildEntities}
+                />
+            )
+        }
     }
 
     componentDidMount() {
         auth().onAuthStateChanged((user) => {
             if (user) {
-                let image1 = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQBfR8vP9Jv6HsU7LTM7r8FY3dUkExO-OH2nARhfabPRWbM1etRGQ";
-
-
-
-                let lastLevel1 = [
-                    { admin: null, users: [], visitCount: 0, enabled: true, visible: 0, level: 2, title: "Prueba", date: "##/##/20##", deadLine: "", image: image1, description: "Description", color: "", fatherId: 0, id: 0, key: 0, levels: null },
-                    { admin: null, users: [], visitCount: 0, enabled: true, visible: 0, level: 2, title: "Investigacion", date: "##/##/20##", deadLine: "", image: image1, description: "Description", color: "", fatherId: 0, id: 1, key: 1, levels: null }
-                ];
-
-                let lastLevel2 = [
-                    { admin: null, users: [], visitCount: 0, enabled: true, visible: 0, level: 2, title: "Entrega", date: "##/##/20##", deadLine: "", image: image1, description: "Description", color: "", fatherId: 1, id: 0, key: 0, levels: null },
-                    { admin: null, users: [], visitCount: 0, enabled: true, visible: 0, level: 2, title: "Avance", date: "##/##/20##", deadLine: "", image: image1, description: "Description", color: "", fatherId: 1, id: 1, key: 1, levels: null }
-                ];
-
-                let subLevels1 = [
-                    { admin: null, users: [], visitCount: 0, enabled: true, visible: 0, level: 1, title: "DB", date: "##/##/20##", deadLine: "", image: image1, description: "Description", color: "", fatherId: 0, id: 0, key: 0, levels: lastLevel1 },
-                    { admin: null, users: [], visitCount: 0, enabled: true, visible: 0, level: 1, title: "Ux", date: "##/##/20##", deadLine: "", image: image1, description: "Description", color: "", fatherId: 0, id: 1, key: 1, levels: lastLevel2 }
-                ];
-
-                let subLevels2 = [
-                    { admin: null, users: [], visitCount: 0, enabled: true, visible: 0, level: 1, title: "Techo", date: "##/##/20##", deadLine: "", image: image1, description: "Description", color: "", fatherId: 1, id: 0, key: 0, levels: lastLevel1 },
-                    { admin: null, users: [], visitCount: 0, enabled: true, visible: 0, level: 1, title: "Terra", date: "##/##/20##", deadLine: "", image: image1, description: "Description", color: "", fatherId: 1, id: 1, key: 1, levels: lastLevel2 }
-                ];
-
-                let levels = [
-                    { admin: null, users: [], visitCount: 0, enabled: true, visible: 0, level: 0, title: "Xmen", date: "##/##/20##", image: image1, description: "Description", color: "", fatherId: -1, id: 0, key: 0, levels: subLevels1 },
-                    { admin: null, users: [], visitCount: 0, enabled: true, visible: 0, level: 0, title: "FSociety", date: "##/##/20##", image: image1, description: "Description", color: "", fatherId: -1, id: 1, key: 1, levels: subLevels2 }
-                ];
-
-                this.setState((element) => ({
-                    user: user,
-                    levels: this.getLevelsDB()
-                }));
+                getAllGroups((snapshot)=> {
+                    let list = []
+                    snapshot.forEach(doc => {
+                        //if (doc.val().owner===user.uid){
+                            list.push(doc)
+                        //}
+                    })
+                    this.setState({
+                        groups : list,
+                        entities : list
+                    })
+                })
+                this.setState({user})
             } else {
                 window.location = '/Login';
             }
         });
 
     }
-
-    ramKey() {
-        let fecha = new Date();
-        return "Y" + fecha.getFullYear() + "M" + (fecha.getMonth() + 1) + "D" + fecha.getDate() + "H" + fecha.getHours() + "Mi" + fecha.getMinutes() + "S" + fecha.getSeconds() + "m" + fecha.getMilliseconds() + "";
-    }
-
-    onBACK() {
-        this.setState((element) => ({
-            currentLevel: element.currentLevel - 1
-        }));
-        this.state.path.pop();
-        if (this.state.path.length === 0) {
-            this.setState((element) => ({
-                deep: false
-            }));
-        }
-    }
-
-    onGO(currentKey) {
-        this.setState((element) => ({
-            currentKey: currentKey,
-            deep: true
-        }));
-        this.state.path.push(currentKey);
-    }
-
-    getDeep() {
-        return this.state.deep;
-    }
-
-    createNew() {
-        this.setState((element) => ({
-            management: {
-                action: 0
-            }
-        }))
-    }
-
-    getLevels() {
-        return this.state.levels;
-    }
-
-    onDone() {
-        this.setState((e) => ({
-            management: {
-                action: -1
-            }
-        }));
-    }
-
-
+    
     render() {
         return (
             <div className="Desk">
-                <ElementManager levels={this.getLevels} path={this.state.path} management={this.state.management} onCreate={this.onDone} />
-                <Header isDeep={this.getDeep} onBACK={this.onBACK} createNew={this.createNew} />
-                <Path levels={this.getLevels} path={this.state.path} />
-                <Board onGO={this.onGO} levels={this.getLevels} path={this.state.path} />
+                {this.handleShowModal()}
+                <Header openModal={this.handleOpenModal} goBack={this.handleGoBack} identifier={this.state.identifier} />
+                <Path path={this.state.path} />
+                <Board 
+                    entities={this.state.entities}  
+                    changeEntity={this.handleChangeEntity}
+                    identifier={this.state.identifier}
+                />
             </div>
         )
     }

@@ -11,37 +11,20 @@ class Path extends Component {
     }
 
     render() {
-        let paths = [];
-
-        // Levels
-        if (this.props.levels() != null) {
-            let levels = this.props.levels();
-            for (let i = 0; i < this.props.path.length; i++) {
-
-
-                // Current Level
-                let className = "";
-                if (i === 0) {
-                    className = "bodies"
-                } else if (i === 1) {
-                    className = "projects"
-                } else {
-                    className = "tasks"
-                }
-                // eslint-disable-next-line
-                paths.push(<a className={className} key={this.state.id++} >{levels[this.props.path[i]].title}/</a>)
-                levels = levels[this.props.path[i]].levels
+        console.log()
+        let data = this.props.path.map((doc, i) => {
+            if (i===0) {
+                return <a className="bodies" key={i} >{doc.val().title}</a>
+            }else if (i===1){
+                return <a className="projects" key={i} >>>{doc.val().title}</a>
+            }else {
+                return <a className="tasks" key={i} >>>{doc.val().title}</a>
             }
-
-        } else {
-            paths.push(<a className="Loading-path" key="-2">Cargando</a>)
-        }
-
-
+        })
         return (
             <div className="Path">
                 <a className="Paths" >>> </a>
-                {paths}
+                {data}
             </div>
         );
     }
