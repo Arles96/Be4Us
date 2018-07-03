@@ -14,7 +14,12 @@ class Board extends Component {
     render() {
         if (this.props.entities.length>0){
             let data = this.props.entities.map((doc, i) => {
-                return <Element changeEntity={this.props.changeEntity} data={doc} key={i} />
+                return <Element 
+                    delete={this.props.delete}
+                    identifier={this.props.identifier} 
+                    changeEntity={this.props.changeEntity} 
+                    data={doc} 
+                    key={i} />
             })
             return (
                 <div className="Board">

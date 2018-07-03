@@ -9,7 +9,7 @@
     cursor: pointer;
     background:  rgba(255, 209, 133, 0.8) !important;
     color: white !important;
-    align-items: center !important;
+    /*align-items: center !important;*/
 }
 
 .Img {
@@ -17,6 +17,10 @@
     margin: auto !important;
     align-items: center !important;
     text-align: center;
+}
+
+.remove-element {
+    font-size: 2rem;
 }
 
 

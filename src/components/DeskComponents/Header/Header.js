@@ -7,8 +7,6 @@ class Header extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {
-        };
         this.handleSignOut = this.handleSignOut.bind(this)
     }
 

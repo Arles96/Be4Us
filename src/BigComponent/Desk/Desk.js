@@ -5,7 +5,9 @@ import Path from '../../components/DeskComponents/Path/Path'
 import Board from '../../components/DeskComponents/Board/Board'
 import ElementManager from '../../components/DeskComponents/ElementManager/ElementManager'
 import { auth } from '../../data/firebase'
-import { getAllGroups } from '../../data/group'
+import {deleteProject} from '../../data/project'
+import {removeTask} from '../../data/task'
+import { getAllGroups, deleteGroup } from '../../data/group'
 
 class Desk extends Component {
 
@@ -24,6 +26,53 @@ class Desk extends Component {
         this.handleOpenModal = this.handleOpenModal.bind(this)
         this.handleChangeEntity = this.handleChangeEntity.bind(this)
         this.handleGoBack = this.handleGoBack.bind(this)
+        this.handleRemoveEntity = this.handleRemoveEntity.bind(this)
+    }
+
+    handleRemoveEntity(key) {
+        console.log(key)
+        let uid = this.state.user.uid
+        let email = this.state.user.email
+        if (this.state.identifier===0) {
+            let data = deleteGroup(uid, email, key)
+            Promise.resolve(data).then(res => {
+                if (res) {
+                    alert("Se elimino un grupo")
+                }else {
+                    alert("Error al eliminar el grupo")
+                }
+            })
+        }else if (this.state.identifier===1){
+            let groupId = this.state.path[0].key
+            let data = deleteProject(uid, email, key, groupId)
+            Promise.resolve(data).then(res => {
+                if (res) {
+                    alert("Se elimino un proyecto")
+                    if (this.state.entities.length===0) {
+                        this.handleGoBack()
+                        console.log(this.state.identifier)
+                    }
+                }else {
+                    alert("Error al eliminar el proyecto")
+                }
+            })
+        }else {
+            let groupId = this.state.path[0].key
+            let proyId = this.state.path[1].key
+            let data = removeTask(proyId, groupId, key)
+            Promise.resolve(data).then(res => {
+                if (res) {
+                    if (this.state.entities.length===0) {
+                        this.handleGoBack()
+                        console.log(this.state.identifier)
+                    }
+                    alert("Se elimino una tarea")
+                }else {
+                    alert("Error al eliminar la tarea")
+                }
+            })
+        }
+        
     }
 
     handleGoBack() {
@@ -38,13 +87,13 @@ class Desk extends Component {
                         pro.forEach(pro2 => {
                             list.push(pro2)
                         })
-                        this.setState({
-                            identifier : 1, 
-                            entities : list, 
-                            path : path
-                        })
                     }
                 })
+            })
+            this.setState({
+                identifier : 1, 
+                entities : list, 
+                path : path
             })
         }else {
             path.pop()
@@ -197,6 +246,7 @@ class Desk extends Component {
                     entities={this.state.entities}  
                     changeEntity={this.handleChangeEntity}
                     identifier={this.state.identifier}
+                    delete={this.handleRemoveEntity}
                 />
             </div>
         )
