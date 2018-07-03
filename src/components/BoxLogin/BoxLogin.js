@@ -102,13 +102,16 @@ export default class BoxLogin extends Component {
                             type="password"
                         />
                     </div>
-                    <a href="./Signup" className="btn mt-5 toSignup" >
-                        No tengo una cuenta
-                    </a>
-                    <button type="submit" className="btn btn-outline-light mt-5" >
+                    <button type="submit" className="btn btn-outline-light mt-4" >
                         Empezar
                     </button>
                 </form>
+                <a href="/Signup" className="btn mt-2 toSignup" >
+                    No tengo una cuenta
+                </a>
+                <a href="/" className="btn mb-2 toSignup" >
+                    Regresar a la pagina principal
+                </a>
             </div>
         )
     }

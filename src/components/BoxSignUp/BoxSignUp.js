@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import './BoxSignUp.css'
 import {InputLabel, FormControl, Input} from '@material-ui/core'
-import {signupBackend} from '../../data/user'
+import {signupBackend, signupSocialBackend} from '../../data/user'
 import { auth } from '../../data/firebase'
 
 export default class BoxSignUp extends Component {
@@ -9,6 +9,39 @@ export default class BoxSignUp extends Component {
     constructor(){
         super()
         this.handleSubmit = this.handleSubmit.bind(this)
+        this.handleAuthFacebook = this.handleAuthFacebook.bind(this)
+        this.handleAuthGoogle = this.handleAuthGoogle.bind(this)
+        this.handleAuthTwitter = this.handleAuthTwitter.bind(this)
+    }
+
+    handleAuthTwitter() {
+        auth().signInWithPopup(new auth.TwitterAuthProvider())
+            .then(res => {
+                let uid = res.user.uid
+                signupSocialBackend(uid, 'null')
+                window.location = '/desk'
+            })
+            .catch(err => console.log(err))
+    }
+
+    handleAuthFacebook() {
+        auth().signInWithPopup(new auth.FacebookAuthProvider())
+            .then(res => {
+                let uid = res.user.uid
+                signupSocialBackend(uid, 'null')
+                window.location = '/desk'
+            })
+            .catch(err => console.log(err))
+    }
+
+    handleAuthGoogle() {
+        auth().signInWithPopup(new auth.GoogleAuthProvider())
+            .then(res => {
+                let uid = res.user.uid
+                signupSocialBackend(uid, 'null')
+                window.location = '/desk'
+            })
+            .catch(err => console.log(err))
     }
 
     handleSubmit(e){
@@ -54,6 +87,9 @@ export default class BoxSignUp extends Component {
                         dolorum nulla magnam veniam sapiente, fugiat! Commodi sequi non animi ea dolor molestiae, 
                         quisquam iste, maiores. Nulla.
                     </p>
+                    <a href="/" className="mt-2 ref-home" >
+                        Regresar a la pagina Principal ...
+                    </a>
                 </div> 
                 <div className="col-sm-6 form-signup" >
                     <h3 className="text-center m-4" >Registro</h3>
@@ -81,10 +117,14 @@ export default class BoxSignUp extends Component {
                         <hr className="line-signup" />
                         <div className="section-social mb-3" >
                             <div className="social-signup" >
-                                <i className="fab fa-facebook-square"></i>
+                                <i onClick={this.handleAuthFacebook} className="fab fa-facebook-square"></i>
                             </div>
-                            <div className="social-signup"><i className="fab fa-google-plus-g"></i></div>
-                            <div className="social-signup"><i className="fab fa-twitter"></i></div>
+                            <div className="social-signup">
+                                <i onClick={this.handleAuthGoogle} className="fab fa-google-plus-g"></i>
+                            </div>
+                            <div className="social-signup">
+                                <i onClick={this.handleAuthTwitter} className="fab fa-twitter"></i>
+                            </div>
                         </div> 
                     </form>
                 </div>
