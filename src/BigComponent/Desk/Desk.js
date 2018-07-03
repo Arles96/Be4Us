@@ -30,7 +30,6 @@ class Desk extends Component {
     }
 
     handleRemoveEntity(key) {
-        console.log(key)
         let uid = this.state.user.uid
         let email = this.state.user.email
         if (this.state.identifier===0) {
@@ -48,10 +47,6 @@ class Desk extends Component {
             Promise.resolve(data).then(res => {
                 if (res) {
                     alert("Se elimino un proyecto")
-                    if (this.state.entities.length===0) {
-                        this.handleGoBack()
-                        console.log(this.state.identifier)
-                    }
                 }else {
                     alert("Error al eliminar el proyecto")
                 }
@@ -62,10 +57,6 @@ class Desk extends Component {
             let data = removeTask(proyId, groupId, key)
             Promise.resolve(data).then(res => {
                 if (res) {
-                    if (this.state.entities.length===0) {
-                        this.handleGoBack()
-                        console.log(this.state.identifier)
-                    }
                     alert("Se elimino una tarea")
                 }else {
                     alert("Error al eliminar la tarea")
@@ -123,7 +114,6 @@ class Desk extends Component {
             path.push(entity)
             let list = []
             entity.forEach(doc => {
-                //console.log(doc.key)
                 if (doc.key==="proyects") {
                     doc.forEach(pro => {
                         list.push(pro)
@@ -140,7 +130,6 @@ class Desk extends Component {
             path.push(entity)
             let list = []
             entity.forEach(doc => {
-                //console.log(doc.key)
                 if (doc.key==="tasks") {
                     doc.forEach(pro => {
                         list.push(pro)
@@ -192,12 +181,12 @@ class Desk extends Component {
                                         pro.forEach(pro2 => {
                                             list.push(pro2)
                                         })
-                                        this.setState({
-                                            entities : list
-                                        })
                                     }
                                 })
                             }
+                        })
+                        this.setState({
+                            entities : list
                         })
                     }
                     if (this.state.identifier===2){
@@ -215,9 +204,6 @@ class Desk extends Component {
                                                         task.forEach(task2 => {
                                                             list.push(task2)
                                                         })
-                                                        this.setState({
-                                                            entities : list
-                                                        })
                                                     }
                                                 })
                                             }
@@ -225,6 +211,9 @@ class Desk extends Component {
                                     }
                                 })
                             }
+                        })
+                        this.setState({
+                            entities : list
                         })
                     }
                 })

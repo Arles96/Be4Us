@@ -290,7 +290,7 @@ exports.removeTodo = functions.https.onRequest((req, res) => {
 
     admin.database().ref('/groups/' + groupId + '/proyects/' + proyId + "/tasks/" + taskId).remove();
 
-    dbS.collection("Users").doc(user).collection("TaskList").doc(newKey).remove();
+    //dbS.collection("Users").doc(user).collection("TaskList").doc(newKey).remove();
 
     res.send(true);
 });
