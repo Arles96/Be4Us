@@ -14,7 +14,7 @@ exports.confirmLoginThirdParty = functions.https.onRequest((req, res) => {
 
     var user = dbS.collection("Users").doc(uid);
 
-    user.get().then(function(doc) {
+    user.get().then((doc) => {
         if (doc.exists) {
             console.log("Login sucessful");
             response = true;
@@ -22,10 +22,10 @@ exports.confirmLoginThirdParty = functions.https.onRequest((req, res) => {
             console.log("Usuario no existe.");
             response = false;
         }
-    }).then(function(docRef) {
+    }).then((docRef) =>{
         res.send(response);
     })
-    .catch(function(error) {
+    .catch((error) => {
         console.log("Error getting document:", error);
         response = false;
     });
@@ -43,7 +43,7 @@ exports.confirmLogin = functions.https.onRequest((req, res) => {
 
     var user = dbS.collection("Users").doc(uid);
 
-    user.get().then(function(doc) {
+    user.get().then((doc) =>{
         if (doc.exists) {
             console.log(doc.data().password, password)
             if(doc.data().password == password){
@@ -54,10 +54,10 @@ exports.confirmLogin = functions.https.onRequest((req, res) => {
             console.log("Usuario no existe.");
             response = false;
         }
-    }).then(function(user) {
+    }).then((user)=> {
         res.send(response);
     })
-    .catch(function(error) {
+    .catch((error) => {
         console.log("Error getting document:", error);
         res.send(false)
     });
@@ -77,7 +77,7 @@ exports.signUpThirdParty = functions.https.onRequest((req, res) => {
 
     var user = dbS.collection("Users").doc(uid);
 
-    user.get().then(function(doc) {
+    user.get().then((doc)=> {
         if (doc.exists) {
             console.log("Usuario ya existe.");
         } else {
@@ -85,10 +85,10 @@ exports.signUpThirdParty = functions.https.onRequest((req, res) => {
             dbS.collection("Users").doc(uid).set(data);
         }
     })
-    .then(function(user) {
+    .then((user) => {
         res.send(response);
     })
-    .catch(function(error) {
+    .catch((error)=> {
         console.log("Error getting document:", error);
         res.send(false)
     });
@@ -112,7 +112,7 @@ exports.signUp = functions.https.onRequest((req, res) => {
 
     var user = dbS.collection("Users").doc(uid);
 
-    user.get().then(function(doc) {
+    user.get().then((doc) => {
         if (doc.exists) {
             console.log("Usuario ya existe.");
         } else {
@@ -120,10 +120,10 @@ exports.signUp = functions.https.onRequest((req, res) => {
             dbS.collection("Users").doc(uid).set(data);
         }
     })
-    .then(function(user) {
+    .then((user) => {
         res.send(response);
     })
-    .catch(function(error) {
+    .catch((error) => {
         console.log("Error getting document:", error);
         res.send(false)
     });
@@ -144,7 +144,7 @@ exports.addProyect = functions.https.onRequest((req, res) => {
     var d = new Date();
     const creationDate = d.getFullYear() + "-" + d.getMonth() + "-" + d.getDate()
 
-    var user = (uid != 0) ? uid : email;
+    var user = (uid !== 0) ? uid : email;
 
     const data = {
         owner: user,
@@ -182,7 +182,7 @@ exports.updateProyect = functions.https.onRequest((req, res) => {
     var d = new Date();
     const creationDate = d.getFullYear() + "-" + d.getMonth() + "-" + d.getDate()
 
-    var user = (uid != 0) ? uid : email;
+    var user = (uid !== 0) ? uid : email;
 
     const data = {
         owner: user,
@@ -205,7 +205,7 @@ exports.deleteProyect = functions.https.onRequest((req, res) => {
     const proyId = req.query.proyId;
     const groupId = req.query.groupId;
 
-    var user = (uid != 0) ? uid : email;
+    var user = (uid !== 0) ? uid : email;
 
     //Borrando de realtime db y store
     admin.database().ref('/groups/' + groupId + '/proyects/' + proyId).remove();
@@ -223,7 +223,7 @@ exports.addParticipant = functions.https.onRequest((req, res) => {
     const proyId = req.query.proyId;
     const groupId = req.query.groupId;
 
-    var user = (uid != 0) ? uid : email;
+    var user = (uid !== 0) ? uid : email;
     
 
     /*var newKey = admin.database().ref('/proyects/' + proyId + "/participants/").push().key;
@@ -247,7 +247,7 @@ exports.removeParticipant = functions.https.onRequest((req, res) => {
     const proyId = req.query.proyId;
     const groupId = req.query.groupId;
 
-    var user = (uid != 0) ? uid : email;
+    var user = (uid !== 0) ? uid : email;
 
     admin.database().ref('/groups/' + groupId + '/proyects/' + proyId + "/participants/" + user).remove();
     dbS.collection("Users").doc(user).collection("ProyList").doc(proyId).remove();
@@ -266,7 +266,7 @@ exports.addTodo = functions.https.onRequest((req, res) => {
     const content = req.query.content;
     const dueDate = req.query.dueDate;
 
-    //var user = (uid != 0) ? uid : email;
+    //var user = (uid !== 0) ? uid : email;
 
     const data = {
         title: title,
@@ -302,7 +302,7 @@ exports.addParticipantTask = functions.https.onRequest((req, res) => {
     const taskId = req.query.taskId;
     const groupId = req.query.groupId;
 
-    var user = (uid != 0) ? uid : email;
+    var user = (uid !== 0) ? uid : email;
 
     const data = {}
     data['/groups/' + groupId + '/proyects/' + proyId + "/tasks/" + taskId + "/participants/" + user] = "uid";
@@ -321,7 +321,7 @@ exports.removeParticipantTask = functions.https.onRequest((req, res) => {
     const taskId = req.query.taskId;
     const groupId = req.query.groupId;
 
-    var user = (uid != 0) ? uid : email;
+    var user = (uid !== 0) ? uid : email;
 
     admin.database().ref('/groups/' + groupId + '/proyects/' + proyId + "/tasks/" + taskId + "/participants/" + user).remove();
 
@@ -340,7 +340,7 @@ exports.addGroup = functions.https.onRequest((req, res) => {
     const content = req.query.content;
     const dueDate = req.query.dueDate;
 
-    var user = (uid != 0) ? uid : email;
+    var user = (uid !== 0) ? uid : email;
 
     const data = {
         owner: user,
@@ -364,7 +364,7 @@ exports.deleteGroup = functions.https.onRequest((req, res) => {
     const email = req.query.email;
     const groupId = req.query.groupId;
 
-    var user = (uid != 0) ? uid : email;
+    var user = (uid !== 0) ? uid : email;
     //Agregado a realtime db
     admin.database().ref('/groups/' + groupId).remove();
 
@@ -378,7 +378,7 @@ exports.addParticipantGroup = functions.https.onRequest((req, res) => {
     const email = req.query.email;
     const groupId = req.query.groupId;
 
-    var user = (uid != 0) ? uid : email;
+    var user = (uid !== 0) ? uid : email;
 
     const data = {}
     data['/groups/' + groupId + "/participants/" + user] = "uid";
@@ -395,7 +395,7 @@ exports.removeParticipantGroup = functions.https.onRequest((req, res) => {
     const email = req.query.email;
     const groupId = req.query.groupId;
 
-    var user = (uid != 0) ? uid : email;
+    var user = (uid !== 0) ? uid : email;
 
     admin.database().ref('/groups/' + groupId + "/participants/" + user).remove();
 
